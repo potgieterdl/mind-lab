@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>/mind-lab/</title>
+   
+   <link>/mind-lab/</link>
+   <description>The professional publishing platform</description>
+   <language>en-uk</language>
+   
+      
+            
+      
+   
+   <title>
+   <![CDATA[ Ghost ]]>
+   </title>
+   <description>
+   <![CDATA[ The professional publishing platform ]]>
+   </description>
+   <link>/mind-lab/</link>
+   <image>
+   <url>/mind-lab/assets/images/favicon.png</url>
+   <title>Ghost</title>
+   <link>/mind-lab/</link>
+   </image>
+   <generator>Jekyll 3.6.2</generator>
+   <lastBuildDate></lastBuildDate>
+   <atom:link href="/mind-lab/rss.xml" rel="self" type="application/rss+xml"/>
+   <ttl>60</ttl>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+
+</channel>
+</rss>
