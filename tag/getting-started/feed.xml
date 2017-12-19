@@ -3,38 +3,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>/mind-lab/</title>
+      <title>/</title>
    
-   <link>/mind-lab/</link>
-   <description>The professional publishing platform</description>
+   <link>/</link>
+   <description>The adventures in hours of time spent getting stuff working :)</description>
    <language>en-uk</language>
    
    <title>
-   <![CDATA[ Ghost ]]>
+   <![CDATA[ Mind Lab ]]>
    </title>
    <description>
-   <![CDATA[ The professional publishing platform ]]>
+   <![CDATA[ The adventures in hours of time spent getting stuff working :) ]]>
    </description>
-   <link>/mind-lab/</link>
+   <link>/</link>
    <image>
-   <url>/mind-lab/assets/images/favicon.png</url>
-   <title>Ghost</title>
-   <link>/mind-lab/</link>
+   <url>/assets/images/favicon.png</url>
+   <title>Mind Lab</title>
+   <link>/</link>
    </image>
    <generator>Jekyll 3.6.2</generator>
    <lastBuildDate></lastBuildDate>
-   <atom:link href="/mind-lab/rss.xml" rel="self" type="application/rss+xml"/>
+   <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
    <ttl>60</ttl>
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
 	  <title>Installing Home Assistant - HASS.io</title>
-	  <link>/mind-lab/setting-up-your-home-assistant</link>
+	  <link>/setting-up-your-home-assistant</link>
 		
 				
 		
 	  <pubDate>2017-12-18T11:21:17+00:00</pubDate>
-	  <guid>/mind-lab/setting-up-your-home-assistant</guid>
+	  <guid>/setting-up-your-home-assistant</guid>
 	  <description><![CDATA[
 	     <p>Hey! Welcome to Ghost, it’s great to have you :)</p>
 
@@ -58,12 +58,12 @@
 
 	<item>
 	  <title>Welcome to Ghost</title>
-	  <link>/mind-lab/welcome</link>
+	  <link>/welcome</link>
 		
 				
 		
 	  <pubDate>2017-07-27T10:00:00+00:00</pubDate>
-	  <guid>/mind-lab/welcome</guid>
+	  <guid>/welcome</guid>
 	  <description><![CDATA[
 	     <p>Hey! Welcome to Ghost, it’s great to have you :)</p>
 
@@ -87,12 +87,12 @@
 
 	<item>
 	  <title>Using the Ghost editor</title>
-	  <link>/mind-lab/the-editor</link>
+	  <link>/the-editor</link>
 		
 				
 		
 	  <pubDate>2017-07-27T09:00:00+00:00</pubDate>
-	  <guid>/mind-lab/the-editor</guid>
+	  <guid>/the-editor</guid>
 	  <description><![CDATA[
 	     <p>Ghost uses a language called <strong>Markdown</strong> to format text.</p>
 <p>When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause.</p>
@@ -142,12 +142,12 @@
 
 	<item>
 	  <title>Organising your content with tags</title>
-	  <link>/mind-lab/using-tags</link>
+	  <link>/using-tags</link>
 		
 				
 		
 	  <pubDate>2017-07-27T08:00:00+00:00</pubDate>
-	  <guid>/mind-lab/using-tags</guid>
+	  <guid>/using-tags</guid>
 	  <description><![CDATA[
 	     <p>Ghost has a single, powerful organisational taxonomy, called tags.</p>
 <p>It doesn't matter whether you want to call them categories, tags, boxes, or anything else. You can think of Ghost tags a lot like Gmail labels. By tagging posts with one or more keyword, you can organise articles into buckets of related content.</p>
@@ -182,12 +182,12 @@
 
 	<item>
 	  <title>Managing Ghost users</title>
-	  <link>/mind-lab/managing-users</link>
+	  <link>/managing-users</link>
 		
 				
 		
 	  <pubDate>2017-07-27T07:00:00+00:00</pubDate>
-	  <guid>/mind-lab/managing-users</guid>
+	  <guid>/managing-users</guid>
 	  <description><![CDATA[
 	     <p>Ghost has a number of different user roles for your team</p>
 <h3 id="authors">Authors</h3>
@@ -206,12 +206,12 @@
 
 	<item>
 	  <title>Making your site private</title>
-	  <link>/mind-lab/private-sites</link>
+	  <link>/private-sites</link>
 		
 				
 		
 	  <pubDate>2017-07-27T06:00:00+00:00</pubDate>
-	  <guid>/mind-lab/private-sites</guid>
+	  <guid>/private-sites</guid>
 	  <description><![CDATA[
 	     <p>Sometimes you might want to put your site behind closed doors</p>
 <p>If you've got a publication that you don't want the world to see yet because it's not ready to launch, you can hide your Ghost site behind a simple shared pass-phrase.</p>
@@ -225,12 +225,12 @@
 
 	<item>
 	  <title>Advanced Markdown tips</title>
-	  <link>/mind-lab/advanced-markdown</link>
+	  <link>/advanced-markdown</link>
 		
 				
 		
 	  <pubDate>2017-07-27T05:00:00+00:00</pubDate>
-	  <guid>/mind-lab/advanced-markdown</guid>
+	  <guid>/advanced-markdown</guid>
 	  <description><![CDATA[
 	     <p>There are lots of powerful things you can do with the Ghost editor</p>
 <p>If you've gotten pretty comfortable with <a href="/the-editor/">all the basics</a> of writing in Ghost, then you may enjoy some more advanced tips about the types of things you can do with Markdown!</p>
@@ -281,12 +281,12 @@
 
 	<item>
 	  <title>Setting up your own Ghost theme</title>
-	  <link>/mind-lab/themes</link>
+	  <link>/themes</link>
 		
 				
 		
 	  <pubDate>2017-07-27T04:00:00+00:00</pubDate>
-	  <guid>/mind-lab/themes</guid>
+	  <guid>/themes</guid>
 	  <description><![CDATA[
 	     <p>Creating a totally custom design for your publication</p>
 <p>Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving you a few basic settings which act as a poor proxy for code, we just let you write code.</p>

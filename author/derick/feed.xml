@@ -3,10 +3,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>/mind-lab/</title>
+      <title>/</title>
    
-   <link>/mind-lab/</link>
-   <description>The professional publishing platform</description>
+   <link>/</link>
+   <description>The adventures in hours of time spent getting stuff working :)</description>
    <language>en-uk</language>
    
       
@@ -14,20 +14,20 @@
       
    
    <title>
-   <![CDATA[ Ghost ]]>
+   <![CDATA[ Mind Lab ]]>
    </title>
    <description>
-   <![CDATA[ The professional publishing platform ]]>
+   <![CDATA[ The adventures in hours of time spent getting stuff working :) ]]>
    </description>
-   <link>/mind-lab/</link>
+   <link>/</link>
    <image>
-   <url>/mind-lab/assets/images/favicon.png</url>
-   <title>Ghost</title>
-   <link>/mind-lab/</link>
+   <url>/assets/images/favicon.png</url>
+   <title>Mind Lab</title>
+   <link>/</link>
    </image>
    <generator>Jekyll 3.6.2</generator>
    <lastBuildDate></lastBuildDate>
-   <atom:link href="/mind-lab/rss.xml" rel="self" type="application/rss+xml"/>
+   <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
    <ttl>60</ttl>
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    

@@ -3,38 +3,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>/mind-lab/</title>
+      <title>/</title>
    
-   <link>/mind-lab/</link>
-   <description>The professional publishing platform</description>
+   <link>/</link>
+   <description>The adventures in hours of time spent getting stuff working :)</description>
    <language>en-uk</language>
    
    <title>
-   <![CDATA[ Ghost ]]>
+   <![CDATA[ Mind Lab ]]>
    </title>
    <description>
-   <![CDATA[ The professional publishing platform ]]>
+   <![CDATA[ The adventures in hours of time spent getting stuff working :) ]]>
    </description>
-   <link>/mind-lab/</link>
+   <link>/</link>
    <image>
-   <url>/mind-lab/assets/images/favicon.png</url>
-   <title>Ghost</title>
-   <link>/mind-lab/</link>
+   <url>/assets/images/favicon.png</url>
+   <title>Mind Lab</title>
+   <link>/</link>
    </image>
    <generator>Jekyll 3.6.2</generator>
    <lastBuildDate></lastBuildDate>
-   <atom:link href="/mind-lab/rss.xml" rel="self" type="application/rss+xml"/>
+   <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
    <ttl>60</ttl>
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
 	  <title>I Have a Dream</title>
-	  <link>/mind-lab/i-have-a-dream</link>
+	  <link>/i-have-a-dream</link>
 		
 				
 		
 	  <pubDate>1963-08-28T10:18:00+00:00</pubDate>
-	  <guid>/mind-lab/i-have-a-dream</guid>
+	  <guid>/i-have-a-dream</guid>
 	  <description><![CDATA[
 	     <p>I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.</p>
 
@@ -135,12 +135,12 @@
 
 	<item>
 	  <title>The Purpose of Education</title>
-	  <link>/mind-lab/the-purpose-of-education</link>
+	  <link>/the-purpose-of-education</link>
 		
 				
 		
 	  <pubDate>1948-12-12T10:18:00+00:00</pubDate>
-	  <guid>/mind-lab/the-purpose-of-education</guid>
+	  <guid>/the-purpose-of-education</guid>
 	  <description><![CDATA[
 	     <p>As I engage in the so-called “bull sessions” around and about the school, I too often find that most college men have a misconception of the purpose of education. Most of the “brethren” think that education should equip them with the proper instruments of exploitation so that they can forever trample over the masses. Still others think that education should furnish them with noble ends rather than means to an end.</p>
 
