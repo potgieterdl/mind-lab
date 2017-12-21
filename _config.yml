@@ -22,7 +22,17 @@ navigation: True # show the navbar links
 subscribers: True # you need to connect an external service for this to work,
 # if 'True' the submit button is disabled for now, but you can change that
 # by editing `_includes/subscribe-form.html`
-twitter: potgieterdl # replace by your username
+twitter:
+  username: derickpotgieter
+
+social:
+  name: Derick Potgieter
+  links:
+    - https://twitter.com/derickpotgieter
+    - https://www.linkedin.com/in/derickpotgieter
+    - https://github.com/potgieterdl
+#    - https://plus.google.com/+BenBalter
+#    - https://keybase.io/benbalter
 
 # Disqus
 disqus: False
@@ -30,6 +40,7 @@ disqus_shortname: myjekyll # replace with your disqus username
 
 # Google Analytics
 google_analytics: UA-69281367-1 # replace with your GA tracking identifier
+google_site_verification: HBg-MIQa16tGm2ATxExMbS0XWFiFm0z9T8QSzOwWIwc
 
 # Permalinks
 permalink: /:title
@@ -40,7 +51,7 @@ permalink: /:title
 # Tags' info in `_data/tags_info.yml`
 
 # gems and other configs
-plugins: [jekyll-paginate, jekyll-feed]
+plugins: [jekyll-paginate, jekyll-feed, jekyll-seo-tag]
 exclude: [vendor]
 
 feed:
