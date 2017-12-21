@@ -39,7 +39,7 @@ disqus: False
 disqus_shortname: myjekyll # replace with your disqus username
 
 # Google Analytics
-google_analytics: UA-111473481-1 # replace with your GA tracking identifier
+  google_analytics: UA-111473481-1 # replace with your GA tracking identifier
 google_site_verification: HBg-MIQa16tGm2ATxExMbS0XWFiFm0z9T8QSzOwWIwc
 
 # Permalinks

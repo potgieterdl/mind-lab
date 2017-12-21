@@ -27,11 +27,7 @@
     {% include head.html %}
 
     <!-- This tag outputs comes from seo plugin -->
-    {% seo %} {% if site.twitter %}
-    <!-- site.twitter -->
-    {% endif %} {% if site.twitter.username %}
-    <!-- site.twitter.username -->
-    {% endif %}
+    {% seo %}
 </head>
 
 <body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %}">
