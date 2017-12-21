@@ -27,7 +27,11 @@
     {% include head.html %}
 
     <!-- This tag outputs comes from seo plugin -->
-    {% seo %}
+    {% seo %} {% if site.twitter %}
+    <!-- site.twitter -->
+    {% endif %} {% if site.twitter.username %}
+    <!-- site.twitter.username -->
+    {% endif %}
 </head>
 
 <body class="{% if paginator.page > 1 %}paged archive-template{% elsif page.class %}{{ page.class }}{% else %}home-template{% endif %}">
@@ -48,7 +52,7 @@
                     <a href="https://pages.github.com/">GitHub Pages</a> using
                     <a href="https://github.com/myJekyll/jasper2">Jasper2</a></section>
                 <nav class="site-footer-nav">
-                    <a href="{{ site.baseurl }}">Latest Posts</a> {% if site.facebook %}<a href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %} {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter }}"
+                    <a href="{{ site.baseurl }}">Latest Posts</a> {% if site.facebook %}<a href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %} {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter.username }}"
                         target="_blank" rel="noopener">Twitter</a>{% endif %}
                     <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
                 </nav>
