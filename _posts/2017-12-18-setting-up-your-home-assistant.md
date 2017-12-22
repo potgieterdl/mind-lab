@@ -5,10 +5,11 @@ cover:  assets/images/welcome.jpg
 navigation: True
 title: Installing Home Assistant - HASS.io
 date: 2017-12-18 11:21:17
-tags: [Getting started]
+tags: [Getting started, Home Automation]
 class: post-template
 subclass: 'post tag-getting-started'
-author: ghost
+author: derick 
+disqus: true
 ---
 
 Hey! Welcome to Ghost, it's great to have you :)

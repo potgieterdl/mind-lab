@@ -1,10 +1,10 @@
 derick:
-  username: potgieterdl
+  username: derick
   name: Derick Potgieter
+  location: Johannesburg, South Africa
   url_full: http://potgieterdl.github.io/
   url: potgieterdl.github.io/
   bio: Professional Tinkerer
-  picture: assets/images/derick.png
+  picture: assets/images/derick.jpg
   twitter: derickpotgieter
-  cover: false
-
+  cover: assets/images/blog-cover.jpg

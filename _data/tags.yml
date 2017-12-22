@@ -1,8 +1,12 @@
-speeches:
-  name: IOT
+iot:
+  name: iot
   description: Custom build on andrino, rpi and anything else
   cover: assets/images/iot.png
-fiction:
+code:
+  name: code
+  description: Everything code and more
+  cover: assets/images/iot.png
+home-automation:
   name: home-automation
   description: Making your home fully automated, 1 device at a time
   cover: assets/images/ha.jpg
