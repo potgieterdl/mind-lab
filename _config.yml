@@ -14,8 +14,8 @@ cover: assets/images/blog-cover.jpg
 logo: assets/images/logo.png
 logo_dark: assets/images/logo_small.png
 favicon: assets/images/favicon.png
-production_url: http://blog.myhq.co.za/
-url: http://blog.myhq.co.za/
+production_url: http://blog.myhq.co.za
+url: http://blog.myhq.co.za
 source_url: https://github.com/potgieterdl/mind-lab/
 
 # Social info
