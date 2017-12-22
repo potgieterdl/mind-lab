@@ -3,9 +3,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
    
-      <title>/</title>
+      <title>http://blog.myhq.co.za//</title>
    
-   <link>/</link>
+   <link>http://blog.myhq.co.za//</link>
    <description>The science of thinking, written down</description>
    <language>en-us</language>
    
@@ -23,28 +23,28 @@
    <description>
    <![CDATA[ The science of thinking, written down ]]>
    </description>
-   <link>/</link>
+   <link>http://blog.myhq.co.za//</link>
    <image>
-   <url>/assets/images/favicon.png</url>
+   <url>http://blog.myhq.co.za//assets/images/favicon.png</url>
    <title>Derick Potgieter - Mind Lab</title>
-   <link>/</link>
+   <link>http://blog.myhq.co.za//</link>
    </image>
    <generator>Jekyll 3.6.2</generator>
    <lastBuildDate></lastBuildDate>
-   <atom:link href="/author/derick/rss.xml" rel="self" type="application/rss+xml"/>
+   <atom:link href="http://blog.myhq.co.za//author/derick/rss.xml" rel="self" type="application/rss+xml"/>
    <ttl>60</ttl>
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
 	  <title>Installing Home Assistant - HASS.io</title>
-	  <link>/setting-up-your-home-assistant</link>
+	  <link>http://blog.myhq.co.za//setting-up-your-home-assistant</link>
 		
 				
 						<author>Derick Potgieter</author>
 				
 		
 	  <pubDate>2017-12-18T11:21:17+00:00</pubDate>
-	  <guid>/setting-up-your-home-assistant</guid>
+	  <guid>http://blog.myhq.co.za//setting-up-your-home-assistant</guid>
 	  <description><![CDATA[
 	     <p>Hey! Welcome to Ghost, it’s great to have you :)</p>
 
