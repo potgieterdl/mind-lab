@@ -19,10 +19,10 @@ I've been playing with [HA](https://home-assistant.io/) (aka Home Assistant) for
 ## Introducing Home Assistant
 There are multiple blogs detailing the [HA](https://home-assistant.io/) installs, so i'm not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.
 
-### Recommendation
+#### Recommendation
 Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run
 
-#### Step 1 - install python
+#### Step 1 - Installing python
 Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)
 
 {% highlight shell %}
@@ -30,12 +30,9 @@ $ sudo apt-get update
 $ apt-get install python3-pip python3-venv
 {% endhighlight %}
 
-~~~ shell
-$ sudo apt-get update
-$ apt-get install python3-pip python3-venv
-~~~ shell
-
-> If using *Python 3.4* on *Ubuntu 14.04* you light have to change python3-venv to python3.4-venv
+<small class="recap">
+If using *Python 3.4* on *Ubuntu 14.04* you light have to change python3-venv to python3.4-venv
+</small>
 
 #### Step 2 - setup env and install homeassistant
 We want HA to run on its own with its own user so
@@ -50,7 +47,7 @@ $ sudo mkdir homeassistant
 $ sudo chown homeassistant:homeassistant homeassistant
 {% endhighlight %}
 
-Create new virtual env and install
+Create virtual env activate
 {% highlight shell %}
 $ python3 -m venv homeassistant
 $ cd homeassistant
@@ -59,29 +56,25 @@ $ source bin/activate
 
 Once you run the above command, you should see the beginning of prompt change to `$ (homeassistant) homeassistant@...`
 
+Now install HA inside the venv
 {% highlight shell %}
 $ python3 -m pip install homeassistant
 {% endhighlight %}
 
-<small>
-> You have now created a new user called `homeassistant` and installed HA in the folder `/srv/homeassistant` using a python virtual env. _For reference, when you upgrade or want to run the HA, you need to do so in the virtual env_ <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
+<small class="recap">
+You have now created a new user called `homeassistant` and installed HA in the folder `/srv/homeassistant` using a python virtual env. _For reference, when you upgrade or want to run home assistant, you need to do so in the virtual env._ <mark> For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
 </small>
-
-
-> <small>You have now created a new user called `homeassistant` and installed HA in the folder `/srv/homeassistant` using a python virtual env. _For reference, when you upgrade or want to run the HA, you need to do so in the virtual env_ <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></small>
-
->> You have now created a new user called `homeassistant` and installed HA in the folder `/srv/homeassistant` using a python virtual env. _For reference, when you upgrade or want to run the HA, you need to do so in the virtual env_ <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
-
 
 #### Step 3 - configure runtime and auto-start
 
 #### Step 4 - first run
 Ensure you are in the `/srv/homeassistant` folder and run :
+
 {% highlight shell %}
 $ hass --open-ui
 {% endhighlight %}
 
-> This will start HA for the first time and install the necessary libraries needed by the modules in use.
+This will start HA for the first time and install the necessary libraries needed by the modules in use.
 
 #### Congrats
 This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.
