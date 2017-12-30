@@ -52,46 +52,9 @@
 <h4 id="step-1">Step 1</h4>
 <p>Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install python3-pip python3-venv
-</code></pre></div></div>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install python3-pip python3-venv
-</code></pre></div></div>
-
-<p>test</p>
-
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell">apt-get install python3-pip python3-venv</code></pre></figure>
 
-<p>test2</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">show</span>
-  <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
-  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># show.html.erb</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></figure>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show</span>
-  <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
-  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># show.html.erb</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<pre>
-    <code class="ruby">
-        def show
-            @widget = Widget(params[:id])
-            respond_to do |format|
-                format.html # show.html.erb
-                format.json { render json: @widget }
-            end
-        end
-    </code>
-</pre>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">apt-get install python3-pip python3-venv</code></pre></figure>
 
 <h4 id="step-2">Step 2</h4>
 
