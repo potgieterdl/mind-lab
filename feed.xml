@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T19:24:28+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/setting-up-your-home-assistant" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/setting-up-your-home-assistant</id><content type="html" xml:base="http://blog.myhq.co.za/setting-up-your-home-assistant">&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Word Count: 269&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Hey! Welcome to my first ever post, it’s great to have you :)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T19:34:30+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/setting-up-your-home-assistant" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/setting-up-your-home-assistant</id><content type="html" xml:base="http://blog.myhq.co.za/setting-up-your-home-assistant">&lt;p&gt;Hey! Welcome to my first ever post, it’s great to have you :)&lt;/p&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I’ve been playing with &lt;a href=&quot;https://home-assistant.io/&quot;&gt;HA&lt;/a&gt; (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.&lt;/p&gt;
@@ -61,15 +53,9 @@
   
     &lt;li&gt;
       &lt;a href=&quot;/setting-up-your-home-assistant&quot;&gt;Installing Home Assistant - HASS.io&lt;/a&gt;
-      &lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Word Count: 8&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+      Hey! Welcome to my first ever post, it’s great to have you :)
 
 
     &lt;/li&gt;
   
-&lt;/ul&gt;</content><author><name>Derick Potgieter</name></author><category term="Getting started" /><category term="Home Automation" /><category term="Home Assistant" /><summary type="html">Word Count: 8</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Derick Potgieter</name></author><category term="Getting started" /><category term="Home Automation" /><category term="Home Assistant" /><summary type="html">Hey! Welcome to my first ever post, it’s great to have you :)</summary></entry></feed>

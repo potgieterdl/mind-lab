@@ -19,13 +19,9 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
-    <style>
-        .hljs {
-            background: none;
-        }
-    </style>
-
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css">    
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.test.css" />
+    
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="The science of thinking, written down" />
 <link rel="shortcut icon" href="http://blog.myhq.co.za/assets/images/favicon.png" type="image/png" />
@@ -35,7 +31,7 @@
 <meta property="og:site_name" content="Mind Lab" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Installing Home Assistant - HASS.io" />
-<meta property="og:description" content="Word Count: 269 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble" />
+<meta property="og:description" content="Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation" />
 <meta property="og:url" content="http://blog.myhq.co.za/setting-up-your-home-assistant" />
 <meta property="og:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -45,7 +41,7 @@
 <meta property="article:tag" content="Getting Started" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Installing Home Assistant - HASS.io" />
-<meta name="twitter:description" content="Word Count: 269 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble" />
+<meta name="twitter:description" content="Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation" />
 <meta name="twitter:url" content="http://blog.myhq.co.za/" />
 <meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta name="twitter:label1" content="Written by" />
@@ -77,7 +73,7 @@
             "@type": "WebPage",
             "@id": "http://blog.myhq.co.za/setting-up-your-home-assistant"
         },
-        "description": "Word Count: 269 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble"
+        "description": "Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation"
     }
 </script>
 
@@ -98,8 +94,8 @@
 <meta property="og:title" content="Installing Home Assistant - HASS.io" />
 <meta name="author" content="Derick Potgieter" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Word Count: 8" />
-<meta property="og:description" content="Word Count: 8" />
+<meta name="description" content="Hey! Welcome to my first ever post, it’s great to have you :)" />
+<meta property="og:description" content="Hey! Welcome to my first ever post, it’s great to have you :)" />
 <link rel="canonical" href="http://blog.myhq.co.za/setting-up-your-home-assistant" />
 <meta property="og:url" content="http://blog.myhq.co.za/setting-up-your-home-assistant" />
 <meta property="og:site_name" content="Mind Lab" />
@@ -110,7 +106,7 @@
 <meta name="twitter:creator" content="@derickpotgieter" />
 <meta name="google-site-verification" content="HBg-MIQa16tGm2ATxExMbS0XWFiFm0z9T8QSzOwWIwc" />
 <script type="application/ld+json">
-{"name":null,"description":"Word Count: 8","author":{"@type":"Person","name":"Derick Potgieter"},"@type":"BlogPosting","url":"http://blog.myhq.co.za/setting-up-your-home-assistant","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://blog.myhq.co.za/assets/images/logo.png"},"name":"Derick Potgieter"},"image":null,"headline":"Installing Home Assistant - HASS.io","dateModified":"2017-12-18T11:21:17+00:00","datePublished":"2017-12-18T11:21:17+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.myhq.co.za/setting-up-your-home-assistant"},"@context":"http://schema.org"}</script>
+{"name":null,"description":"Hey! Welcome to my first ever post, it’s great to have you :)","author":{"@type":"Person","name":"Derick Potgieter"},"@type":"BlogPosting","url":"http://blog.myhq.co.za/setting-up-your-home-assistant","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://blog.myhq.co.za/assets/images/logo.png"},"name":"Derick Potgieter"},"image":null,"headline":"Installing Home Assistant - HASS.io","dateModified":"2017-12-18T11:21:17+00:00","datePublished":"2017-12-18T11:21:17+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.myhq.co.za/setting-up-your-home-assistant"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -187,15 +183,7 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <table>
-  <tbody>
-    <tr>
-      <td>Word Count: 269</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Hey! Welcome to my first ever post, it’s great to have you :)</p>
+                    <p>Hey! Welcome to my first ever post, it’s great to have you :)</p>
 
 <h2 id="backstory">Backstory</h2>
 <p>I’ve been playing with <a href="https://home-assistant.io/">HA</a> (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.</p>
@@ -250,13 +238,7 @@ into the {body} of the default.hbs template -->
   
     <li>
       <a href="/setting-up-your-home-assistant">Installing Home Assistant - HASS.io</a>
-      <table>
-  <tbody>
-    <tr>
-      <td>Word Count: 8</td>
-    </tr>
-  </tbody>
-</table>
+      Hey! Welcome to my first ever post, it’s great to have you :)
 
 
     </li>

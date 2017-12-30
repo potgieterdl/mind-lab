@@ -29,15 +29,7 @@
 	  <pubDate>2017-12-18T11:21:17+00:00</pubDate>
 	  <guid>http://blog.myhq.co.za/setting-up-your-home-assistant</guid>
 	  <description><![CDATA[
-	     <table>
-  <tbody>
-    <tr>
-      <td>Word Count: 269</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Hey! Welcome to my first ever post, it’s great to have you :)</p>
+	     <p>Hey! Welcome to my first ever post, it’s great to have you :)</p>
 
 <h2 id="backstory">Backstory</h2>
 <p>I’ve been playing with <a href="https://home-assistant.io/">HA</a> (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.</p>
@@ -92,13 +84,7 @@
   
     <li>
       <a href="/setting-up-your-home-assistant">Installing Home Assistant - HASS.io</a>
-      <table>
-  <tbody>
-    <tr>
-      <td>Word Count: 8</td>
-    </tr>
-  </tbody>
-</table>
+      Hey! Welcome to my first ever post, it’s great to have you :)
 
 
     </li>
