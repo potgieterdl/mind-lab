@@ -37,7 +37,7 @@
 	  <pubDate>2017-12-18T11:21:17+00:00</pubDate>
 	  <guid>http://blog.myhq.co.za/setting-up-your-home-assistant</guid>
 	  <description><![CDATA[
-	     <p>Hey! Welcome to my first ever post, it’s great to have you :)</p>
+	     <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
 
 <h2 id="backstory">Backstory</h2>
 <p>I’ve been playing with <a href="https://home-assistant.io/">HA</a> (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.</p>
@@ -45,51 +45,36 @@
 <h2 id="introducing-home-assistant">Introducing Home Assistant</h2>
 <p>There are multiple blogs detailing the <a href="https://home-assistant.io/">HA</a> installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.</p>
 
-<h5 id="installation-on-ubuntu-in-python-virtual-environment">Installation on Ubuntu in Python Virtual Environment</h5>
 <h3 id="recommendation">Recommendation</h3>
 <p>Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run</p>
 
 <h4 id="step-1---install-python">Step 1 - install python</h4>
 <p>Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install python3 python3-pip python3-venv
-</code></pre></div></div>
-
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>apt-get update
 <span class="nv">$ </span>apt-get install python3-pip python3-venv</code></pre></figure>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">what?</span>
-  <span class="mi">42</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>{% highlight javascript %}<br />
-/* Some pointless Javascript */
-var rawr = [“r”, “a”, “w”, “r”];
-{% endhighlight %}</p>
+<p>~~~ shell
+$ sudo apt-get update
+$ apt-get install python3-pip python3-venv
+~~~ shell</p>
 
 <blockquote>
-  <p>If using python 3.4 on ubuntu 14.04 you light have to change python3-venv to python3.4-venv</p>
+  <p>If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change python3-venv to python3.4-venv</p>
 </blockquote>
 
 <h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - setup env and install homeassistant</h4>
-<ol>
-  <li>We want HA to run on its own with its own user so</li>
-</ol>
+<p>We want HA to run on its own with its own user so</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">sudo </span>useradd <span class="nt">-rm</span> homeassistant</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>useradd <span class="nt">-rm</span> homeassistant</code></pre></figure>
 
-<ol>
-  <li>Change directories to the folder you want to install HA into and set ownership to new user</li>
-</ol>
+<p>Change directories to the folder you want to install HA into and set ownership to new user</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd</span> /srv
 <span class="nv">$ </span><span class="nb">sudo </span>mkdir homeassistant
 <span class="nv">$ </span><span class="nb">sudo </span>chown homeassistant:homeassistant homeassistant</code></pre></figure>
 
-<ol>
-  <li>Create new virtual env and install</li>
-</ol>
+<p>Create new virtual env and install</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> venv homeassistant
 <span class="nv">$ </span><span class="nb">cd </span>homeassistant
@@ -99,13 +84,26 @@ var rawr = [“r”, “a”, “w”, “r”];
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> pip install homeassistant</code></pre></figure>
 
+<p><small></small></p>
 <blockquote>
-  <p>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></p>
+  <p>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
+&lt;/small&gt;</p>
+</blockquote>
+
+<blockquote>
+  <p><small>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></small></p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></p>
+  </blockquote>
 </blockquote>
 
 <h4 id="step-3---configure-runtime-and-auto-start">Step 3 - configure runtime and auto-start</h4>
 
 <h4 id="step-4---first-run">Step 4 - first run</h4>
+<p>Ensure you are in the <code class="highlighter-rouge">/srv/homeassistant</code> folder and run :</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>hass <span class="nt">--open-ui</span></code></pre></figure>
 
@@ -121,7 +119,7 @@ var rawr = [“r”, “a”, “w”, “r”];
   
     <li>
       <a href="/setting-up-your-home-assistant">Installing Home Assistant - HASS.io</a>
-      Hey! Welcome to my first ever post, it’s great to have you :)
+      <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
 
 
     </li>
