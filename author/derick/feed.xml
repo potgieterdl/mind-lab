@@ -81,6 +81,18 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
+<pre>
+    <code class="ruby">
+        def show
+            @widget = Widget(params[:id])
+            respond_to do |format|
+                format.html # show.html.erb
+                format.json { render json: @widget }
+            end
+        end
+    </code>
+</pre>
+
 <h4 id="step-2">Step 2</h4>
 
 <h4 id="step-3">Step 3</h4>

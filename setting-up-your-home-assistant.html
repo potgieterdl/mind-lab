@@ -19,9 +19,13 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css">    
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.test.css" />
-    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>
+        .hljs {
+            background: none;
+        }
+    </style>
+
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="The science of thinking, written down" />
 <link rel="shortcut icon" href="http://blog.myhq.co.za/assets/images/favicon.png" type="image/png" />
@@ -226,6 +230,18 @@ into the {body} of the default.hbs template -->
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
+
+<pre>
+    <code class="ruby">
+        def show
+            @widget = Widget(params[:id])
+            respond_to do |format|
+                format.html # show.html.erb
+                format.json { render json: @widget }
+            end
+        end
+    </code>
+</pre>
 
 <h4 id="step-2">Step 2</h4>
 
