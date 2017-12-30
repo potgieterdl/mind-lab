@@ -20,12 +20,36 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <!-- highlight.js -->
     <style>
-        
+        blockquote, dl, ol, p, ul {
+            margin: 0 0 0.5em;
+        }
+        small.recap{
+            border-left: 3px solid #3eb0ef;
+            margin: 15px;
+            padding-left: 15px;
+            opacity: .8;
+        }
+
+        .post-full-content h2 {
+            margin: 1.5em 0 .2em;            
+        }
+
+        .post-full-content h3 {
+            margin: 1em 0 .2em
+        }
+
+        .recap:before {
+            content: '\2014 \00A0 Recap : \A';
+            clear: right;
+            display: block;
+            font-weight: 600;
+        }
 
         .post-full-content h1 {
             color: #3eb0ef;  
             text-align: center;
-            font-size: 4.2rem;
+            font-size: 4.4rem;
+            margin: 0em 0 1.2em;
         }
 
         figure.highlight{
@@ -281,23 +305,18 @@ into the {body} of the default.hbs template -->
 <h2 id="introducing-home-assistant">Introducing Home Assistant</h2>
 <p>There are multiple blogs detailing the <a href="https://home-assistant.io/">HA</a> installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.</p>
 
-<h3 id="recommendation">Recommendation</h3>
+<h4 id="recommendation">Recommendation</h4>
 <p>Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run</p>
 
-<h4 id="step-1---install-python">Step 1 - install python</h4>
+<h4 id="step-1---installing-python">Step 1 - Installing python</h4>
 <p>Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>apt-get update
 <span class="nv">$ </span>apt-get install python3-pip python3-venv</code></pre></figure>
 
-<p>~~~ shell
-$ sudo apt-get update
-$ apt-get install python3-pip python3-venv
-~~~ shell</p>
-
-<blockquote>
-  <p>If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change python3-venv to python3.4-venv</p>
-</blockquote>
+<p><small class="recap">
+If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change python3-venv to python3.4-venv
+</small></p>
 
 <h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - setup env and install homeassistant</h4>
 <p>We want HA to run on its own with its own user so</p>
@@ -310,7 +329,7 @@ $ apt-get install python3-pip python3-venv
 <span class="nv">$ </span><span class="nb">sudo </span>mkdir homeassistant
 <span class="nv">$ </span><span class="nb">sudo </span>chown homeassistant:homeassistant homeassistant</code></pre></figure>
 
-<p>Create new virtual env and install</p>
+<p>Create virtual env activate</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> venv homeassistant
 <span class="nv">$ </span><span class="nb">cd </span>homeassistant
@@ -318,23 +337,13 @@ $ apt-get install python3-pip python3-venv
 
 <p>Once you run the above command, you should see the beginning of prompt change to <code class="highlighter-rouge">$ (homeassistant) homeassistant@...</code></p>
 
+<p>Now install HA inside the venv</p>
+
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> pip install homeassistant</code></pre></figure>
 
-<p><small></small></p>
-<blockquote>
-  <p>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
-&lt;/small&gt;</p>
-</blockquote>
-
-<blockquote>
-  <p><small>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></small></p>
-</blockquote>
-
-<blockquote>
-  <blockquote>
-    <p>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></p>
-  </blockquote>
-</blockquote>
+<p><small class="recap">
+You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run home assistant, you need to do so in the virtual env.</em> <mark> For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
+</small></p>
 
 <h4 id="step-3---configure-runtime-and-auto-start">Step 3 - configure runtime and auto-start</h4>
 
@@ -343,9 +352,7 @@ $ apt-get install python3-pip python3-venv
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>hass <span class="nt">--open-ui</span></code></pre></figure>
 
-<blockquote>
-  <p>This will start HA for the first time and install the necessary libraries needed by the modules in use.</p>
-</blockquote>
+<p>This will start HA for the first time and install the necessary libraries needed by the modules in use.</p>
 
 <h4 id="congrats">Congrats</h4>
 <p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>

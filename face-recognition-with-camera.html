@@ -20,12 +20,36 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <!-- highlight.js -->
     <style>
-        
+        blockquote, dl, ol, p, ul {
+            margin: 0 0 0.5em;
+        }
+        small.recap{
+            border-left: 3px solid #3eb0ef;
+            margin: 15px;
+            padding-left: 15px;
+            opacity: .8;
+        }
+
+        .post-full-content h2 {
+            margin: 1.5em 0 .2em;            
+        }
+
+        .post-full-content h3 {
+            margin: 1em 0 .2em
+        }
+
+        .recap:before {
+            content: '\2014 \00A0 Recap : \A';
+            clear: right;
+            display: block;
+            font-weight: 600;
+        }
 
         .post-full-content h1 {
             color: #3eb0ef;  
             text-align: center;
-            font-size: 4.2rem;
+            font-size: 4.4rem;
+            margin: 0em 0 1.2em;
         }
 
         figure.highlight{
