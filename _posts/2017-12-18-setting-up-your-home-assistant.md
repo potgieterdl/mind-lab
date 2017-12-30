@@ -21,15 +21,33 @@ I've been playing with [HA](https://home-assistant.io/) (aka Home Assistant) for
 ## Introducing Home Assistant
 There are multiple blogs detailing the [HA](https://home-assistant.io/) installs, so i'm not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.
 
-# Installation on Ubuntu in Python Virtual Environment
+## Installation on Ubuntu in Python Virtual Environment
 ### Recommendation
 Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run
 
 #### Step 1
 Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)
 
-{% highlight bash %}
-    apt-get install python3-pip python3-venv
+```bash
+apt-get install python3-pip python3-venv
+```
+
+test
+
+{% highlight console %}
+apt-get install python3-pip python3-venv
+{% endhighlight %}
+
+test2
+
+{% highlight ruby %}
+def show
+  @widget = Widget(params[:id])
+  respond_to do |format|
+    format.html # show.html.erb
+    format.json { render json: @widget }
+  end
+end
 {% endhighlight %}
 
 #### Step 2
