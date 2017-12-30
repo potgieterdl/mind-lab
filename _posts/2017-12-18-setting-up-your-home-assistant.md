@@ -11,8 +11,6 @@ subclass: 'post tag-getting-started'
 author: derick 
 disqus: true
 ---
-| Word Count: {{ page.content | number_of_words }}
-
 Hey! Welcome to my first ever post, it's great to have you :)
 
 ## Backstory
