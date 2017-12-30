@@ -62,6 +62,18 @@ def show
 end
 ```
 
+<pre>
+    <code class="ruby">
+        def show
+            @widget = Widget(params[:id])
+            respond_to do |format|
+                format.html # show.html.erb
+                format.json { render json: @widget }
+            end
+        end
+    </code>
+</pre>
+
 #### Step 2
 
 #### Step 3
