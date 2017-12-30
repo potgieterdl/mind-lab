@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/images/welcome.jpg
+cover:  assets/images/face-recognition.jpg
 navigation: True
 title: Installing Home Assistant - HASS.io
 date: 2017-12-18 11:21:17
