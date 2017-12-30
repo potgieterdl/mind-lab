@@ -14,3 +14,7 @@ getting-started:
   name: getting-started
   description: False
   cover: False
+home-assistant:
+  name: home-assistant
+  description: Everything related to Home Assistant (hass.io)
+  cover: assets/images/ha.jpg

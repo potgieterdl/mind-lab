@@ -5,7 +5,7 @@ cover:  assets/images/welcome.jpg
 navigation: True
 title: Installing Home Assistant - HASS.io
 date: 2017-12-18 11:21:17
-tags: [Getting started, Home Automation, Home Assistant]
+tags: [Home Assistant]
 class: post-template
 subclass: 'post tag-getting-started'
 author: derick 
@@ -14,10 +14,10 @@ disqus: true
 # HA on Ubuntu in Python Virtual Env
 
 ## Backstory
-I've been playing with [HA](https://home-assistant.io/) (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple. 
+I've been playing with [Home Assistan](https://home-assistant.io/) (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can be overwhelming. This series will hopefully guide you step by step in creation your own [Home Assistant](https://home-assistant.io/) setup
 
 ## Introducing Home Assistant
-There are multiple blogs detailing the [HA](https://home-assistant.io/) installs, so i'm not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.
+There are multiple blogs detailing the [Home Assistant](https://home-assistant.io/) installs, so i'm not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.
 
 #### Recommendation
 Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run
@@ -78,13 +78,3 @@ This will start HA for the first time and install the necessary libraries needed
 
 #### Congrats
 This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.
-
-### Related Posts
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
-    </li>
-  {% endfor %}
-</ul>
