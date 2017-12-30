@@ -37,22 +37,76 @@
 <h2 id="introducing-home-assistant">Introducing Home Assistant</h2>
 <p>There are multiple blogs detailing the <a href="https://home-assistant.io/">HA</a> installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.</p>
 
-<h2 id="installation-on-ubuntu-in-python-virtual-environment">Installation on Ubuntu in Python Virtual Environment</h2>
+<h5 id="installation-on-ubuntu-in-python-virtual-environment">Installation on Ubuntu in Python Virtual Environment</h5>
 <h3 id="recommendation">Recommendation</h3>
 <p>Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run</p>
 
-<h4 id="step-1">Step 1</h4>
+<h4 id="step-1---install-python">Step 1 - install python</h4>
 <p>Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">apt-get install python3-pip python3-venv</code></pre></figure>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install python3 python3-pip python3-venv
+</code></pre></div></div>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">apt-get install python3-pip python3-venv</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>apt-get update
+<span class="nv">$ </span>apt-get install python3-pip python3-venv</code></pre></figure>
 
-<h4 id="step-2">Step 2</h4>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">what?</span>
+  <span class="mi">42</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
-<h4 id="step-3">Step 3</h4>
+<p>{% highlight javascript %}<br />
+/* Some pointless Javascript */
+var rawr = [“r”, “a”, “w”, “r”];
+{% endhighlight %}</p>
 
-<h4 id="step-4">Step 4</h4>
+<blockquote>
+  <p>If using python 3.4 on ubuntu 14.04 you light have to change python3-venv to python3.4-venv</p>
+</blockquote>
+
+<h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - setup env and install homeassistant</h4>
+<ol>
+  <li>We want HA to run on its own with its own user so</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">sudo </span>useradd <span class="nt">-rm</span> homeassistant</code></pre></figure>
+
+<ol>
+  <li>Change directories to the folder you want to install HA into and set ownership to new user</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd</span> /srv
+<span class="nv">$ </span><span class="nb">sudo </span>mkdir homeassistant
+<span class="nv">$ </span><span class="nb">sudo </span>chown homeassistant:homeassistant homeassistant</code></pre></figure>
+
+<ol>
+  <li>Create new virtual env and install</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> venv homeassistant
+<span class="nv">$ </span><span class="nb">cd </span>homeassistant
+<span class="nv">$ </span><span class="nb">source </span>bin/activate</code></pre></figure>
+
+<p>Once you run the above command, you should see the beginning of prompt change to <code class="highlighter-rouge">$ (homeassistant) homeassistant@...</code></p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> pip install homeassistant</code></pre></figure>
+
+<blockquote>
+  <p>You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</em> <mark>For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark></p>
+</blockquote>
+
+<h4 id="step-3---configure-runtime-and-auto-start">Step 3 - configure runtime and auto-start</h4>
+
+<h4 id="step-4---first-run">Step 4 - first run</h4>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>hass <span class="nt">--open-ui</span></code></pre></figure>
+
+<blockquote>
+  <p>This will start HA for the first time and install the necessary libraries needed by the modules in use.</p>
+</blockquote>
+
+<h5 id="congrats">Congrats</h5>
+<p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>
 
 <h3 id="more-posts">More Posts</h3>
 <ul>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T20:15:13+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/setting-up-your-home-assistant" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/setting-up-your-home-assistant</id><content type="html" xml:base="http://blog.myhq.co.za/setting-up-your-home-assistant">&lt;p&gt;Hey! Welcome to my first ever post, it’s great to have you :)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T20:54:24+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/setting-up-your-home-assistant" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/setting-up-your-home-assistant</id><content type="html" xml:base="http://blog.myhq.co.za/setting-up-your-home-assistant">&lt;p&gt;Hey! Welcome to my first ever post, it’s great to have you :)&lt;/p&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I’ve been playing with &lt;a href=&quot;https://home-assistant.io/&quot;&gt;HA&lt;/a&gt; (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.&lt;/p&gt;
@@ -6,22 +6,76 @@
 &lt;h2 id=&quot;introducing-home-assistant&quot;&gt;Introducing Home Assistant&lt;/h2&gt;
 &lt;p&gt;There are multiple blogs detailing the &lt;a href=&quot;https://home-assistant.io/&quot;&gt;HA&lt;/a&gt; installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.&lt;/p&gt;
 
-&lt;h2 id=&quot;installation-on-ubuntu-in-python-virtual-environment&quot;&gt;Installation on Ubuntu in Python Virtual Environment&lt;/h2&gt;
+&lt;h5 id=&quot;installation-on-ubuntu-in-python-virtual-environment&quot;&gt;Installation on Ubuntu in Python Virtual Environment&lt;/h5&gt;
 &lt;h3 id=&quot;recommendation&quot;&gt;Recommendation&lt;/h3&gt;
 &lt;p&gt;Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run&lt;/p&gt;
 
-&lt;h4 id=&quot;step-1&quot;&gt;Step 1&lt;/h4&gt;
+&lt;h4 id=&quot;step-1---install-python&quot;&gt;Step 1 - install python&lt;/h4&gt;
 &lt;p&gt;Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;apt-get install python3-pip python3-venv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install python3 python3-pip python3-venv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;apt-get install python3-pip python3-venv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;apt-get install python3-pip python3-venv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h4 id=&quot;step-2&quot;&gt;Step 2&lt;/h4&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;what?&lt;/span&gt;
+  &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;step-3&quot;&gt;Step 3&lt;/h4&gt;
+&lt;p&gt;{% highlight javascript %}&lt;br /&gt;
+/* Some pointless Javascript */
+var rawr = [“r”, “a”, “w”, “r”];
+{% endhighlight %}&lt;/p&gt;
 
-&lt;h4 id=&quot;step-4&quot;&gt;Step 4&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If using python 3.4 on ubuntu 14.04 you light have to change python3-venv to python3.4-venv&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;step-2---setup-env-and-install-homeassistant&quot;&gt;Step 2 - setup env and install homeassistant&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;We want HA to run on its own with its own user so&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;useradd &lt;span class=&quot;nt&quot;&gt;-rm&lt;/span&gt; homeassistant&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Change directories to the folder you want to install HA into and set ownership to new user&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /srv
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mkdir homeassistant
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chown homeassistant:homeassistant homeassistant&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create new virtual env and install&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; venv homeassistant
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;homeassistant
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once you run the above command, you should see the beginning of prompt change to &lt;code class=&quot;highlighter-rouge&quot;&gt;$ (homeassistant) homeassistant@...&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip install homeassistant&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You have now created a new user called &lt;code class=&quot;highlighter-rouge&quot;&gt;homeassistant&lt;/code&gt; and installed HA in the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/homeassistant&lt;/code&gt; using a python virtual env. &lt;em&gt;For reference, when you upgrade or want to run the HA, you need to do so in the virtual env&lt;/em&gt; &lt;mark&gt;For reference, when you upgrade or want to run the HA, you need to do so in the virtual env&lt;/mark&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;step-3---configure-runtime-and-auto-start&quot;&gt;Step 3 - configure runtime and auto-start&lt;/h4&gt;
+
+&lt;h4 id=&quot;step-4---first-run&quot;&gt;Step 4 - first run&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;hass &lt;span class=&quot;nt&quot;&gt;--open-ui&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This will start HA for the first time and install the necessary libraries needed by the modules in use.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;congrats&quot;&gt;Congrats&lt;/h5&gt;
+&lt;p&gt;This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.&lt;/p&gt;
 
 &lt;h3 id=&quot;more-posts&quot;&gt;More Posts&lt;/h3&gt;
 &lt;ul&gt;
