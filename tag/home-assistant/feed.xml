@@ -13,21 +13,61 @@
    </image>
    <generator>Jekyll 3.6.2</generator>
    
-         <lastBuildDate>2017-12-18T11:21:17+00:00</lastBuildDate>
+         <lastBuildDate>2017-12-30T12:00:00+00:00</lastBuildDate>
    
    <atom:link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/rss+xml"/>
    <ttl>60</ttl>
    
 	<item>
+	  <title>Face Recognition on Home Assistant</title>
+	  <link>http://blog.myhq.co.za/face-recognition-with-camera</link>
+		
+				
+						<author>Derick Potgieter</author>
+				
+		
+	  <pubDate>2017-12-30T12:00:00+00:00</pubDate>
+	  <guid>http://blog.myhq.co.za/face-recognition-with-camera</guid>
+	  <description><![CDATA[
+	     <h1 id="setup-face-recognition-on-home-assistant">Setup Face Recognition on Home Assistant</h1>
+
+<h2 id="backstory">Backstory</h2>
+<p>In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allog you to trigger another event. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image of the person and there name, allowing me to open the door for them.</p>
+
+<h4 id="congrats">Congrats</h4>
+
+<h3 id="related-posts">Related Posts</h3>
+<ul>
+  
+    <li>
+      <a href="/face-recognition-with-camera">Face Recognition on Home Assistant</a>
+      <h1 id="setup-face-recognition-on-home-assistant">Setup Face Recognition on Home Assistant</h1>
+
+
+    </li>
+  
+    <li>
+      <a href="/installing-home-assistant-on-ubuntu">Installing Home Assistant - HASS.io</a>
+      <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
+
+
+    </li>
+  
+</ul>
+
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>Installing Home Assistant - HASS.io</title>
-	  <link>http://blog.myhq.co.za/setting-up-your-home-assistant</link>
+	  <link>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</link>
 		
 				
 						<author>Derick Potgieter</author>
 				
 		
 	  <pubDate>2017-12-18T11:21:17+00:00</pubDate>
-	  <guid>http://blog.myhq.co.za/setting-up-your-home-assistant</guid>
+	  <guid>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</guid>
 	  <description><![CDATA[
 	     <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
 
@@ -103,14 +143,21 @@ $ apt-get install python3-pip python3-venv
   <p>This will start HA for the first time and install the necessary libraries needed by the modules in use.</p>
 </blockquote>
 
-<h5 id="congrats">Congrats</h5>
+<h4 id="congrats">Congrats</h4>
 <p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>
 
-<h3 id="more-posts">More Posts</h3>
+<h3 id="related-posts">Related Posts</h3>
 <ul>
   
     <li>
-      <a href="/setting-up-your-home-assistant">Installing Home Assistant - HASS.io</a>
+      <a href="/face-recognition-with-camera">Face Recognition on Home Assistant</a>
+      <h1 id="setup-face-recognition-on-home-assistant">Setup Face Recognition on Home Assistant</h1>
+
+
+    </li>
+  
+    <li>
+      <a href="/installing-home-assistant-on-ubuntu">Installing Home Assistant - HASS.io</a>
       <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
 
 

@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Face Recognition on Home Assistant</title>
+        
+          <description>&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sat, 30 Dec 2017 12:00:00 +0000</pubDate>
+        <link>
+        http://blog.myhq.co.za/face-recognition-with-camera</link>
+        <guid isPermaLink="true">http://blog.myhq.co.za/face-recognition-with-camera</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Installing Home Assistant - HASS.io</title>
         
           <description>&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
@@ -16,8 +31,8 @@
         
         <pubDate>Mon, 18 Dec 2017 11:21:17 +0000</pubDate>
         <link>
-        http://blog.myhq.co.za/setting-up-your-home-assistant</link>
-        <guid isPermaLink="true">http://blog.myhq.co.za/setting-up-your-home-assistant</guid>
+        http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</link>
+        <guid isPermaLink="true">http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</guid>
       </item>
       
     
