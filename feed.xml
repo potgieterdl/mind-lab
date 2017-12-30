@@ -1,34 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T22:09:32+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Face Recognition on Home Assistant</title><link href="http://blog.myhq.co.za/face-recognition-with-camera" rel="alternate" type="text/html" title="Face Recognition on Home Assistant" /><published>2017-12-30T12:00:00+00:00</published><updated>2017-12-30T12:00:00+00:00</updated><id>http://blog.myhq.co.za/face-recognition-with-camera</id><content type="html" xml:base="http://blog.myhq.co.za/face-recognition-with-camera">&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T22:16:14+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Face Recognition on Home Assistant</title><link href="http://blog.myhq.co.za/face-recognition-with-camera" rel="alternate" type="text/html" title="Face Recognition on Home Assistant" /><published>2017-12-30T12:00:00+00:00</published><updated>2017-12-30T12:00:00+00:00</updated><id>http://blog.myhq.co.za/face-recognition-with-camera</id><content type="html" xml:base="http://blog.myhq.co.za/face-recognition-with-camera">&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allog you to trigger another event. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image of the person and there name, allowing me to open the door for them.&lt;/p&gt;
 
-&lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;
-
-&lt;h3 id=&quot;related-posts&quot;&gt;Related Posts&lt;/h3&gt;
-&lt;ul&gt;
-  
-    &lt;li&gt;
-      &lt;a href=&quot;/face-recognition-with-camera&quot;&gt;Face Recognition on Home Assistant&lt;/a&gt;
-      &lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
-
-
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href=&quot;/installing-home-assistant-on-ubuntu&quot;&gt;Installing Home Assistant - HASS.io&lt;/a&gt;
-      &lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
-
-
-    &lt;/li&gt;
-  
-&lt;/ul&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">Setup Face Recognition on Home Assistant</summary></entry><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</id><content type="html" xml:base="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
+&lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">Setup Face Recognition on Home Assistant</summary></entry><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</id><content type="html" xml:base="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
-&lt;p&gt;I’ve been playing with &lt;a href=&quot;https://home-assistant.io/&quot;&gt;HA&lt;/a&gt; (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.&lt;/p&gt;
+&lt;p&gt;I’ve been playing with &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistan&lt;/a&gt; (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can be overwhelming. This series will hopefully guide you step by step in creation your own &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; setup&lt;/p&gt;
 
 &lt;h2 id=&quot;introducing-home-assistant&quot;&gt;Introducing Home Assistant&lt;/h2&gt;
-&lt;p&gt;There are multiple blogs detailing the &lt;a href=&quot;https://home-assistant.io/&quot;&gt;HA&lt;/a&gt; installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.&lt;/p&gt;
+&lt;p&gt;There are multiple blogs detailing the &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.&lt;/p&gt;
 
 &lt;h4 id=&quot;recommendation&quot;&gt;Recommendation&lt;/h4&gt;
 &lt;p&gt;Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run&lt;/p&gt;
@@ -80,23 +61,4 @@ You have now created a new user called &lt;code class=&quot;highlighter-rouge&qu
 &lt;p&gt;This will start HA for the first time and install the necessary libraries needed by the modules in use.&lt;/p&gt;
 
 &lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;
-&lt;p&gt;This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.&lt;/p&gt;
-
-&lt;h3 id=&quot;related-posts&quot;&gt;Related Posts&lt;/h3&gt;
-&lt;ul&gt;
-  
-    &lt;li&gt;
-      &lt;a href=&quot;/face-recognition-with-camera&quot;&gt;Face Recognition on Home Assistant&lt;/a&gt;
-      &lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
-
-
-    &lt;/li&gt;
-  
-    &lt;li&gt;
-      &lt;a href=&quot;/installing-home-assistant-on-ubuntu&quot;&gt;Installing Home Assistant - HASS.io&lt;/a&gt;
-      &lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
-
-
-    &lt;/li&gt;
-  
-&lt;/ul&gt;</content><author><name>Derick Potgieter</name></author><category term="Getting started" /><category term="Home Automation" /><category term="Home Assistant" /><summary type="html">HA on Ubuntu in Python Virtual Env</summary></entry></feed>
+&lt;p&gt;This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">HA on Ubuntu in Python Virtual Env</summary></entry></feed>

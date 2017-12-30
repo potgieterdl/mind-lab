@@ -145,23 +145,23 @@
 <meta property="og:site_name" content="Mind Lab" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Installing Home Assistant - HASS.io" />
-<meta property="og:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple. Introducing" />
+<meta property="og:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can" />
 <meta property="og:url" content="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" />
 <meta property="og:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta property="article:publisher" content="https://www.facebook.com/" />
 <meta property="article:author" content="https://www.facebook.com/" />
 <meta property="article:published_time" content="2017-12-18T11:21:17+00:00" />
 <meta property="article:modified_time" content="2017-12-18T11:21:17+00:00" />
-<meta property="article:tag" content="Getting Started" />
+<meta property="article:tag" content="Home Assistant" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Installing Home Assistant - HASS.io" />
-<meta name="twitter:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple. Introducing" />
+<meta name="twitter:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can" />
 <meta name="twitter:url" content="http://blog.myhq.co.za/" />
 <meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta name="twitter:label1" content="Written by" />
 <meta name="twitter:data1" content="Mind Lab" />
 <meta name="twitter:label2" content="Filed under" />
-<meta name="twitter:data2" content="Getting Started" />
+<meta name="twitter:data2" content="Home Assistant" />
 <meta name="twitter:site" content="@derickpotgieter" />
 <meta name="twitter:creator" content="@derickpotgieter" />
 <meta property="og:image:width" content="1400" />
@@ -187,7 +187,7 @@
             "@type": "WebPage",
             "@id": "http://blog.myhq.co.za/installing-home-assistant-on-ubuntu"
         },
-        "description": "HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple. Introducing"
+        "description": "HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can"
     }
 </script>
 
@@ -242,9 +242,9 @@ into the {body} of the default.hbs template -->
         <a class="site-nav-logo" href="http://blog.myhq.co.za/"><img src="/assets/images/logo.png" alt="Mind Lab" /></a>
            <ul class="nav" role="menu">
     <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
-    <li class="nav-home-automation" role="menuitem"><a href="/tag/home-automation/">Home Automation</a></li>
-    <li class="nav-getting-started" role="menuitem"><a href="/tag/getting-started/">Getting Started</a></li>
-    <li class="nav-try-ghost" role="menuitem"><a href="https://ghost.org">Try Ghost</a></li>
+    <li class="nav-home-automation" role="menuitem"><a href="/tag/home-assistant/">Home Automation</a></li>
+    <li class="nav-devices" role="menuitem"><a href="/tag/iot/">Devices</a></li>
+    <li class="nav-about-me" role="menuitem"><a href="//author/derick/">About Me</a></li>
 </ul> 
     </div>
     <div class="site-nav-right">
@@ -274,14 +274,6 @@ into the {body} of the default.hbs template -->
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/getting-started/'>GETTING STARTED</a>,
-                            
-                        
-                            
-                               <a href='/tag/home-automation/'>HOME AUTOMATION</a>,
-                            
-                        
-                            
                                <a href='/tag/home-assistant/'>HOME ASSISTANT</a>
                             
                         
@@ -300,10 +292,10 @@ into the {body} of the default.hbs template -->
                     <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
 
 <h2 id="backstory">Backstory</h2>
-<p>I’ve been playing with <a href="https://home-assistant.io/">HA</a> (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple.</p>
+<p>I’ve been playing with <a href="https://home-assistant.io/">Home Assistan</a> (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can be overwhelming. This series will hopefully guide you step by step in creation your own <a href="https://home-assistant.io/">Home Assistant</a> setup</p>
 
 <h2 id="introducing-home-assistant">Introducing Home Assistant</h2>
-<p>There are multiple blogs detailing the <a href="https://home-assistant.io/">HA</a> installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.</p>
+<p>There are multiple blogs detailing the <a href="https://home-assistant.io/">Home Assistant</a> installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.</p>
 
 <h4 id="recommendation">Recommendation</h4>
 <p>Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run</p>
@@ -356,25 +348,6 @@ You have now created a new user called <code class="highlighter-rouge">homeassis
 
 <h4 id="congrats">Congrats</h4>
 <p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>
-
-<h3 id="related-posts">Related Posts</h3>
-<ul>
-  
-    <li>
-      <a href="/face-recognition-with-camera">Face Recognition on Home Assistant</a>
-      <h1 id="setup-face-recognition-on-home-assistant">Setup Face Recognition on Home Assistant</h1>
-
-
-    </li>
-  
-    <li>
-      <a href="/installing-home-assistant-on-ubuntu">Installing Home Assistant - HASS.io</a>
-      <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
-
-
-    </li>
-  
-</ul>
 
                 </div>
             </section>
@@ -440,6 +413,47 @@ You have now created a new user called <code class="highlighter-rouge">homeassis
                 
                 
                 
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Mind Lab &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/home-assistant/">Home assistant</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/face-recognition-with-camera">Face Recognition on Home Assistant</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/home-assistant/">
+                                
+                                    See all 1 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
                 
             
 
