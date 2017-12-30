@@ -83,10 +83,10 @@ $ hass --open-ui
 
 > This will start HA for the first time and install the necessary libraries needed by the modules in use.
 
-##### Congrats
+#### Congrats
 This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.
 
-### More Posts
+### Related Posts
 <ul>
   {% for post in site.posts %}
     <li>
