@@ -5,25 +5,45 @@ cover:  assets/images/welcome.jpg
 navigation: True
 title: Installing Home Assistant - HASS.io
 date: 2017-12-18 11:21:17
-tags: [Getting started, Home Automation]
+tags: [Getting started, Home Automation, Home Assistant]
 class: post-template
 subclass: 'post tag-getting-started'
 author: derick 
 disqus: true
 ---
+| Word Count: {{ page.content | number_of_words }}
 
-Hey! Welcome to Ghost, it's great to have you :)
+Hey! Welcome to my first ever post, it's great to have you :)
 
-We know that first impressions are important, so we've populated your new site with some initial **Getting Started** posts that will help you get familiar with everything in no time. This is the first one!
+## Backstory
+I've been playing with [HA](https://home-assistant.io/) (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble with home automation platforms it isn`t that simple. 
 
-### There are a few things that you should know up-front:
-1. Ghost is designed for ambitious, professional publishers who want to actively build a business around their content. That's who it works best for. If you're using Ghost for some other purpose, that's fine too - but it might not be the best choice for you.
-2. The entire platform can be modified and customized to suit your needs, which is very powerful, but doing so **does** require some knowledge of code. Ghost is not necessarily a good platform for beginners or people who just want a simple personal blog.
-3. For the best experience we recommend downloading the Ghost Desktop App for your computer, which is the best way to access your Ghost site on a desktop device.
+## Introducing Home Assistant
+There are multiple blogs detailing the [HA](https://home-assistant.io/) installs, so i'm not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.
 
+# Installation on Ubuntu in Python Virtual Environment
+### Recommendation
+Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run
 
-Ghost is made by an independent non-profit organisation called the Ghost Foundation. We are 100% self funded by revenue from our [Ghost(Pro)](https://ghost.org/pricing) service, and every penny we make is re-invested into funding further development of free, open source technology for modern journalism.
+#### Step 1
+Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)
 
-The main thing you'll want to read about next is probably: [the Ghost editor](https://demo.ghost.io/the-editor/).
+{% highlight bash %}
+    apt-get install python3-pip python3-venv
+{% endhighlight %}
 
-Once you're done reading, you can simply delete the default **Ghost** user from your team to remove all of these introductory posts!
+#### Step 2
+
+#### Step 3
+
+#### Step 4
+
+### More Posts
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+    </li>
+  {% endfor %}
+</ul>
