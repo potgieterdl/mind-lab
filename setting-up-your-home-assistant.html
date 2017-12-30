@@ -35,7 +35,7 @@
 <meta property="og:site_name" content="Mind Lab" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Installing Home Assistant - HASS.io" />
-<meta property="og:description" content="Word Count: 242 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble" />
+<meta property="og:description" content="Word Count: 269 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble" />
 <meta property="og:url" content="http://blog.myhq.co.za/setting-up-your-home-assistant" />
 <meta property="og:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -45,7 +45,7 @@
 <meta property="article:tag" content="Getting Started" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Installing Home Assistant - HASS.io" />
-<meta name="twitter:description" content="Word Count: 242 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble" />
+<meta name="twitter:description" content="Word Count: 269 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble" />
 <meta name="twitter:url" content="http://blog.myhq.co.za/" />
 <meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta name="twitter:label1" content="Written by" />
@@ -77,7 +77,7 @@
             "@type": "WebPage",
             "@id": "http://blog.myhq.co.za/setting-up-your-home-assistant"
         },
-        "description": "Word Count: 242 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble"
+        "description": "Word Count: 269 Hey! Welcome to my first ever post, it’s great to have you :) Backstory I’ve been playing with HA (aka Home Assistant) for close on 2 months and couple years programming experience it has certainly helped me along. But like many others which are trying to dabble"
     }
 </script>
 
@@ -190,7 +190,7 @@ into the {body} of the default.hbs template -->
                     <table>
   <tbody>
     <tr>
-      <td>Word Count: 242</td>
+      <td>Word Count: 269</td>
     </tr>
   </tbody>
 </table>
@@ -210,12 +210,15 @@ into the {body} of the default.hbs template -->
 <h4 id="step-1">Step 1</h4>
 <p>Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)</p>
 
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install python3-pip python3-venv
+</code></pre></div></div>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install python3-pip python3-venv
 </code></pre></div></div>
 
 <p>test</p>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">apt-get install python3-pip python3-venv</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">apt-get install python3-pip python3-venv</code></pre></figure>
 
 <p>test2</p>
 
@@ -226,6 +229,15 @@ into the {body} of the default.hbs template -->
     <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre></figure>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show</span>
+  <span class="vi">@widget</span> <span class="o">=</span> <span class="no">Widget</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># show.html.erb</span>
+    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@widget</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
 <h4 id="step-2">Step 2</h4>
 
