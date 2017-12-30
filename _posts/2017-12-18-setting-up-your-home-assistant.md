@@ -28,13 +28,17 @@ Unless you going the Raspberry PI route with hass, which is brilliant, i would g
 #### Step 1
 Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)
 
+```shell
+apt-get install python3-pip python3-venv
+```
+
 ```bash
 apt-get install python3-pip python3-venv
 ```
 
 test
 
-{% highlight console %}
+{% highlight shell %}
 apt-get install python3-pip python3-venv
 {% endhighlight %}
 
@@ -49,6 +53,16 @@ def show
   end
 end
 {% endhighlight %}
+
+```ruby
+def show
+  @widget = Widget(params[:id])
+  respond_to do |format|
+    format.html # show.html.erb
+    format.json { render json: @widget }
+  end
+end
+```
 
 #### Step 2
 
