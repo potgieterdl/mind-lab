@@ -1,9 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2017-12-30T22:23:16+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Face Recognition on Home Assistant</title><link href="http://blog.myhq.co.za/face-recognition-with-camera" rel="alternate" type="text/html" title="Face Recognition on Home Assistant" /><published>2017-12-30T12:00:00+00:00</published><updated>2017-12-30T12:00:00+00:00</updated><id>http://blog.myhq.co.za/face-recognition-with-camera</id><content type="html" xml:base="http://blog.myhq.co.za/face-recognition-with-camera">&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-01-09T19:00:37+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Face Recognition on Home Assistant</title><link href="http://blog.myhq.co.za/face-recognition-with-camera" rel="alternate" type="text/html" title="Face Recognition on Home Assistant" /><published>2017-12-30T12:00:00+00:00</published><updated>2017-12-30T12:00:00+00:00</updated><id>http://blog.myhq.co.za/face-recognition-with-camera</id><content type="html" xml:base="http://blog.myhq.co.za/face-recognition-with-camera">&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
-&lt;p&gt;In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allog you to trigger another event. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image of the person and there name, allowing me to open the door for them.&lt;/p&gt;
+&lt;p&gt;In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allow you to trigger another event, like opening a gate. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image and their name, allowing me to open the door for them.&lt;/p&gt;
 
-&lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">Setup Face Recognition on Home Assistant</summary></entry><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</id><content type="html" xml:base="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
+&lt;p&gt;This could be used for presence setting, for automatic unlocking of your security system or allowing friends to feed the dogs by automatically opening the yard gate for them. All while keeping you in the know if need be.&lt;/p&gt;
+
+&lt;h2 id=&quot;azure-register-account-and-create-face-api-service&quot;&gt;Azure: Register account and create Face API service&lt;/h2&gt;
+
+&lt;h3 id=&quot;create-new-azure-account&quot;&gt;Create new Azure account&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/free/&quot;&gt;Create Account&lt;/a&gt;, its free for 30 days and you get to play around with $200 worth of credit during this time frame. I already used this before and had to input my Credit Card to create the Face API service.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-face-api-service&quot;&gt;Create FACE API Service&lt;/h3&gt;
+&lt;p&gt;Once in, you will need to create a new Cognitive Service for the Face API.&lt;/p&gt;
+
+&lt;h4 id=&quot;step-1--create-service&quot;&gt;Step 1 : Create service&lt;/h4&gt;
+&lt;p&gt;For more details and a start link, check out &lt;a href=&quot;https://azuremarketplace.microsoft.com/en/marketplace/apps/Microsoft.CognitiveServicesFace/?utm_source=mkt-CognitiveServicesFace&amp;amp;utm_content=fa9bbbf9741c49cebd4116d9a745ae04&amp;amp;utm_campaign=social&amp;amp;utm_medium=E&quot;&gt;Face API&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To get right into it, follow this link &lt;a href=&quot;https://portal.azure.com/#create/Microsoft.CognitiveServicesFace&quot;&gt;Create Face API&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I used the name &lt;code class=&quot;highlighter-rouge&quot;&gt;hass&lt;/code&gt; and resource group &lt;code class=&quot;highlighter-rouge&quot;&gt;hass&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-2--grab-access-keys&quot;&gt;Step 2 : Grab access keys&lt;/h4&gt;
+&lt;p&gt;One your service is created, you can click on the Resource Management section under Keys. Copy KEY1, this is your API key needed in HA to make the service work&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/post-2017-12-30/ms-face-api-keys.png&quot; alt=&quot;Example Key Location&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;segment-2-configure-ha&quot;&gt;Segment 2: Configure HA&lt;/h2&gt;
+
+&lt;h3 id=&quot;camera&quot;&gt;Camera&lt;/h3&gt;
+
+&lt;h4 id=&quot;setup-your-camera&quot;&gt;Setup your camera&lt;/h4&gt;
+&lt;p&gt;The faces api requires a source, and the most likely source is a camera already connected to HA. We will quickly go over the basics here, but it will depend on your cameral. &lt;a href=&quot;https://home-assistant.io/components/camera/&quot;&gt;Check here for possible options&lt;/a&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi devices/cameras.yaml
+
+&lt;span class=&quot;c&quot;&gt;### viewing devices/cameras.yaml ### &lt;/span&gt;
+- platform: ffmpeg
+  name: Back Yard
+  input: rtsp://user:pass@x.x.x.x:554/snl/live/1/1
+  extra_arguments: &lt;span class=&quot;nt&quot;&gt;-an&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt;:v 25&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;image-processing-face-api&quot;&gt;Image Processing (Face API)&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi image_processing.yaml
+
+&lt;span class=&quot;c&quot;&gt;### viewing image_processing.yaml ### &lt;/span&gt;
+- platform: microsoft_face_identify
+  group: family
+  confidence: 50
+  &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;:
+    - entity_id: camera.back_yard&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;add-microsoft-face-service-in-configurationyaml&quot;&gt;Add Microsoft Face service in configuration.yaml&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi configuration.yaml
+
+&lt;span class=&quot;c&quot;&gt;### viewing configuration.yaml ### &lt;/span&gt;
+...
+camera: &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;include devices/cameras.yaml
+image_processing: &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;include image_processing.yaml
+...
+
+...
+microsoft_face:
+  api_key: abcdefghijklmnopqrstuv
+  azure_region: westeurope&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;restart-and-check-the-logs&quot;&gt;Restart and check the logs&lt;/h4&gt;
+&lt;p&gt;Once the above is configured, you should restart your Home Assistant and check the logs too see the faces api being called. This will happen strait after your camera getting an image, this same image is sent through too Face API for recognition&lt;/p&gt;
+
+&lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;
+&lt;p&gt;This is really a glorified proof of concept. The amount of images sent for analysis to Microsoft`s Face API is insane, i logged couple thousand request in one day, almost using up my free account. For this to work and be free, we would need to only send the images when movement or a person is recognised locally and then send off to Microsoft. I’ll follow this blog post up with a more sustainable working prototype.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">Setup Face Recognition on Home Assistant</summary></entry><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</id><content type="html" xml:base="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I’ve been playing with &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistan&lt;/a&gt; (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can be overwhelming. This series will hopefully guide you step by step in creation your own &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; setup&lt;/p&gt;
@@ -24,7 +91,7 @@
 If using &lt;em&gt;Python 3.4&lt;/em&gt; on &lt;em&gt;Ubuntu 14.04&lt;/em&gt; you light have to change python3-venv to python3.4-venv
 &lt;/small&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;step-2---setup-env-and-install-homeassistant&quot;&gt;Step 2 - setup env and install homeassistant&lt;/h4&gt;
+&lt;h4 id=&quot;step-2---setup-env-and-install-homeassistant&quot;&gt;Step 2 - Setup env and install homeassistant&lt;/h4&gt;
 &lt;p&gt;We want HA to run on its own with its own user so&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;useradd &lt;span class=&quot;nt&quot;&gt;-rm&lt;/span&gt; homeassistant&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -51,14 +118,112 @@ If using &lt;em&gt;Python 3.4&lt;/em&gt; on &lt;em&gt;Ubuntu 14.04&lt;/em&gt; yo
 You have now created a new user called &lt;code class=&quot;highlighter-rouge&quot;&gt;homeassistant&lt;/code&gt; and installed HA in the folder &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/homeassistant&lt;/code&gt; using a python virtual env. &lt;em&gt;For reference, when you upgrade or want to run home assistant, you need to do so in the virtual env.&lt;/em&gt; &lt;mark&gt; For reference, when you upgrade or want to run the HA, you need to do so in the virtual env&lt;/mark&gt;
 &lt;/small&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;step-3---configure-runtime-and-auto-start&quot;&gt;Step 3 - configure runtime and auto-start&lt;/h4&gt;
+&lt;h4 id=&quot;step-3---configure-runtime-and-auto-start&quot;&gt;Step 3 - Configure runtime and auto-start&lt;/h4&gt;
+&lt;p&gt;The preferred way would be to auto start Home Assistant with a init script&lt;/p&gt;
 
-&lt;h4 id=&quot;step-4---first-run&quot;&gt;Step 4 - first run&lt;/h4&gt;
+&lt;p&gt;Create a file under /etc/init.d/hass-daemon and copy the script at the end of this post into it&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi /etc/init.d/hass-daemon&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once you have copied the script (end of this post) into the above file, you need to set the execute permission on the script for auto-startup (on boot)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chmod +x /etc/init.d/hass-daemon&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;step-4---first-run&quot;&gt;Step 4 - First run&lt;/h4&gt;
 &lt;p&gt;Ensure you are in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/srv/homeassistant&lt;/code&gt; folder and run :&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;hass &lt;span class=&quot;nt&quot;&gt;--open-ui&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This will start HA for the first time and install the necessary libraries needed by the modules in use.&lt;/p&gt;
+&lt;p&gt;This will start HA for the first time and install the necessary libraries needed by the modules in use. Any failures are easier to spot this way vs doing the daemon run which wount print out anything. You need to view the log in &lt;code class=&quot;highlighter-rouge&quot;&gt;tail -f /home/homeassistant/.homeassistant/homeassistant.log&lt;/code&gt; to see any output from the auto-start script.&lt;/p&gt;
+
+&lt;p&gt;Once this initial run is complete, press &lt;code class=&quot;highlighter-rouge&quot;&gt;crtl+c&lt;/code&gt; to exit and then start using the init script &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /etc/init.d/hass-daemon start&lt;/code&gt;, view the output using above tail command on the log file.&lt;/p&gt;
 
 &lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;
-&lt;p&gt;This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">HA on Ubuntu in Python Virtual Env</summary></entry></feed>
+&lt;p&gt;This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.&lt;/p&gt;
+
+&lt;h5 id=&quot;python-virtual-start-up-script&quot;&gt;Python Virtual Start-up Script&lt;/h5&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Provides:          hass&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Required-Start:    $local_fs $network $named $time $syslog&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Required-Stop:     $local_fs $network $named $time $syslog&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Default-Start:     2 3 4 5&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Default-Stop:      0 1 6&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Description:       Home\ Assistant&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;### END INIT INFO&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# /etc/init.d Service Script for Home Assistant&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Created with: https://gist.github.com/naholyr/4275302#file-new-service-sh&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PRE_EXEC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;cd /srv/homeassistant &amp;amp;&amp;amp; python3 -m venv . &amp;amp;&amp;amp; source bin/activate &amp;amp;&amp;amp;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;RUN_AS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;homeassistant&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PID_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/var/run/hass/hass.pid&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;CONFIG_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/home/homeassistant/.homeassistant&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;FLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-v --config &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CONFIG_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; --pid-file &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; --daemon&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;REDIRECT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CONFIG_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/home-assistant.log 2&amp;gt;&amp;amp;1&quot;&lt;/span&gt;
+
+start&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Service already running'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;1
+  &lt;span class=&quot;k&quot;&gt;fi
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Starting service…'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PRE_EXEC&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HASS_BIN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FLAGS&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$REDIRECT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&quot;&lt;/span&gt;
+  su &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CMD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$RUN_AS&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Service started'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+stop&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; 2&amp;gt; /dev/null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Service not running'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;1
+  &lt;span class=&quot;k&quot;&gt;fi
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Stopping service…'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+  &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;ps &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /dev/null 2&amp;gt;&amp;amp;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;sleep 1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Service stopped'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+install&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Installing Home Assistant Daemon (hass-daemon)&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;999999&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;
+    chown &lt;span class=&quot;nv&quot;&gt;$RUN_AS&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;
+    mkdir &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CONFIG_DIR&lt;/span&gt;
+    chown &lt;span class=&quot;nv&quot;&gt;$RUN_AS&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CONFIG_DIR&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+uninstall&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] &quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;SURE
+  &lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;SURE
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SURE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;yes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;stop
+    rm &lt;span class=&quot;nt&quot;&gt;-fv&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Notice: The config directory has not been removed&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CONFIG_DIR&lt;/span&gt;
+    update-rc.d &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; hass-daemon remove
+    rm &lt;span class=&quot;nt&quot;&gt;-fv&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Home Assistant Daemon has been removed. Home Assistant is still installed.&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in
+  &lt;/span&gt;start&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    start
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  stop&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    stop
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  install&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    install
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  uninstall&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    uninstall
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  restart&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    stop
+    start
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Usage: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; {start|stop|restart|install|uninstall}&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">HA on Ubuntu in Python Virtual Env</summary></entry></feed>

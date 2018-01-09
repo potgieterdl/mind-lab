@@ -40,9 +40,76 @@
 	     <h1 id="setup-face-recognition-on-home-assistant">Setup Face Recognition on Home Assistant</h1>
 
 <h2 id="backstory">Backstory</h2>
-<p>In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allog you to trigger another event. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image of the person and there name, allowing me to open the door for them.</p>
+<p>In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allow you to trigger another event, like opening a gate. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image and their name, allowing me to open the door for them.</p>
+
+<p>This could be used for presence setting, for automatic unlocking of your security system or allowing friends to feed the dogs by automatically opening the yard gate for them. All while keeping you in the know if need be.</p>
+
+<h2 id="azure-register-account-and-create-face-api-service">Azure: Register account and create Face API service</h2>
+
+<h3 id="create-new-azure-account">Create new Azure account</h3>
+<p><a href="https://azure.microsoft.com/en-us/free/">Create Account</a>, its free for 30 days and you get to play around with $200 worth of credit during this time frame. I already used this before and had to input my Credit Card to create the Face API service.</p>
+
+<h3 id="create-face-api-service">Create FACE API Service</h3>
+<p>Once in, you will need to create a new Cognitive Service for the Face API.</p>
+
+<h4 id="step-1--create-service">Step 1 : Create service</h4>
+<p>For more details and a start link, check out <a href="https://azuremarketplace.microsoft.com/en/marketplace/apps/Microsoft.CognitiveServicesFace/?utm_source=mkt-CognitiveServicesFace&amp;utm_content=fa9bbbf9741c49cebd4116d9a745ae04&amp;utm_campaign=social&amp;utm_medium=E">Face API</a></p>
+
+<p>To get right into it, follow this link <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace">Create Face API</a></p>
+
+<p>I used the name <code class="highlighter-rouge">hass</code> and resource group <code class="highlighter-rouge">hass</code></p>
+
+<h4 id="step-2--grab-access-keys">Step 2 : Grab access keys</h4>
+<p>One your service is created, you can click on the Resource Management section under Keys. Copy KEY1, this is your API key needed in HA to make the service work</p>
+
+<p><img src="assets/images/post-2017-12-30/ms-face-api-keys.png" alt="Example Key Location" class="img-responsive" /></p>
+
+<h2 id="segment-2-configure-ha">Segment 2: Configure HA</h2>
+
+<h3 id="camera">Camera</h3>
+
+<h4 id="setup-your-camera">Setup your camera</h4>
+<p>The faces api requires a source, and the most likely source is a camera already connected to HA. We will quickly go over the basics here, but it will depend on your cameral. <a href="https://home-assistant.io/components/camera/">Check here for possible options</a></p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>vi devices/cameras.yaml
+
+<span class="c">### viewing devices/cameras.yaml ### </span>
+- platform: ffmpeg
+  name: Back Yard
+  input: rtsp://user:pass@x.x.x.x:554/snl/live/1/1
+  extra_arguments: <span class="nt">-an</span> <span class="nt">-q</span>:v 25</code></pre></figure>
+
+<h3 id="image-processing-face-api">Image Processing (Face API)</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>vi image_processing.yaml
+
+<span class="c">### viewing image_processing.yaml ### </span>
+- platform: microsoft_face_identify
+  group: family
+  confidence: 50
+  <span class="nb">source</span>:
+    - entity_id: camera.back_yard</code></pre></figure>
+
+<h3 id="add-microsoft-face-service-in-configurationyaml">Add Microsoft Face service in configuration.yaml</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>vi configuration.yaml
+
+<span class="c">### viewing configuration.yaml ### </span>
+...
+camera: <span class="o">!</span>include devices/cameras.yaml
+image_processing: <span class="o">!</span>include image_processing.yaml
+...
+
+...
+microsoft_face:
+  api_key: abcdefghijklmnopqrstuv
+  azure_region: westeurope</code></pre></figure>
+
+<h4 id="restart-and-check-the-logs">Restart and check the logs</h4>
+<p>Once the above is configured, you should restart your Home Assistant and check the logs too see the faces api being called. This will happen strait after your camera getting an image, this same image is sent through too Face API for recognition</p>
 
 <h4 id="congrats">Congrats</h4>
+<p>This is really a glorified proof of concept. The amount of images sent for analysis to Microsoft`s Face API is insane, i logged couple thousand request in one day, almost using up my free account. For this to work and be free, we would need to only send the images when movement or a person is recognised locally and then send off to Microsoft. I’ll follow this blog post up with a more sustainable working prototype.</p>
 
 
 	  ]]></description>
@@ -80,7 +147,7 @@
 If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change python3-venv to python3.4-venv
 </small></p>
 
-<h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - setup env and install homeassistant</h4>
+<h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - Setup env and install homeassistant</h4>
 <p>We want HA to run on its own with its own user so</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>useradd <span class="nt">-rm</span> homeassistant</code></pre></figure>
@@ -107,17 +174,115 @@ If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change p
 You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run home assistant, you need to do so in the virtual env.</em> <mark> For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
 </small></p>
 
-<h4 id="step-3---configure-runtime-and-auto-start">Step 3 - configure runtime and auto-start</h4>
+<h4 id="step-3---configure-runtime-and-auto-start">Step 3 - Configure runtime and auto-start</h4>
+<p>The preferred way would be to auto start Home Assistant with a init script</p>
 
-<h4 id="step-4---first-run">Step 4 - first run</h4>
+<p>Create a file under /etc/init.d/hass-daemon and copy the script at the end of this post into it</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>vi /etc/init.d/hass-daemon</code></pre></figure>
+
+<p>Once you have copied the script (end of this post) into the above file, you need to set the execute permission on the script for auto-startup (on boot)</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>chmod +x /etc/init.d/hass-daemon</code></pre></figure>
+
+<h4 id="step-4---first-run">Step 4 - First run</h4>
 <p>Ensure you are in the <code class="highlighter-rouge">/srv/homeassistant</code> folder and run :</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>hass <span class="nt">--open-ui</span></code></pre></figure>
 
-<p>This will start HA for the first time and install the necessary libraries needed by the modules in use.</p>
+<p>This will start HA for the first time and install the necessary libraries needed by the modules in use. Any failures are easier to spot this way vs doing the daemon run which wount print out anything. You need to view the log in <code class="highlighter-rouge">tail -f /home/homeassistant/.homeassistant/homeassistant.log</code> to see any output from the auto-start script.</p>
+
+<p>Once this initial run is complete, press <code class="highlighter-rouge">crtl+c</code> to exit and then start using the init script <code class="highlighter-rouge">sudo /etc/init.d/hass-daemon start</code>, view the output using above tail command on the log file.</p>
 
 <h4 id="congrats">Congrats</h4>
 <p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>
+
+<h5 id="python-virtual-start-up-script">Python Virtual Start-up Script</h5>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/sh</span>
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides:          hass</span>
+<span class="c"># Required-Start:    $local_fs $network $named $time $syslog</span>
+<span class="c"># Required-Stop:     $local_fs $network $named $time $syslog</span>
+<span class="c"># Default-Start:     2 3 4 5</span>
+<span class="c"># Default-Stop:      0 1 6</span>
+<span class="c"># Description:       Home\ Assistant</span>
+<span class="c">### END INIT INFO</span>
+
+<span class="c"># /etc/init.d Service Script for Home Assistant</span>
+<span class="c"># Created with: https://gist.github.com/naholyr/4275302#file-new-service-sh</span>
+<span class="nv">PRE_EXEC</span><span class="o">=</span><span class="s2">"cd /srv/homeassistant &amp;&amp; python3 -m venv . &amp;&amp; source bin/activate &amp;&amp;"</span>
+<span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"homeassistant"</span>
+<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass/hass.pid"</span>
+<span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/home/homeassistant/.homeassistant"</span>
+<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --daemon"</span>
+<span class="nv">REDIRECT</span><span class="o">=</span><span class="s2">"&gt; </span><span class="nv">$CONFIG_DIR</span><span class="s2">/home-assistant.log 2&gt;&amp;1"</span>
+
+start<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="k">$(</span><span class="nb">cat</span> <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> <span class="o">&gt;</span>&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> <span class="s1">'Starting service…'</span> <span class="o">&gt;</span>&amp;2
+  <span class="nb">local </span><span class="nv">CMD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRE_EXEC</span><span class="s2"> </span><span class="nv">$HASS_BIN</span><span class="s2"> </span><span class="nv">$FLAGS</span><span class="s2"> </span><span class="nv">$REDIRECT</span><span class="s2">;"</span>
+  su <span class="nt">-s</span> /bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="nv">$CMD</span><span class="s2">"</span> <span class="nv">$RUN_AS</span>
+  <span class="nb">echo</span> <span class="s1">'Service started'</span> <span class="o">&gt;</span>&amp;2
+<span class="o">}</span>
+
+stop<span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> <span class="o">!</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service not running'</span> <span class="o">&gt;</span>&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> <span class="s1">'Stopping service…'</span> <span class="o">&gt;</span>&amp;2
+  <span class="nb">kill</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span>
+  <span class="k">while </span>ps <span class="nt">-p</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> <span class="o">&gt;</span> /dev/null 2&gt;&amp;1<span class="p">;</span> <span class="k">do </span>sleep 1<span class="p">;</span><span class="k">done</span><span class="p">;</span>
+  <span class="nb">echo</span> <span class="s1">'Service stopped'</span> <span class="o">&gt;</span>&amp;2
+<span class="o">}</span>
+
+install<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"Installing Home Assistant Daemon (hass-daemon)"</span>
+    <span class="nb">echo</span> <span class="s2">"999999"</span> <span class="o">&gt;</span> <span class="nv">$PID_FILE</span>
+    chown <span class="nv">$RUN_AS</span> <span class="nv">$PID_FILE</span>
+    mkdir <span class="nt">-p</span> <span class="nv">$CONFIG_DIR</span>
+    chown <span class="nv">$RUN_AS</span> <span class="nv">$CONFIG_DIR</span>
+<span class="o">}</span>
+
+uninstall<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] "</span>
+  <span class="nb">local </span>SURE
+  <span class="nb">read </span>SURE
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$SURE</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"yes"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span>stop
+    rm <span class="nt">-fv</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"Notice: The config directory has not been removed"</span>
+    <span class="nb">echo</span> <span class="nv">$CONFIG_DIR</span>
+    update-rc.d <span class="nt">-f</span> hass-daemon remove
+    rm <span class="nt">-fv</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"Home Assistant Daemon has been removed. Home Assistant is still installed."</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+  </span>start<span class="p">)</span>
+    start
+    <span class="p">;;</span>
+  stop<span class="p">)</span>
+    stop
+    <span class="p">;;</span>
+  install<span class="p">)</span>
+    install
+    <span class="p">;;</span>
+  uninstall<span class="p">)</span>
+    uninstall
+    <span class="p">;;</span>
+  restart<span class="p">)</span>
+    stop
+    start
+    <span class="p">;;</span>
+  <span class="k">*</span><span class="p">)</span>
+    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|install|uninstall}"</span>
+<span class="k">esac</span></code></pre></figure>
 
 	  ]]></description>
 	</item>

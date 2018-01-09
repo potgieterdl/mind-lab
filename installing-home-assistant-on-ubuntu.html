@@ -147,7 +147,7 @@
 <meta property="og:title" content="Installing Home Assistant - HASS.io" />
 <meta property="og:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can" />
 <meta property="og:url" content="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" />
-<meta property="og:image" content="http://blog.myhq.co.za/assets/images/face-recognition.jpg" />
+<meta property="og:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta property="article:publisher" content="https://www.facebook.com/" />
 <meta property="article:author" content="https://www.facebook.com/" />
 <meta property="article:published_time" content="2017-12-18T11:21:17+00:00" />
@@ -157,7 +157,7 @@
 <meta name="twitter:title" content="Installing Home Assistant - HASS.io" />
 <meta name="twitter:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can" />
 <meta name="twitter:url" content="http://blog.myhq.co.za/" />
-<meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/face-recognition.jpg" />
+<meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
 <meta name="twitter:label1" content="Written by" />
 <meta name="twitter:data1" content="Mind Lab" />
 <meta name="twitter:label2" content="Filed under" />
@@ -179,7 +179,7 @@
         "url": "http://blog.myhq.co.za/installing-home-assistant-on-ubuntu",
         "image": {
             "@type": "ImageObject",
-            "url": "http://blog.myhq.co.za/assets/images/face-recognition.jpg",
+            "url": "http://blog.myhq.co.za/assets/images/welcome.jpg",
             "width": 2000,
             "height": 666
         },
@@ -283,7 +283,7 @@ into the {body} of the default.hbs template -->
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/face-recognition.jpg)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/welcome.jpg)">
             </figure>
             
 
@@ -310,7 +310,7 @@ into the {body} of the default.hbs template -->
 If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change python3-venv to python3.4-venv
 </small></p>
 
-<h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - setup env and install homeassistant</h4>
+<h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - Setup env and install homeassistant</h4>
 <p>We want HA to run on its own with its own user so</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>useradd <span class="nt">-rm</span> homeassistant</code></pre></figure>
@@ -337,17 +337,115 @@ If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change p
 You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run home assistant, you need to do so in the virtual env.</em> <mark> For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
 </small></p>
 
-<h4 id="step-3---configure-runtime-and-auto-start">Step 3 - configure runtime and auto-start</h4>
+<h4 id="step-3---configure-runtime-and-auto-start">Step 3 - Configure runtime and auto-start</h4>
+<p>The preferred way would be to auto start Home Assistant with a init script</p>
 
-<h4 id="step-4---first-run">Step 4 - first run</h4>
+<p>Create a file under /etc/init.d/hass-daemon and copy the script at the end of this post into it</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>vi /etc/init.d/hass-daemon</code></pre></figure>
+
+<p>Once you have copied the script (end of this post) into the above file, you need to set the execute permission on the script for auto-startup (on boot)</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>chmod +x /etc/init.d/hass-daemon</code></pre></figure>
+
+<h4 id="step-4---first-run">Step 4 - First run</h4>
 <p>Ensure you are in the <code class="highlighter-rouge">/srv/homeassistant</code> folder and run :</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>hass <span class="nt">--open-ui</span></code></pre></figure>
 
-<p>This will start HA for the first time and install the necessary libraries needed by the modules in use.</p>
+<p>This will start HA for the first time and install the necessary libraries needed by the modules in use. Any failures are easier to spot this way vs doing the daemon run which wount print out anything. You need to view the log in <code class="highlighter-rouge">tail -f /home/homeassistant/.homeassistant/homeassistant.log</code> to see any output from the auto-start script.</p>
+
+<p>Once this initial run is complete, press <code class="highlighter-rouge">crtl+c</code> to exit and then start using the init script <code class="highlighter-rouge">sudo /etc/init.d/hass-daemon start</code>, view the output using above tail command on the log file.</p>
 
 <h4 id="congrats">Congrats</h4>
 <p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>
+
+<h5 id="python-virtual-start-up-script">Python Virtual Start-up Script</h5>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/sh</span>
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides:          hass</span>
+<span class="c"># Required-Start:    $local_fs $network $named $time $syslog</span>
+<span class="c"># Required-Stop:     $local_fs $network $named $time $syslog</span>
+<span class="c"># Default-Start:     2 3 4 5</span>
+<span class="c"># Default-Stop:      0 1 6</span>
+<span class="c"># Description:       Home\ Assistant</span>
+<span class="c">### END INIT INFO</span>
+
+<span class="c"># /etc/init.d Service Script for Home Assistant</span>
+<span class="c"># Created with: https://gist.github.com/naholyr/4275302#file-new-service-sh</span>
+<span class="nv">PRE_EXEC</span><span class="o">=</span><span class="s2">"cd /srv/homeassistant &amp;&amp; python3 -m venv . &amp;&amp; source bin/activate &amp;&amp;"</span>
+<span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"homeassistant"</span>
+<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass/hass.pid"</span>
+<span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/home/homeassistant/.homeassistant"</span>
+<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --daemon"</span>
+<span class="nv">REDIRECT</span><span class="o">=</span><span class="s2">"&gt; </span><span class="nv">$CONFIG_DIR</span><span class="s2">/home-assistant.log 2&gt;&amp;1"</span>
+
+start<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="k">$(</span><span class="nb">cat</span> <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> <span class="o">&gt;</span>&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> <span class="s1">'Starting service…'</span> <span class="o">&gt;</span>&amp;2
+  <span class="nb">local </span><span class="nv">CMD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRE_EXEC</span><span class="s2"> </span><span class="nv">$HASS_BIN</span><span class="s2"> </span><span class="nv">$FLAGS</span><span class="s2"> </span><span class="nv">$REDIRECT</span><span class="s2">;"</span>
+  su <span class="nt">-s</span> /bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="nv">$CMD</span><span class="s2">"</span> <span class="nv">$RUN_AS</span>
+  <span class="nb">echo</span> <span class="s1">'Service started'</span> <span class="o">&gt;</span>&amp;2
+<span class="o">}</span>
+
+stop<span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> <span class="o">!</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s1">'Service not running'</span> <span class="o">&gt;</span>&amp;2
+    <span class="k">return </span>1
+  <span class="k">fi
+  </span><span class="nb">echo</span> <span class="s1">'Stopping service…'</span> <span class="o">&gt;</span>&amp;2
+  <span class="nb">kill</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span>
+  <span class="k">while </span>ps <span class="nt">-p</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> <span class="o">&gt;</span> /dev/null 2&gt;&amp;1<span class="p">;</span> <span class="k">do </span>sleep 1<span class="p">;</span><span class="k">done</span><span class="p">;</span>
+  <span class="nb">echo</span> <span class="s1">'Service stopped'</span> <span class="o">&gt;</span>&amp;2
+<span class="o">}</span>
+
+install<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">"Installing Home Assistant Daemon (hass-daemon)"</span>
+    <span class="nb">echo</span> <span class="s2">"999999"</span> <span class="o">&gt;</span> <span class="nv">$PID_FILE</span>
+    chown <span class="nv">$RUN_AS</span> <span class="nv">$PID_FILE</span>
+    mkdir <span class="nt">-p</span> <span class="nv">$CONFIG_DIR</span>
+    chown <span class="nv">$RUN_AS</span> <span class="nv">$CONFIG_DIR</span>
+<span class="o">}</span>
+
+uninstall<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] "</span>
+  <span class="nb">local </span>SURE
+  <span class="nb">read </span>SURE
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$SURE</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"yes"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span>stop
+    rm <span class="nt">-fv</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"Notice: The config directory has not been removed"</span>
+    <span class="nb">echo</span> <span class="nv">$CONFIG_DIR</span>
+    update-rc.d <span class="nt">-f</span> hass-daemon remove
+    rm <span class="nt">-fv</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"Home Assistant Daemon has been removed. Home Assistant is still installed."</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
+  </span>start<span class="p">)</span>
+    start
+    <span class="p">;;</span>
+  stop<span class="p">)</span>
+    stop
+    <span class="p">;;</span>
+  install<span class="p">)</span>
+    install
+    <span class="p">;;</span>
+  uninstall<span class="p">)</span>
+    uninstall
+    <span class="p">;;</span>
+  restart<span class="p">)</span>
+    stop
+    start
+    <span class="p">;;</span>
+  <span class="k">*</span><span class="p">)</span>
+    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|install|uninstall}"</span>
+<span class="k">esac</span></code></pre></figure>
 
                 </div>
             </section>
@@ -463,7 +561,7 @@ You have now created a new user called <code class="highlighter-rouge">homeassis
     <article class="post-card post-template">
         
             <a class="post-card-image-link" href="/face-recognition-with-camera">
-                <div class="post-card-image" style="background-image: url(/assets/images/welcome.jpg)"></div>
+                <div class="post-card-image" style="background-image: url(/assets/images/advanced.jpg)"></div>
             </a>
         
         <div class="post-card-content">
@@ -554,7 +652,7 @@ You have now created a new user called <code class="highlighter-rouge">homeassis
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="http://blog.myhq.co.za/">Mind Lab</a> &copy; 2017</section>
+                <section class="copyright"><a href="http://blog.myhq.co.za/">Mind Lab</a> &copy; 2018</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
                     <a href="https://pages.github.com/">GitHub Pages</a> using
                     <a href="https://github.com/myJekyll/jasper2">Jasper2</a></section>
