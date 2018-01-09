@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://blog.myhq.co.za/</title>
+   
+   <link>http://blog.myhq.co.za/</link>
+   <description>The science of thinking, written down</description>
+   <language>en-us</language>
+   <image title="" link="http://blog.myhq.co.za/">
+        <url>http://blog.myhq.co.za/</url>
+   </image>
+   <generator>Jekyll 3.6.2</generator>
+   
+         <lastBuildDate>2018-01-08T12:00:00+00:00</lastBuildDate>
+   
+   <atom:link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/rss+xml"/>
+   <ttl>60</ttl>
+   
+	<item>
+	  <title>HAProxy SSL from creation</title>
+	  <link>http://blog.myhq.co.za/Setup-HAProxy-SSL</link>
+		
+				
+						<author>Derick Potgieter</author>
+				
+		
+	  <pubDate>2018-01-08T12:00:00+00:00</pubDate>
+	  <guid>http://blog.myhq.co.za/Setup-HAProxy-SSL</guid>
+	  <description><![CDATA[
+	     <h1 id="haproxy-ssl-from-creation">HAProxy SSL from creation</h1>
+
+<h2 id="backstory">Backstory</h2>
+<p>I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple instances) within a secure local network.</p>
+
+<h2 id="easy-peasy">Easy Peasy</h2>
+
+<h4 id="step-1---generate-your-own-server-private-rsa-key">Step 1 - Generate your own server private RSA key</h4>
+<p>You need to create your own private key from which you generate the CSR. Keep this key private and in a safe place</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>openssl genrsa <span class="nt">-out</span> mywebserver.key 2048</code></pre></figure>
+
+<h4 id="step-2---create-the-csr-certificate-signing-request-for-ssl-provider">Step 2 - Create the CSR (certificate signing request) for SSL Provider</h4>
+<p>The CSR is generated against the private key above and sent too your SSL provider. In my case RapidSSL. It contains only basic data about your company and <em>remember</em> to not input an email or password at all. This seems to fail for me</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>openssl req <span class="nt">-new</span> <span class="nt">-key</span> mywebserver.key <span class="nt">-out</span> mywebserver.crt</code></pre></figure>
+
+<h4 id="step-3---request-a-new-ssl-certificate">Step 3 - Request a new SSL certificate</h4>
+<p><a href="https://www.whichssl.com/top-10-ssl-certificate-providers.php">Here is a link to the top providers</a>. Your need might vary, but in my case i wanted the secure icon and green address bar in the browser and paid a little extra for this type of certificate.</p>
+
+<p>The process is unique per vendor, but should be very simple.</p>
+<ol>
+  <li>Decide on type of cert, either single domain (www.mydomain.com) or multi/wildcard (*.mydomain.com)</li>
+  <li>If its your first time and you want a verfied cert the vendor might ask for physical documentation, this is part of the verification process.</li>
+  <li>At this point you should be asked for your CSR generated in step 2 above. Copy the text, making sure not to accidentally remove and — or changing the format.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">-----BEGIN CERTIFICATE REQUEST-----
+MIICvDCCAaQCAQAwdzELMAkGA1UEBhMCVVMxDTALBgNVBAgMBFV0YWgxDzANBgNV
+BAcMBkxpbmRvbjEWMBQGA1UECgwNRGlnaUNlcnQgSW5jLjERMA8GA1UECwwIRGln
+aUNlcnQxHTAbBgNVBAMMFGV4YW1wbGUuZGlnaWNlcnQuY29tMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8+To7d+2kPWeBv/orU3LVbJwDrSQbeKamCmo
+wp5bqDxIwV20zqRb7APUOKYoVEFFOEQs6T6gImnIolhbiH6m4zgZ/CPvWBOkZc+c
+1Po2EmvBz+AD5sBdT5kzGQA6NbWyZGldxRthNLOs1efOhdnWFuhI162qmcflgpiI
+WDuwq4C9f+YkeJhNn9dF5+owm8cOQmDrV8NNdiTqin8q3qYAHHJRW28glJUCZkTZ
+wIaSR6crBQ8TbYNE0dc+Caa3DOIkz1EOsHWzTx+n0zKfqcbgXi4DJx+C1bjptYPR
+BPZL8DAeWuA8ebudVT44yEp82G96/Ggcf7F33xMxe0yc+Xa6owIDAQABoAAwDQYJ
+KoZIhvcNAQEFBQADggEBAB0kcrFccSmFDmxox0Ne01UIqSsDqHgL+XmHTXJwre6D
+hJSZwbvEtOK0G3+dr4Fs11WuUNt5qcLsx5a8uk4G6AKHMzuhLsJ7XZjgmQXGECpY
+Q4mC3yT3ZoCGpIXbw+iP3lmEEXgaQL0Tx5LFl/okKbKYwIqNiyKWOMj7ZR/wxWg/
+ZDGRs55xuoeLDJ/ZRFf9bI+IaCUd1YrfYcHIl3G87Av+r49YVwqRDT0VDV7uLgqn
+29XI1PpVUNCPQGn9p/eX6Qo7vpDaPybRtA2R7XLKjQaF9oXWeCUqy1hvJac9QFO2
+97Ob1alpHPoZ7mWiEuJwjBPii6a9M9G30nUo39lBi1w=
+-----END CERTIFICATE REQUEST-----</code></pre></figure>
+
+<h4 id="step-4---download-sometimes-sent-via-email-your-certificates-from-provider-and-generate-pem">Step 4 - Download (sometimes sent via email) your certificates from provider and generate .pem</h4>
+<p>For HAProxy you require a .pem file. This involves taking the X.509 certs from your provider and concatenating them together into a single .pem file (nothing other than several keys in one file)</p>
+
+<p>This part was tricky to understand, my provider RapidSSL gave me two files, a ServerCertificate.cer (my new certificate) and an intermediate certificate (representing them). I also needed to add my server key (generated in step 1) into this file, ie 3 keys in total</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cat </span>ServerCertificate.cer <span class="o">&gt;&gt;</span> mydomain.com.pem
+<span class="nv">$ </span><span class="nb">cat </span>mywebserver.key <span class="o">&gt;&gt;</span> mydomain.com.pem
+<span class="nv">$ </span><span class="nb">cat </span>Intermediate.cer <span class="o">&gt;&gt;</span> mydomain.com.pem</code></pre></figure>
+
+<p>You should have 3 keys in this file now, double check with <code class="highlighter-rouge">$ cat mydomain.com.pem</code></p>
+
+<h4 id="step-5---add-to-haproxy-and-restart">Step 5 - Add to HAProxy and restart</h4>
+<p>Next step is too add this .pem file to HAProxy. I normally put this .pem file in <code class="highlighter-rouge">/etc/ssl/private/mydomain.com.pem</code> and then add the below into HAProxy config (<code class="highlighter-rouge">/etc/haproxy/haproxy.cfg</code>)</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">global
+    ...
+    ...
+    <span class="c"># Default SSL material locations</span>
+    ca-base /etc/ssl/certs
+    crt-base /etc/ssl/private
+
+    tune.ssl.default-dh-param 2048
+    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+    ssl-default-bind-options no-sslv3
+    ...
+    ...
+
+frontend http
+        <span class="nb">bind</span> :80
+        http-request set-header X-SSL %[ssl_fc]
+
+        redirect prefix https://www.mydomain.com code 301 <span class="k">if</span> <span class="o">{</span> hdr<span class="o">(</span>host<span class="o">)</span> <span class="nt">-i</span> mydomain.com <span class="o">}</span>
+        redirect prefix https://www.mydomain.com code 301 <span class="k">if</span> <span class="o">{</span> hdr<span class="o">(</span>host<span class="o">)</span> <span class="nt">-i</span> www.mydomain.com <span class="o">}</span>
+        redirect scheme https <span class="k">if</span> <span class="o">!{</span> ssl_fc <span class="o">}</span>
+
+frontend ssl
+        <span class="nb">bind</span> :443 ssl crt mydomain.com.pem no-sslv3
+        <span class="c">#bind :80 //comment port 80 out as we want to redirect  80 to 443</span>
+        ...</code></pre></figure>
+
+<p>Restart HAProxy, depending on OS, <code class="highlighter-rouge">sudo /etc/init.d/haproxy restart</code>. I have found that sometime doing a <code class="highlighter-rouge">stop</code> and <code class="highlighter-rouge">start</code> seem to reload the confirm where <code class="highlighter-rouge">restart</code> sometimes doesnt.</p>
+
+<h4 id="congrats">Congrats</h4>
+<p>This should conclude a successful SSL change over on your load balancer. If you want to test this, an easy one is to use <a href="https://www.rapidsslonline.com/ssl-tools/ssl-checker.php">RapidSSL’s online testing tool</a> to verify your site works correctly now.</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

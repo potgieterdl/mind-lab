@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>HAProxy SSL from creation</title>
+        
+          <description>&lt;h1 id=&quot;haproxy-ssl-from-creation&quot;&gt;HAProxy SSL from creation&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Mon, 08 Jan 2018 12:00:00 +0000</pubDate>
+        <link>
+        http://blog.myhq.co.za/Setup-HAProxy-SSL</link>
+        <guid isPermaLink="true">http://blog.myhq.co.za/Setup-HAProxy-SSL</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Face Recognition on Home Assistant</title>
         
           <description>&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;

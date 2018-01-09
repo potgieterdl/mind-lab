@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-01-09T19:00:37+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Face Recognition on Home Assistant</title><link href="http://blog.myhq.co.za/face-recognition-with-camera" rel="alternate" type="text/html" title="Face Recognition on Home Assistant" /><published>2017-12-30T12:00:00+00:00</published><updated>2017-12-30T12:00:00+00:00</updated><id>http://blog.myhq.co.za/face-recognition-with-camera</id><content type="html" xml:base="http://blog.myhq.co.za/face-recognition-with-camera">&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-01-09T19:04:58+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">HAProxy SSL from creation</title><link href="http://blog.myhq.co.za/Setup-HAProxy-SSL" rel="alternate" type="text/html" title="HAProxy SSL from creation" /><published>2018-01-08T12:00:00+00:00</published><updated>2018-01-08T12:00:00+00:00</updated><id>http://blog.myhq.co.za/Setup-HAProxy-SSL</id><content type="html" xml:base="http://blog.myhq.co.za/Setup-HAProxy-SSL">&lt;h1 id=&quot;haproxy-ssl-from-creation&quot;&gt;HAProxy SSL from creation&lt;/h1&gt;
+
+&lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
+&lt;p&gt;I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple instances) within a secure local network.&lt;/p&gt;
+
+&lt;h2 id=&quot;easy-peasy&quot;&gt;Easy Peasy&lt;/h2&gt;
+
+&lt;h4 id=&quot;step-1---generate-your-own-server-private-rsa-key&quot;&gt;Step 1 - Generate your own server private RSA key&lt;/h4&gt;
+&lt;p&gt;You need to create your own private key from which you generate the CSR. Keep this key private and in a safe place&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openssl genrsa &lt;span class=&quot;nt&quot;&gt;-out&lt;/span&gt; mywebserver.key 2048&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;step-2---create-the-csr-certificate-signing-request-for-ssl-provider&quot;&gt;Step 2 - Create the CSR (certificate signing request) for SSL Provider&lt;/h4&gt;
+&lt;p&gt;The CSR is generated against the private key above and sent too your SSL provider. In my case RapidSSL. It contains only basic data about your company and &lt;em&gt;remember&lt;/em&gt; to not input an email or password at all. This seems to fail for me&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openssl req &lt;span class=&quot;nt&quot;&gt;-new&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-key&lt;/span&gt; mywebserver.key &lt;span class=&quot;nt&quot;&gt;-out&lt;/span&gt; mywebserver.crt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;step-3---request-a-new-ssl-certificate&quot;&gt;Step 3 - Request a new SSL certificate&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.whichssl.com/top-10-ssl-certificate-providers.php&quot;&gt;Here is a link to the top providers&lt;/a&gt;. Your need might vary, but in my case i wanted the secure icon and green address bar in the browser and paid a little extra for this type of certificate.&lt;/p&gt;
+
+&lt;p&gt;The process is unique per vendor, but should be very simple.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Decide on type of cert, either single domain (www.mydomain.com) or multi/wildcard (*.mydomain.com)&lt;/li&gt;
+  &lt;li&gt;If its your first time and you want a verfied cert the vendor might ask for physical documentation, this is part of the verification process.&lt;/li&gt;
+  &lt;li&gt;At this point you should be asked for your CSR generated in step 2 above. Copy the text, making sure not to accidentally remove and — or changing the format.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-----BEGIN CERTIFICATE REQUEST-----
+MIICvDCCAaQCAQAwdzELMAkGA1UEBhMCVVMxDTALBgNVBAgMBFV0YWgxDzANBgNV
+BAcMBkxpbmRvbjEWMBQGA1UECgwNRGlnaUNlcnQgSW5jLjERMA8GA1UECwwIRGln
+aUNlcnQxHTAbBgNVBAMMFGV4YW1wbGUuZGlnaWNlcnQuY29tMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8+To7d+2kPWeBv/orU3LVbJwDrSQbeKamCmo
+wp5bqDxIwV20zqRb7APUOKYoVEFFOEQs6T6gImnIolhbiH6m4zgZ/CPvWBOkZc+c
+1Po2EmvBz+AD5sBdT5kzGQA6NbWyZGldxRthNLOs1efOhdnWFuhI162qmcflgpiI
+WDuwq4C9f+YkeJhNn9dF5+owm8cOQmDrV8NNdiTqin8q3qYAHHJRW28glJUCZkTZ
+wIaSR6crBQ8TbYNE0dc+Caa3DOIkz1EOsHWzTx+n0zKfqcbgXi4DJx+C1bjptYPR
+BPZL8DAeWuA8ebudVT44yEp82G96/Ggcf7F33xMxe0yc+Xa6owIDAQABoAAwDQYJ
+KoZIhvcNAQEFBQADggEBAB0kcrFccSmFDmxox0Ne01UIqSsDqHgL+XmHTXJwre6D
+hJSZwbvEtOK0G3+dr4Fs11WuUNt5qcLsx5a8uk4G6AKHMzuhLsJ7XZjgmQXGECpY
+Q4mC3yT3ZoCGpIXbw+iP3lmEEXgaQL0Tx5LFl/okKbKYwIqNiyKWOMj7ZR/wxWg/
+ZDGRs55xuoeLDJ/ZRFf9bI+IaCUd1YrfYcHIl3G87Av+r49YVwqRDT0VDV7uLgqn
+29XI1PpVUNCPQGn9p/eX6Qo7vpDaPybRtA2R7XLKjQaF9oXWeCUqy1hvJac9QFO2
+97Ob1alpHPoZ7mWiEuJwjBPii6a9M9G30nUo39lBi1w=
+-----END CERTIFICATE REQUEST-----&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;step-4---download-sometimes-sent-via-email-your-certificates-from-provider-and-generate-pem&quot;&gt;Step 4 - Download (sometimes sent via email) your certificates from provider and generate .pem&lt;/h4&gt;
+&lt;p&gt;For HAProxy you require a .pem file. This involves taking the X.509 certs from your provider and concatenating them together into a single .pem file (nothing other than several keys in one file)&lt;/p&gt;
+
+&lt;p&gt;This part was tricky to understand, my provider RapidSSL gave me two files, a ServerCertificate.cer (my new certificate) and an intermediate certificate (representing them). I also needed to add my server key (generated in step 1) into this file, ie 3 keys in total&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;ServerCertificate.cer &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; mydomain.com.pem
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;mywebserver.key &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; mydomain.com.pem
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;Intermediate.cer &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; mydomain.com.pem&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You should have 3 keys in this file now, double check with &lt;code class=&quot;highlighter-rouge&quot;&gt;$ cat mydomain.com.pem&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-5---add-to-haproxy-and-restart&quot;&gt;Step 5 - Add to HAProxy and restart&lt;/h4&gt;
+&lt;p&gt;Next step is too add this .pem file to HAProxy. I normally put this .pem file in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/ssl/private/mydomain.com.pem&lt;/code&gt; and then add the below into HAProxy config (&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/haproxy/haproxy.cfg&lt;/code&gt;)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;global
+    ...
+    ...
+    &lt;span class=&quot;c&quot;&gt;# Default SSL material locations&lt;/span&gt;
+    ca-base /etc/ssl/certs
+    crt-base /etc/ssl/private
+
+    tune.ssl.default-dh-param 2048
+    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+    ssl-default-bind-options no-sslv3
+    ...
+    ...
+
+frontend http
+        &lt;span class=&quot;nb&quot;&gt;bind&lt;/span&gt; :80
+        http-request set-header X-SSL %[ssl_fc]
+
+        redirect prefix https://www.mydomain.com code 301 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; hdr&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;host&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; mydomain.com &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        redirect prefix https://www.mydomain.com code 301 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; hdr&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;host&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; www.mydomain.com &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        redirect scheme https &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!{&lt;/span&gt; ssl_fc &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+frontend ssl
+        &lt;span class=&quot;nb&quot;&gt;bind&lt;/span&gt; :443 ssl crt mydomain.com.pem no-sslv3
+        &lt;span class=&quot;c&quot;&gt;#bind :80 //comment port 80 out as we want to redirect  80 to 443&lt;/span&gt;
+        ...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Restart HAProxy, depending on OS, &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo /etc/init.d/haproxy restart&lt;/code&gt;. I have found that sometime doing a &lt;code class=&quot;highlighter-rouge&quot;&gt;stop&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt; seem to reload the confirm where &lt;code class=&quot;highlighter-rouge&quot;&gt;restart&lt;/code&gt; sometimes doesnt.&lt;/p&gt;
+
+&lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;
+&lt;p&gt;This should conclude a successful SSL change over on your load balancer. If you want to test this, an easy one is to use &lt;a href=&quot;https://www.rapidsslonline.com/ssl-tools/ssl-checker.php&quot;&gt;RapidSSL’s online testing tool&lt;/a&gt; to verify your site works correctly now.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="Code" /><summary type="html">HAProxy SSL from creation</summary></entry><entry><title type="html">Face Recognition on Home Assistant</title><link href="http://blog.myhq.co.za/face-recognition-with-camera" rel="alternate" type="text/html" title="Face Recognition on Home Assistant" /><published>2017-12-30T12:00:00+00:00</published><updated>2017-12-30T12:00:00+00:00</updated><id>http://blog.myhq.co.za/face-recognition-with-camera</id><content type="html" xml:base="http://blog.myhq.co.za/face-recognition-with-camera">&lt;h1 id=&quot;setup-face-recognition-on-home-assistant&quot;&gt;Setup Face Recognition on Home Assistant&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification will allow you to trigger another event, like opening a gate. In my case, a member of the family at the front door (think my parents) will send a telegram message to my phone with an image and their name, allowing me to open the door for them.&lt;/p&gt;

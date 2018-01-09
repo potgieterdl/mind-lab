@@ -12,7 +12,7 @@
 
 
 
-    <title>Installing Home Assistant - HASS.io</title>
+    <title>HAProxy SSL from creation</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -139,29 +139,29 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="The science of thinking, written down" />
 <link rel="shortcut icon" href="http://blog.myhq.co.za/assets/images/favicon.png" type="image/png" />
-<link rel="canonical" href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" />
+<link rel="canonical" href="http://blog.myhq.co.za/Setup-HAProxy-SSL" />
 <meta name="referrer" content="no-referrer-when-downgrade" /> 
 <!--title below is coming from _includes/dynamic_title-->
 <meta property="og:site_name" content="Mind Lab" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Installing Home Assistant - HASS.io" />
-<meta property="og:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can" />
-<meta property="og:url" content="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" />
-<meta property="og:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
+<meta property="og:title" content="HAProxy SSL from creation" />
+<meta property="og:description" content="HAProxy SSL from creation Backstory I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple" />
+<meta property="og:url" content="http://blog.myhq.co.za/Setup-HAProxy-SSL" />
+<meta property="og:image" content="http://blog.myhq.co.za/assets/images/ssl.jpg" />
 <meta property="article:publisher" content="https://www.facebook.com/" />
 <meta property="article:author" content="https://www.facebook.com/" />
-<meta property="article:published_time" content="2017-12-18T11:21:17+00:00" />
-<meta property="article:modified_time" content="2017-12-18T11:21:17+00:00" />
-<meta property="article:tag" content="Home Assistant" />
+<meta property="article:published_time" content="2018-01-08T12:00:00+00:00" />
+<meta property="article:modified_time" content="2018-01-08T12:00:00+00:00" />
+<meta property="article:tag" content="Code" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Installing Home Assistant - HASS.io" />
-<meta name="twitter:description" content="HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can" />
+<meta name="twitter:title" content="HAProxy SSL from creation" />
+<meta name="twitter:description" content="HAProxy SSL from creation Backstory I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple" />
 <meta name="twitter:url" content="http://blog.myhq.co.za/" />
-<meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/welcome.jpg" />
+<meta name="twitter:image" content="http://blog.myhq.co.za/assets/images/ssl.jpg" />
 <meta name="twitter:label1" content="Written by" />
 <meta name="twitter:data1" content="Mind Lab" />
 <meta name="twitter:label2" content="Filed under" />
-<meta name="twitter:data2" content="Home Assistant" />
+<meta name="twitter:data2" content="Code" />
 <meta name="twitter:site" content="@derickpotgieter" />
 <meta name="twitter:creator" content="@derickpotgieter" />
 <meta property="og:image:width" content="1400" />
@@ -176,18 +176,18 @@
             "name": "Mind Lab",
             "logo": "http://blog.myhq.co.za/assets/images/logo.png"
         },
-        "url": "http://blog.myhq.co.za/installing-home-assistant-on-ubuntu",
+        "url": "http://blog.myhq.co.za/Setup-HAProxy-SSL",
         "image": {
             "@type": "ImageObject",
-            "url": "http://blog.myhq.co.za/assets/images/welcome.jpg",
+            "url": "http://blog.myhq.co.za/assets/images/ssl.jpg",
             "width": 2000,
             "height": 666
         },
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http://blog.myhq.co.za/installing-home-assistant-on-ubuntu"
+            "@id": "http://blog.myhq.co.za/Setup-HAProxy-SSL"
         },
-        "description": "HA on Ubuntu in Python Virtual Env Backstory I’ve been playing with Home Assistan (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can"
+        "description": "HAProxy SSL from creation Backstory I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple"
     }
 </script>
 
@@ -200,27 +200,27 @@
     </script> -->
 
 <meta name="generator" content="Jekyll 3.6.2" />
-<link rel="alternate" type="application/rss+xml" title="Installing Home Assistant - HASS.io" href="/feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="HAProxy SSL from creation" href="/feed.xml" />
 
     <!-- This tag outputs comes from seo plugin -->
     <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Installing Home Assistant - HASS.io | Mind Lab</title>
-<meta property="og:title" content="Installing Home Assistant - HASS.io" />
+<title>HAProxy SSL from creation | Mind Lab</title>
+<meta property="og:title" content="HAProxy SSL from creation" />
 <meta name="author" content="Derick Potgieter" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="HA on Ubuntu in Python Virtual Env" />
-<meta property="og:description" content="HA on Ubuntu in Python Virtual Env" />
-<link rel="canonical" href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" />
-<meta property="og:url" content="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" />
+<meta name="description" content="HAProxy SSL from creation" />
+<meta property="og:description" content="HAProxy SSL from creation" />
+<link rel="canonical" href="http://blog.myhq.co.za/Setup-HAProxy-SSL" />
+<meta property="og:url" content="http://blog.myhq.co.za/Setup-HAProxy-SSL" />
 <meta property="og:site_name" content="Mind Lab" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-12-18T11:21:17+00:00" />
+<meta property="article:published_time" content="2018-01-08T12:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@derickpotgieter" />
 <meta name="twitter:creator" content="@derickpotgieter" />
 <meta name="google-site-verification" content="HBg-MIQa16tGm2ATxExMbS0XWFiFm0z9T8QSzOwWIwc" />
 <script type="application/ld+json">
-{"name":null,"description":"HA on Ubuntu in Python Virtual Env","author":{"@type":"Person","name":"Derick Potgieter"},"@type":"BlogPosting","url":"http://blog.myhq.co.za/installing-home-assistant-on-ubuntu","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://blog.myhq.co.za/assets/images/logo.png"},"name":"Derick Potgieter"},"image":null,"headline":"Installing Home Assistant - HASS.io","dateModified":"2017-12-18T11:21:17+00:00","datePublished":"2017-12-18T11:21:17+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.myhq.co.za/installing-home-assistant-on-ubuntu"},"@context":"http://schema.org"}</script>
+{"name":null,"description":"HAProxy SSL from creation","author":{"@type":"Person","name":"Derick Potgieter"},"@type":"BlogPosting","url":"http://blog.myhq.co.za/Setup-HAProxy-SSL","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://blog.myhq.co.za/assets/images/logo.png"},"name":"Derick Potgieter"},"image":null,"headline":"HAProxy SSL from creation","dateModified":"2018-01-08T12:00:00+00:00","datePublished":"2018-01-08T12:00:00+00:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.myhq.co.za/Setup-HAProxy-SSL"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -265,187 +265,119 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full post tag-getting-started ">
+        <article class="post-full post tag-code ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="18 December 2017">18 December 2017</time>
+                    <time class="post-full-meta-date" datetime=" 8 January 2018"> 8 January 2018</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/home-assistant/'>HOME ASSISTANT</a>
+                               <a href='/tag/code/'>CODE</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Installing Home Assistant - HASS.io</h1>
+                <h1 class="post-full-title">HAProxy SSL from creation</h1>
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/welcome.jpg)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/ssl.jpg)">
             </figure>
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h1 id="ha-on-ubuntu-in-python-virtual-env">HA on Ubuntu in Python Virtual Env</h1>
+                    <h1 id="haproxy-ssl-from-creation">HAProxy SSL from creation</h1>
 
 <h2 id="backstory">Backstory</h2>
-<p>I’ve been playing with <a href="https://home-assistant.io/">Home Assistan</a> (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can be overwhelming. This series will hopefully guide you step by step in creation your own <a href="https://home-assistant.io/">Home Assistant</a> setup</p>
+<p>I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple instances) within a secure local network.</p>
 
-<h2 id="introducing-home-assistant">Introducing Home Assistant</h2>
-<p>There are multiple blogs detailing the <a href="https://home-assistant.io/">Home Assistant</a> installs, so i’m not going to go over all of it again. This is specific to Debian 14.04 LTS and will work with Debian 16.04 as well.</p>
+<h2 id="easy-peasy">Easy Peasy</h2>
 
-<h4 id="recommendation">Recommendation</h4>
-<p>Unless you going the Raspberry PI route with hass, which is brilliant, i would go full virtual env for this setup. Easy to install and run</p>
+<h4 id="step-1---generate-your-own-server-private-rsa-key">Step 1 - Generate your own server private RSA key</h4>
+<p>You need to create your own private key from which you generate the CSR. Keep this key private and in a safe place</p>
 
-<h4 id="step-1---installing-python">Step 1 - Installing python</h4>
-<p>Make sure you have the needed python 3.5 (3.4 still supported but dwindling by the day)</p>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>openssl genrsa <span class="nt">-out</span> mywebserver.key 2048</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>apt-get update
-<span class="nv">$ </span>apt-get install python3-pip python3-venv</code></pre></figure>
+<h4 id="step-2---create-the-csr-certificate-signing-request-for-ssl-provider">Step 2 - Create the CSR (certificate signing request) for SSL Provider</h4>
+<p>The CSR is generated against the private key above and sent too your SSL provider. In my case RapidSSL. It contains only basic data about your company and <em>remember</em> to not input an email or password at all. This seems to fail for me</p>
 
-<p><small class="recap">
-If using <em>Python 3.4</em> on <em>Ubuntu 14.04</em> you light have to change python3-venv to python3.4-venv
-</small></p>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>openssl req <span class="nt">-new</span> <span class="nt">-key</span> mywebserver.key <span class="nt">-out</span> mywebserver.crt</code></pre></figure>
 
-<h4 id="step-2---setup-env-and-install-homeassistant">Step 2 - Setup env and install homeassistant</h4>
-<p>We want HA to run on its own with its own user so</p>
+<h4 id="step-3---request-a-new-ssl-certificate">Step 3 - Request a new SSL certificate</h4>
+<p><a href="https://www.whichssl.com/top-10-ssl-certificate-providers.php">Here is a link to the top providers</a>. Your need might vary, but in my case i wanted the secure icon and green address bar in the browser and paid a little extra for this type of certificate.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>useradd <span class="nt">-rm</span> homeassistant</code></pre></figure>
+<p>The process is unique per vendor, but should be very simple.</p>
+<ol>
+  <li>Decide on type of cert, either single domain (www.mydomain.com) or multi/wildcard (*.mydomain.com)</li>
+  <li>If its your first time and you want a verfied cert the vendor might ask for physical documentation, this is part of the verification process.</li>
+  <li>At this point you should be asked for your CSR generated in step 2 above. Copy the text, making sure not to accidentally remove and — or changing the format.</li>
+</ol>
 
-<p>Change directories to the folder you want to install HA into and set ownership to new user</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">-----BEGIN CERTIFICATE REQUEST-----
+MIICvDCCAaQCAQAwdzELMAkGA1UEBhMCVVMxDTALBgNVBAgMBFV0YWgxDzANBgNV
+BAcMBkxpbmRvbjEWMBQGA1UECgwNRGlnaUNlcnQgSW5jLjERMA8GA1UECwwIRGln
+aUNlcnQxHTAbBgNVBAMMFGV4YW1wbGUuZGlnaWNlcnQuY29tMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8+To7d+2kPWeBv/orU3LVbJwDrSQbeKamCmo
+wp5bqDxIwV20zqRb7APUOKYoVEFFOEQs6T6gImnIolhbiH6m4zgZ/CPvWBOkZc+c
+1Po2EmvBz+AD5sBdT5kzGQA6NbWyZGldxRthNLOs1efOhdnWFuhI162qmcflgpiI
+WDuwq4C9f+YkeJhNn9dF5+owm8cOQmDrV8NNdiTqin8q3qYAHHJRW28glJUCZkTZ
+wIaSR6crBQ8TbYNE0dc+Caa3DOIkz1EOsHWzTx+n0zKfqcbgXi4DJx+C1bjptYPR
+BPZL8DAeWuA8ebudVT44yEp82G96/Ggcf7F33xMxe0yc+Xa6owIDAQABoAAwDQYJ
+KoZIhvcNAQEFBQADggEBAB0kcrFccSmFDmxox0Ne01UIqSsDqHgL+XmHTXJwre6D
+hJSZwbvEtOK0G3+dr4Fs11WuUNt5qcLsx5a8uk4G6AKHMzuhLsJ7XZjgmQXGECpY
+Q4mC3yT3ZoCGpIXbw+iP3lmEEXgaQL0Tx5LFl/okKbKYwIqNiyKWOMj7ZR/wxWg/
+ZDGRs55xuoeLDJ/ZRFf9bI+IaCUd1YrfYcHIl3G87Av+r49YVwqRDT0VDV7uLgqn
+29XI1PpVUNCPQGn9p/eX6Qo7vpDaPybRtA2R7XLKjQaF9oXWeCUqy1hvJac9QFO2
+97Ob1alpHPoZ7mWiEuJwjBPii6a9M9G30nUo39lBi1w=
+-----END CERTIFICATE REQUEST-----</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cd</span> /srv
-<span class="nv">$ </span><span class="nb">sudo </span>mkdir homeassistant
-<span class="nv">$ </span><span class="nb">sudo </span>chown homeassistant:homeassistant homeassistant</code></pre></figure>
+<h4 id="step-4---download-sometimes-sent-via-email-your-certificates-from-provider-and-generate-pem">Step 4 - Download (sometimes sent via email) your certificates from provider and generate .pem</h4>
+<p>For HAProxy you require a .pem file. This involves taking the X.509 certs from your provider and concatenating them together into a single .pem file (nothing other than several keys in one file)</p>
 
-<p>Create virtual env activate</p>
+<p>This part was tricky to understand, my provider RapidSSL gave me two files, a ServerCertificate.cer (my new certificate) and an intermediate certificate (representing them). I also needed to add my server key (generated in step 1) into this file, ie 3 keys in total</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> venv homeassistant
-<span class="nv">$ </span><span class="nb">cd </span>homeassistant
-<span class="nv">$ </span><span class="nb">source </span>bin/activate</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cat </span>ServerCertificate.cer <span class="o">&gt;&gt;</span> mydomain.com.pem
+<span class="nv">$ </span><span class="nb">cat </span>mywebserver.key <span class="o">&gt;&gt;</span> mydomain.com.pem
+<span class="nv">$ </span><span class="nb">cat </span>Intermediate.cer <span class="o">&gt;&gt;</span> mydomain.com.pem</code></pre></figure>
 
-<p>Once you run the above command, you should see the beginning of prompt change to <code class="highlighter-rouge">$ (homeassistant) homeassistant@...</code></p>
+<p>You should have 3 keys in this file now, double check with <code class="highlighter-rouge">$ cat mydomain.com.pem</code></p>
 
-<p>Now install HA inside the venv</p>
+<h4 id="step-5---add-to-haproxy-and-restart">Step 5 - Add to HAProxy and restart</h4>
+<p>Next step is too add this .pem file to HAProxy. I normally put this .pem file in <code class="highlighter-rouge">/etc/ssl/private/mydomain.com.pem</code> and then add the below into HAProxy config (<code class="highlighter-rouge">/etc/haproxy/haproxy.cfg</code>)</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>python3 <span class="nt">-m</span> pip install homeassistant</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">global
+    ...
+    ...
+    <span class="c"># Default SSL material locations</span>
+    ca-base /etc/ssl/certs
+    crt-base /etc/ssl/private
 
-<p><small class="recap">
-You have now created a new user called <code class="highlighter-rouge">homeassistant</code> and installed HA in the folder <code class="highlighter-rouge">/srv/homeassistant</code> using a python virtual env. <em>For reference, when you upgrade or want to run home assistant, you need to do so in the virtual env.</em> <mark> For reference, when you upgrade or want to run the HA, you need to do so in the virtual env</mark>
-</small></p>
+    tune.ssl.default-dh-param 2048
+    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
+    ssl-default-bind-options no-sslv3
+    ...
+    ...
 
-<h4 id="step-3---configure-runtime-and-auto-start">Step 3 - Configure runtime and auto-start</h4>
-<p>The preferred way would be to auto start Home Assistant with a init script</p>
+frontend http
+        <span class="nb">bind</span> :80
+        http-request set-header X-SSL %[ssl_fc]
 
-<p>Create a file under /etc/init.d/hass-daemon and copy the script at the end of this post into it</p>
+        redirect prefix https://www.mydomain.com code 301 <span class="k">if</span> <span class="o">{</span> hdr<span class="o">(</span>host<span class="o">)</span> <span class="nt">-i</span> mydomain.com <span class="o">}</span>
+        redirect prefix https://www.mydomain.com code 301 <span class="k">if</span> <span class="o">{</span> hdr<span class="o">(</span>host<span class="o">)</span> <span class="nt">-i</span> www.mydomain.com <span class="o">}</span>
+        redirect scheme https <span class="k">if</span> <span class="o">!{</span> ssl_fc <span class="o">}</span>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>vi /etc/init.d/hass-daemon</code></pre></figure>
+frontend ssl
+        <span class="nb">bind</span> :443 ssl crt mydomain.com.pem no-sslv3
+        <span class="c">#bind :80 //comment port 80 out as we want to redirect  80 to 443</span>
+        ...</code></pre></figure>
 
-<p>Once you have copied the script (end of this post) into the above file, you need to set the execute permission on the script for auto-startup (on boot)</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sudo </span>chmod +x /etc/init.d/hass-daemon</code></pre></figure>
-
-<h4 id="step-4---first-run">Step 4 - First run</h4>
-<p>Ensure you are in the <code class="highlighter-rouge">/srv/homeassistant</code> folder and run :</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>hass <span class="nt">--open-ui</span></code></pre></figure>
-
-<p>This will start HA for the first time and install the necessary libraries needed by the modules in use. Any failures are easier to spot this way vs doing the daemon run which wount print out anything. You need to view the log in <code class="highlighter-rouge">tail -f /home/homeassistant/.homeassistant/homeassistant.log</code> to see any output from the auto-start script.</p>
-
-<p>Once this initial run is complete, press <code class="highlighter-rouge">crtl+c</code> to exit and then start using the init script <code class="highlighter-rouge">sudo /etc/init.d/hass-daemon start</code>, view the output using above tail command on the log file.</p>
+<p>Restart HAProxy, depending on OS, <code class="highlighter-rouge">sudo /etc/init.d/haproxy restart</code>. I have found that sometime doing a <code class="highlighter-rouge">stop</code> and <code class="highlighter-rouge">start</code> seem to reload the confirm where <code class="highlighter-rouge">restart</code> sometimes doesnt.</p>
 
 <h4 id="congrats">Congrats</h4>
-<p>This is your basic installation done and dusted, up next we will be looking at the basic config needed to expose your installation via SSL to the outside work. The preferred way being via a custom domain with SSL cert.</p>
-
-<h5 id="python-virtual-start-up-script">Python Virtual Start-up Script</h5>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c">#!/bin/sh</span>
-<span class="c">### BEGIN INIT INFO</span>
-<span class="c"># Provides:          hass</span>
-<span class="c"># Required-Start:    $local_fs $network $named $time $syslog</span>
-<span class="c"># Required-Stop:     $local_fs $network $named $time $syslog</span>
-<span class="c"># Default-Start:     2 3 4 5</span>
-<span class="c"># Default-Stop:      0 1 6</span>
-<span class="c"># Description:       Home\ Assistant</span>
-<span class="c">### END INIT INFO</span>
-
-<span class="c"># /etc/init.d Service Script for Home Assistant</span>
-<span class="c"># Created with: https://gist.github.com/naholyr/4275302#file-new-service-sh</span>
-<span class="nv">PRE_EXEC</span><span class="o">=</span><span class="s2">"cd /srv/homeassistant &amp;&amp; python3 -m venv . &amp;&amp; source bin/activate &amp;&amp;"</span>
-<span class="nv">RUN_AS</span><span class="o">=</span><span class="s2">"homeassistant"</span>
-<span class="nv">PID_FILE</span><span class="o">=</span><span class="s2">"/var/run/hass/hass.pid"</span>
-<span class="nv">CONFIG_DIR</span><span class="o">=</span><span class="s2">"/home/homeassistant/.homeassistant"</span>
-<span class="nv">FLAGS</span><span class="o">=</span><span class="s2">"-v --config </span><span class="nv">$CONFIG_DIR</span><span class="s2"> --pid-file </span><span class="nv">$PID_FILE</span><span class="s2"> --daemon"</span>
-<span class="nv">REDIRECT</span><span class="o">=</span><span class="s2">"&gt; </span><span class="nv">$CONFIG_DIR</span><span class="s2">/home-assistant.log 2&gt;&amp;1"</span>
-
-start<span class="o">()</span> <span class="o">{</span>
-  <span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$PID_FILE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="k">$(</span><span class="nb">cat</span> <span class="nv">$PID_FILE</span><span class="k">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then
-    </span><span class="nb">echo</span> <span class="s1">'Service already running'</span> <span class="o">&gt;</span>&amp;2
-    <span class="k">return </span>1
-  <span class="k">fi
-  </span><span class="nb">echo</span> <span class="s1">'Starting service…'</span> <span class="o">&gt;</span>&amp;2
-  <span class="nb">local </span><span class="nv">CMD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRE_EXEC</span><span class="s2"> </span><span class="nv">$HASS_BIN</span><span class="s2"> </span><span class="nv">$FLAGS</span><span class="s2"> </span><span class="nv">$REDIRECT</span><span class="s2">;"</span>
-  su <span class="nt">-s</span> /bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="nv">$CMD</span><span class="s2">"</span> <span class="nv">$RUN_AS</span>
-  <span class="nb">echo</span> <span class="s1">'Service started'</span> <span class="o">&gt;</span>&amp;2
-<span class="o">}</span>
-
-stop<span class="o">()</span> <span class="o">{</span>
-    <span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> <span class="o">!</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> 2&gt; /dev/null<span class="p">;</span> <span class="k">then
-    </span><span class="nb">echo</span> <span class="s1">'Service not running'</span> <span class="o">&gt;</span>&amp;2
-    <span class="k">return </span>1
-  <span class="k">fi
-  </span><span class="nb">echo</span> <span class="s1">'Stopping service…'</span> <span class="o">&gt;</span>&amp;2
-  <span class="nb">kill</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span>
-  <span class="k">while </span>ps <span class="nt">-p</span> <span class="k">$(</span><span class="nb">cat</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span><span class="k">)</span> <span class="o">&gt;</span> /dev/null 2&gt;&amp;1<span class="p">;</span> <span class="k">do </span>sleep 1<span class="p">;</span><span class="k">done</span><span class="p">;</span>
-  <span class="nb">echo</span> <span class="s1">'Service stopped'</span> <span class="o">&gt;</span>&amp;2
-<span class="o">}</span>
-
-install<span class="o">()</span> <span class="o">{</span>
-    <span class="nb">echo</span> <span class="s2">"Installing Home Assistant Daemon (hass-daemon)"</span>
-    <span class="nb">echo</span> <span class="s2">"999999"</span> <span class="o">&gt;</span> <span class="nv">$PID_FILE</span>
-    chown <span class="nv">$RUN_AS</span> <span class="nv">$PID_FILE</span>
-    mkdir <span class="nt">-p</span> <span class="nv">$CONFIG_DIR</span>
-    chown <span class="nv">$RUN_AS</span> <span class="nv">$CONFIG_DIR</span>
-<span class="o">}</span>
-
-uninstall<span class="o">()</span> <span class="o">{</span>
-  <span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] "</span>
-  <span class="nb">local </span>SURE
-  <span class="nb">read </span>SURE
-  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$SURE</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"yes"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
-    </span>stop
-    rm <span class="nt">-fv</span> <span class="s2">"</span><span class="nv">$PID_FILE</span><span class="s2">"</span>
-    <span class="nb">echo</span> <span class="s2">"Notice: The config directory has not been removed"</span>
-    <span class="nb">echo</span> <span class="nv">$CONFIG_DIR</span>
-    update-rc.d <span class="nt">-f</span> hass-daemon remove
-    rm <span class="nt">-fv</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
-    <span class="nb">echo</span> <span class="s2">"Home Assistant Daemon has been removed. Home Assistant is still installed."</span>
-  <span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in
-  </span>start<span class="p">)</span>
-    start
-    <span class="p">;;</span>
-  stop<span class="p">)</span>
-    stop
-    <span class="p">;;</span>
-  install<span class="p">)</span>
-    install
-    <span class="p">;;</span>
-  uninstall<span class="p">)</span>
-    uninstall
-    <span class="p">;;</span>
-  restart<span class="p">)</span>
-    stop
-    start
-    <span class="p">;;</span>
-  <span class="k">*</span><span class="p">)</span>
-    <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|install|uninstall}"</span>
-<span class="k">esac</span></code></pre></figure>
+<p>This should conclude a successful SSL change over on your load balancer. If you want to test this, an easy one is to use <a href="https://www.rapidsslonline.com/ssl-tools/ssl-checker.php">RapidSSL’s online testing tool</a> to verify your site works correctly now.</p>
 
                 </div>
             </section>
@@ -481,22 +413,6 @@ uninstall<span class="o">()</span> <span class="o">{</span>
             The only thing you need to change is "test-apkdzgmqhj" - which
             should be replaced with your own Disqus site-id. -->
             
-                <section class="post-full-comments">
-                    <div id="disqus_thread"></div>
-                    <script>
-                        var disqus_config = function () {
-                            this.page.url = 'http://blog.myhq.co.za/';
-                            this.page.identifier = 'Mind Lab';
-                        };
-                        (function() {
-                            var d = document, s = d.createElement('script');
-                            s.src = 'https://myjekyll.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
-                        })();
-                    </script>
-                </section>
-            
 
         </article>
 
@@ -512,52 +428,12 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                 
                 
                 
-                    <article class="read-next-card"
-                        
-                            style="background-image: url(/assets/images/blog-cover.jpg)"
-                        
-                    >
-                        <header class="read-next-card-header">
-                            <small class="read-next-card-header-sitetitle">&mdash; Mind Lab &mdash;</small>
-                            
-                                <h3 class="read-next-card-header-title"><a href="/tag/home-assistant/">Home assistant</a></h3>
-                            
-                        </header>
-                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
-</div>
-                        <div class="read-next-card-content">
-                            <ul>
-                                
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/face-recognition-with-camera">Face Recognition on Home Assistant</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                            </ul>
-                        </div>
-                        <footer class="read-next-card-footer">
-                            <a href="/tag/home-assistant/">
-                                
-                                    See all 1 posts  →
-                                
-                            </a>
-                        </footer>
-                    </article>
-                
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
                 
     <article class="post-card post-template">
@@ -580,7 +456,7 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                     <h2 class="post-card-title">Face Recognition on Home Assistant</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p># Setup Face Recognition on Home Assistant ## Backstory In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot.</p>
+                    <p>Setup Face Recognition on Home Assistant Backstory In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot. This notification</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -600,9 +476,6 @@ uninstall<span class="o">()</span> <span class="o">{</span>
 
             
 
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-
         </div>
     </div>
 </aside>
@@ -618,18 +491,18 @@ uninstall<span class="o">()</span> <span class="o">{</span>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Installing Home Assistant - HASS.io</div>
+    <div class="floating-header-title">HAProxy SSL from creation</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Installing+Home+Assistant+-+HASS.io&amp;url=http://blog.myhq.co.zainstalling-home-assistant-on-ubuntu"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=HAProxy+SSL+from+creation&amp;url=http://blog.myhq.co.zaSetup-HAProxy-SSL"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.myhq.co.zainstalling-home-assistant-on-ubuntu"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.myhq.co.zaSetup-HAProxy-SSL"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
