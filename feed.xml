@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-04-05T18:07:47+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">HAProxy SSL from creation</title><link href="http://blog.myhq.co.za/Setup-HAProxy-SSL" rel="alternate" type="text/html" title="HAProxy SSL from creation" /><published>2018-01-08T12:00:00+00:00</published><updated>2018-01-08T12:00:00+00:00</updated><id>http://blog.myhq.co.za/Setup-HAProxy-SSL</id><content type="html" xml:base="http://blog.myhq.co.za/Setup-HAProxy-SSL">&lt;h1 id=&quot;haproxy-ssl-from-creation&quot;&gt;HAProxy SSL from creation&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-04-05T18:10:09+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Installing Ghost on Ubuntu 16.04</title><link href="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Ghost on Ubuntu 16.04" /><published>2018-04-02T20:05:11+00:00</published><updated>2018-04-02T20:05:11+00:00</updated><id>http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04</id><content type="html" xml:base="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04">&lt;h1 id=&quot;installing-ghost-on-ubuntu-1604&quot;&gt;Installing Ghost on Ubuntu 16.04&lt;/h1&gt;
+
+&lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
+&lt;p&gt;I’ve been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt;, i’ve run it before for another projects and really enjoyed it. This was a couple years back so keen to see where its all at now&lt;/p&gt;
+
+&lt;h2 id=&quot;introducing-ghost---blogging-platform&quot;&gt;Introducing Ghost - Blogging Platform&lt;/h2&gt;
+&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
+Ghost is a fully open source, hackable platform for building and running a modern online publication. We power blogs, magazines and journalists from Zappos to Sky News.&lt;/small&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;From &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost.org&lt;/a&gt;
+&amp;lt;/small&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;recommendation&quot;&gt;Recommendation&lt;/h4&gt;
+&lt;p&gt;There are two ways of running ghost, Hosted through &lt;a href=&quot;https://ghost.org/pricing/&quot;&gt;Ghost.org&lt;/a&gt; or self hosted via your own or hosted server. I will be running it on a small 1 Core - 1 Gb online instance and setting up self renewing ssl certs via &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;LetsEncrypt&lt;/a&gt;. I’m using a local provider called &lt;a href=&quot;https://www.cloudafrica.net&quot;&gt;CloudAfrica&lt;/a&gt;, they have realy cheap &lt;a href=&quot;https://www.cloudafrica.net/pricing/&quot;&gt;pricing&lt;/a&gt; for an South African online server provider .&lt;/p&gt;
+
+&lt;h4 id=&quot;step-1---installing-prerequisites&quot;&gt;Step 1 - Installing prerequisites&lt;/h4&gt;
+&lt;p&gt;My instance is running Ubuntu 16.04. We will&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://deb.nodesource.com/setup_6.x | &lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-E&lt;/span&gt; bash
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install nodejs
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install npm
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install build-essential
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install nginx
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install mysql-server
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;npm i &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; ghost-cli&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now verify that node and nginx are working as expected
+&lt;code class=&quot;highlighter-rouge&quot;&gt;nodejs -v&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;nginx -v&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -V&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
+You should be able to access nginx on your local address &lt;a href=&quot;http://localhost&quot;&gt;http://localhost&lt;/a&gt;, if not start it using &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo systemctl start nginx &lt;/code&gt;
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-2---setup-prerequisites&quot;&gt;Step 2 - Setup prerequisites&lt;/h4&gt;
+&lt;p&gt;Importantly, you are installing and setting up a line, internet facing platform. So you need to think about security and also allow the ports through your default os firewalls. Lets ran through these in prepping for an SSL facing blogging engine.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow &lt;span class=&quot;s1&quot;&gt;'Nginx Full'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;step-3---setup-web-directory&quot;&gt;Step 3 - Setup web directory&lt;/h4&gt;
+&lt;p&gt;Its recomended to install ghost in the /var/www/ghost folder to remove issues with permissions on both /root and /home/[user] setup folders. Its also good practice to create a new username for ghost to own the www folder and restrict any issues in breaches into this system.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mkdir &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /var/www/ghost
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chown &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user]:[user] /var/www/ghost
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chmod 775 /var/www/ghost
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/www/ghost&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
+Its important that your DNS and any port forwarding on the host provider has been setup correctly. Ensure that your DNS is pointing both port 80 and 443 to your new blog url, before completing step 4. Also ensure that the firewall internally (ufw) and extnally (host provider) enables both ports too be forwarded too your server. A good test is too start nginx and access your server on your external ip on port 80. Port 443 wouldnt work yet as nginx hasnt been configured for it. This will be done in step 4
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-4---installing-and-setting-up-ghost&quot;&gt;Step 4 - Installing and setting up Ghost&lt;/h4&gt;
+&lt;p&gt;Using the Ghost CLI will prompt a couple of questions. I highly recommend you run with the SSL setup, we will cover the details post install. The CLI will enforce best practices, like generating a mysql user for your Ghost platform, so run through and see you on the other side&lt;/p&gt;
+
+&lt;p&gt;Questions asked are&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Enter your blog Url: &lt;em&gt;https://blog.myhq.co.za&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Enter your MySQL hostname : &lt;em&gt;localhost&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Enter your MySQL username: &lt;em&gt;root&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Enter your MySQL password: &lt;em&gt;[as per previous step]&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Ghost database name: &lt;em&gt;blog&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Do you wish to set up a ghost MySQL user? &lt;em&gt;Yes&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Do you wish to set up nginx? &lt;em&gt;Yes&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Do you wish to set up ssl? &lt;em&gt;yes&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Enter your email? &lt;em&gt;[user]@[server]&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Do you wish to set up systemd? &lt;em&gt;Yes&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Do you want to start Ghost? &lt;em&gt;YES&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ghost install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;step-4---cleanup&quot;&gt;Step 4 - Cleanup&lt;/h4&gt;
+&lt;p&gt;One important step post install is ensuring that &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;LetsEncrypt&lt;/a&gt; is configured to check your cert lifecycle and auto renew.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:certbot/certbot
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install python-certbot-nginx&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now edit cron and add the certbot renew command in it using &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo crontab -e&lt;/code&gt; and insert the following into it&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;15 3 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; certbot renew &lt;span class=&quot;nt&quot;&gt;--noninteractive&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--post-hook&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;systemctl restart nginx&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Derick Potgieter</name></author><category term="code" /><category term="getting-started" /><summary type="html">Installing Ghost on Ubuntu 16.04</summary></entry><entry><title type="html">HAProxy SSL from creation</title><link href="http://blog.myhq.co.za/Setup-HAProxy-SSL" rel="alternate" type="text/html" title="HAProxy SSL from creation" /><published>2018-01-08T12:00:00+00:00</published><updated>2018-01-08T12:00:00+00:00</updated><id>http://blog.myhq.co.za/Setup-HAProxy-SSL</id><content type="html" xml:base="http://blog.myhq.co.za/Setup-HAProxy-SSL">&lt;h1 id=&quot;haproxy-ssl-from-creation&quot;&gt;HAProxy SSL from creation&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I recently needed to reload an (soon to be) expired SSL cert for HAProxy. I use HAProxy as my SSL end point rather than implementing the certs on each web server. I only allow a connection from this load balancer to the web servers (multiple instances) within a secure local network.&lt;/p&gt;
@@ -158,90 +241,7 @@ microsoft_face:
 &lt;p&gt;Once the above is configured, you should restart your Home Assistant and check the logs too see the faces api being called. This will happen strait after your camera getting an image, this same image is sent through too Face API for recognition&lt;/p&gt;
 
 &lt;h4 id=&quot;congrats&quot;&gt;Congrats&lt;/h4&gt;
-&lt;p&gt;This is really a glorified proof of concept. The amount of images sent for analysis to Microsoft`s Face API is insane, i logged couple thousand request in one day, almost using up my free account. For this to work and be free, we would need to only send the images when movement or a person is recognised locally and then send off to Microsoft. I’ll follow this blog post up with a more sustainable working prototype.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">Setup Face Recognition on Home Assistant</summary></entry><entry><title type="html">Installing Ghost on Ubuntu 16.04</title><link href="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Ghost on Ubuntu 16.04" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04</id><content type="html" xml:base="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
-
-&lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
-&lt;p&gt;I’ve been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt;, i’ve run it before for another projects and really enjoyed it. This was a couple years back so keen to see where its all at now&lt;/p&gt;
-
-&lt;h2 id=&quot;introducing-ghost---blogging-platform&quot;&gt;Introducing Ghost - Blogging Platform&lt;/h2&gt;
-&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
-Ghost is a fully open source, hackable platform for building and running a modern online publication. We power blogs, magazines and journalists from Zappos to Sky News.&lt;/small&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;From &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost.org&lt;/a&gt;
-&amp;lt;/small&amp;gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;recommendation&quot;&gt;Recommendation&lt;/h4&gt;
-&lt;p&gt;There are two ways of running ghost, Hosted through &lt;a href=&quot;https://ghost.org/pricing/&quot;&gt;Ghost.org&lt;/a&gt; or self hosted via your own or hosted server. I will be running it on a small 1 Core - 1 Gb online instance and setting up self renewing ssl certs via &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;LetsEncrypt&lt;/a&gt;. I’m using a local provider called &lt;a href=&quot;https://www.cloudafrica.net&quot;&gt;CloudAfrica&lt;/a&gt;, they have realy cheap &lt;a href=&quot;https://www.cloudafrica.net/pricing/&quot;&gt;pricing&lt;/a&gt; for an South African online server provider .&lt;/p&gt;
-
-&lt;h4 id=&quot;step-1---installing-prerequisites&quot;&gt;Step 1 - Installing prerequisites&lt;/h4&gt;
-&lt;p&gt;My instance is running Ubuntu 16.04. We will&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://deb.nodesource.com/setup_6.x | &lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-E&lt;/span&gt; bash
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install nodejs
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install npm
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install build-essential
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install nginx
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install mysql-server
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;npm i &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; ghost-cli&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now verify that node and nginx are working as expected
-&lt;code class=&quot;highlighter-rouge&quot;&gt;nodejs -v&lt;/code&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;nginx -v&lt;/code&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -V&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
-You should be able to access nginx on your local address &lt;a href=&quot;http://localhost&quot;&gt;http://localhost&lt;/a&gt;, if not start it using &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo systemctl start nginx &lt;/code&gt;
-&lt;/small&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;step-2---setup-prerequisites&quot;&gt;Step 2 - Setup prerequisites&lt;/h4&gt;
-&lt;p&gt;Importantly, you are installing and setting up a line, internet facing platform. So you need to think about security and also allow the ports through your default os firewalls. Lets ran through these in prepping for an SSL facing blogging engine.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow &lt;span class=&quot;s1&quot;&gt;'Nginx Full'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;step-3---setup-web-directory&quot;&gt;Step 3 - Setup web directory&lt;/h4&gt;
-&lt;p&gt;Its recomended to install ghost in the /var/www/ghost folder to remove issues with permissions on both /root and /home/[user] setup folders. Its also good practice to create a new username for ghost to own the www folder and restrict any issues in breaches into this system.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mkdir &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /var/www/ghost
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chown &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user]:[user] /var/www/ghost
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;chmod 775 /var/www/ghost
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/www/ghost&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
-Its important that your DNS and any port forwarding on the host provider has been setup correctly. Ensure that your DNS is pointing both port 80 and 443 to your new blog url, before completing step 4. Also ensure that the firewall internally (ufw) and extnally (host provider) enables both ports too be forwarded too your server. A good test is too start nginx and access your server on your external ip on port 80. Port 443 wouldnt work yet as nginx hasnt been configured for it. This will be done in step 4
-&lt;/small&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;step-4---installing-and-setting-up-ghost&quot;&gt;Step 4 - Installing and setting up Ghost&lt;/h4&gt;
-&lt;p&gt;Using the Ghost CLI will prompt a couple of questions. I highly recommend you run with the SSL setup, we will cover the details post install. The CLI will enforce best practices, like generating a mysql user for your Ghost platform, so run through and see you on the other side&lt;/p&gt;
-
-&lt;p&gt;Questions asked are&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Enter your blog Url: &lt;em&gt;https://blog.myhq.co.za&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Enter your MySQL hostname : &lt;em&gt;localhost&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Enter your MySQL username: &lt;em&gt;root&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Enter your MySQL password: &lt;em&gt;[as per previous step]&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Ghost database name: &lt;em&gt;blog&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Do you wish to set up a ghost MySQL user? &lt;em&gt;Yes&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Do you wish to set up nginx? &lt;em&gt;Yes&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Do you wish to set up ssl? &lt;em&gt;yes&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Enter your email? &lt;em&gt;[user]@[server]&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Do you wish to set up systemd? &lt;em&gt;Yes&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Do you want to start Ghost? &lt;em&gt;YES&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ghost install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h4 id=&quot;step-4---cleanup&quot;&gt;Step 4 - Cleanup&lt;/h4&gt;
-&lt;p&gt;One important step post install is ensuring that &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;LetsEncrypt&lt;/a&gt; is configured to check your cert lifecycle and auto renew.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:certbot/certbot
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install python-certbot-nginx&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now edit cron and add the certbot renew command in it using &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo crontab -e&lt;/code&gt; and insert the following into it&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;15 3 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; certbot renew &lt;span class=&quot;nt&quot;&gt;--noninteractive&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--post-hook&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;systemctl restart nginx&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">HA on Ubuntu in Python Virtual Env</summary></entry><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</id><content type="html" xml:base="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
+&lt;p&gt;This is really a glorified proof of concept. The amount of images sent for analysis to Microsoft`s Face API is insane, i logged couple thousand request in one day, almost using up my free account. For this to work and be free, we would need to only send the images when movement or a person is recognised locally and then send off to Microsoft. I’ll follow this blog post up with a more sustainable working prototype.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="Home Assistant" /><summary type="html">Setup Face Recognition on Home Assistant</summary></entry><entry><title type="html">Installing Home Assistant - HASS.io</title><link href="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu" rel="alternate" type="text/html" title="Installing Home Assistant - HASS.io" /><published>2017-12-18T11:21:17+00:00</published><updated>2017-12-18T11:21:17+00:00</updated><id>http://blog.myhq.co.za/installing-home-assistant-on-ubuntu</id><content type="html" xml:base="http://blog.myhq.co.za/installing-home-assistant-on-ubuntu">&lt;h1 id=&quot;ha-on-ubuntu-in-python-virtual-env&quot;&gt;HA on Ubuntu in Python Virtual Env&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I’ve been playing with &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistan&lt;/a&gt; (aka HA) for close on 2 months and with a couple years programming experience it has certainly helped me. But like many others new too dabble with home automation platforms it isn`t that simple and can be overwhelming. This series will hopefully guide you step by step in creation your own &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; setup&lt;/p&gt;
