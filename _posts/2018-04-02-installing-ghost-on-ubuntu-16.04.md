@@ -1,17 +1,17 @@
 ---
 layout: post
 current: post
-cover:  assets/images/welcome.jpg
+cover:  assets/images/writing.jpg
 navigation: True
 title: Installing Ghost on Ubuntu 16.04
-date: 2017-12-18 11:21:17
-tags: [Home Assistant]
+date: 2018-04-02 20:05:11
+tags: [code, getting-started]
 class: post-template
 subclass: 'post tag-getting-started'
 author: derick 
-disqus: true
+disqus: false
 ---
-# HA on Ubuntu in Python Virtual Env
+# Installing Ghost on Ubuntu 16.04
 
 ## Backstory
 I've been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try [Ghost](https://ghost.org/), i've run it before for another projects and really enjoyed it. This was a couple years back so keen to see where its all at now
