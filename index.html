@@ -340,6 +340,44 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card home-template">
         
+            <a class="post-card-image-link" href="/installing-ghost-on-ubuntu-16.04">
+                <div class="post-card-image" style="background-image: url(/assets/images/welcome.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/installing-ghost-on-ubuntu-16.04">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Home assistant</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Installing Ghost on Ubuntu 16.04</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    <p>HA on Ubuntu in Python Virtual Env Backstory I’ve been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try Ghost, i’ve</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/images/derick.jpg" alt="Derick Potgieter" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/derick/">Derick Potgieter</a>
+                        </span>
+                    
+                
+            </footer>
+        </div>
+    </article>
+
+    <article class="post-card home-template">
+        
             <a class="post-card-image-link" href="/installing-home-assistant-on-ubuntu">
                 <div class="post-card-image" style="background-image: url(/assets/images/welcome.jpg)"></div>
             </a>
@@ -391,8 +429,8 @@ into the {body} of the default.hbs template -->
             <div class="site-footer-content inner">
                 <section class="copyright"><a href="http://blog.myhq.co.za/">Mind Lab</a> &copy; 2018</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
-                    <a href="https://pages.github.com/">GitHub Pages</a> using
-                    <a href="https://github.com/myJekyll/jasper2">Jasper2</a></section>
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
                 <nav class="site-footer-nav">
                     <a href="/">Latest Posts</a>  <a href="https://twitter.com/derickpotgieter"
                         target="_blank" rel="noopener">Twitter</a>
@@ -406,10 +444,12 @@ into the {body} of the default.hbs template -->
     
 
     <!-- highlight.js -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
 
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">

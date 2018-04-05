@@ -490,7 +490,7 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://myjekyll.disqus.com/embed.js';
+                            s.src = 'https://jekyller.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -542,6 +542,15 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                                 
                                   
                                     
+                                        
+                                        
+                                            <li><a href="/installing-ghost-on-ubuntu-16.04">Installing Ghost on Ubuntu 16.04</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
                                   
                                 
                             </ul>
@@ -549,7 +558,7 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                         <footer class="read-next-card-footer">
                             <a href="/tag/home-assistant/">
                                 
-                                    See all 1 posts  →
+                                    See all 2 posts  →
                                 
                             </a>
                         </footer>
@@ -562,12 +571,12 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/face-recognition-with-camera">
-                <div class="post-card-image" style="background-image: url(/assets/images/advanced.jpg)"></div>
+            <a class="post-card-image-link" href="/installing-ghost-on-ubuntu-16.04">
+                <div class="post-card-image" style="background-image: url(/assets/images/welcome.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/face-recognition-with-camera">
+            <a class="post-card-content-link" href="/installing-ghost-on-ubuntu-16.04">
                 <header class="post-card-header">
                     
                         
@@ -577,10 +586,10 @@ uninstall<span class="o">()</span> <span class="o">{</span>
                         
                     
 
-                    <h2 class="post-card-title">Face Recognition on Home Assistant</h2>
+                    <h2 class="post-card-title">Installing Ghost on Ubuntu 16.04</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p># Setup Face Recognition on Home Assistant ## Backstory In this segment we will configure your home assistant installation to recognize a member of your family and trigger an action via telegram bot.</p>
+                    <p># HA on Ubuntu in Python Virtual Env ## Backstory I've been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -656,8 +665,8 @@ uninstall<span class="o">()</span> <span class="o">{</span>
             <div class="site-footer-content inner">
                 <section class="copyright"><a href="http://blog.myhq.co.za/">Mind Lab</a> &copy; 2018</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
-                    <a href="https://pages.github.com/">GitHub Pages</a> using
-                    <a href="https://github.com/myJekyll/jasper2">Jasper2</a></section>
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyller/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
                 <nav class="site-footer-nav">
                     <a href="/">Latest Posts</a>  <a href="https://twitter.com/derickpotgieter"
                         target="_blank" rel="noopener">Twitter</a>
@@ -671,10 +680,12 @@ uninstall<span class="o">()</span> <span class="o">{</span>
     
 
     <!-- highlight.js -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
 
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
