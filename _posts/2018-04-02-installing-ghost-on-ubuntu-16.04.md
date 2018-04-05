@@ -18,8 +18,7 @@ I've been running Jekyll for a bit, but the theming support has gotten me down. 
 
 ## Introducing Ghost - Blogging Platform
 <small class="recap">
-Ghost is a fully open source, hackable platform for building and running a modern online publication. We power blogs, magazines and journalists from Zappos to Sky News.
-- From [Ghost.org](https://ghost.org/)
+Ghost is a fully open source, hackable platform for building and running a modern online publication. We power blogs, magazines and journalists from Zappos to Sky News. - From [Ghost.org](https://ghost.org/)
 </small>
 
 #### Recommendation

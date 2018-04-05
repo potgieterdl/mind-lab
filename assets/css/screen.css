@@ -575,7 +575,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
     color: var(--blue);
 }
 
-.post-full-title {
+.post-full-title {  
     margin: 0;
     color: color(var(--darkgrey) l(-5%));
 }
@@ -587,7 +587,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
 
 .post-full-image {
     margin: 0 -10vw -165px;
-    height: 800px;
+    height: 600px;
     background: var(--lightgrey) center center;
     background-size: cover;
     border-radius: 5px;
@@ -596,14 +596,14 @@ The first (most recent) post in the list is styled to be bigger than the others 
 @media (max-width: 1170px) {
     .post-full-image {
         margin: 0 -4vw -100px;
-        height: 600px;
+        height: 400px;
         border-radius: 0;
     }
 }
 
 @media (max-width: 800px) {
     .post-full-image {
-        height: 400px;
+        height: 200px;
     }
 }
 
@@ -732,6 +732,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
     display: block;
     margin: 1.5em auto;
     max-width: 1040px;
+    padding-left: 50px;
 }
 @media (max-width: 1040px) {
     .post-full-content img,
