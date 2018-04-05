@@ -40,7 +40,7 @@ social:
 
 # Disqus
 disqus: False
-disqus_shortname: myjekyll # replace with your disqus username
+disqus_shortname: jekyller # replace with your disqus username
 
 # Google Analytics
 google_analytics: UA-111473481-1 # replace with your GA tracking identifier
@@ -88,11 +88,19 @@ relative_source: ../mind-lab/
 destination: ../mind-lab-pages/
 
 exclude:
-  - README.md
-  - Rakefile
-  - Gemfile
-  - Gemfile.lock
-  - changelog.md
-  - "*.Rmd"
+  - assets/css
+  - node_modules
   - vendor
   - .travis.yml
+  - Gemfile
+  - Gemfile.lock
+  - GHOST.txt
+  - gulpfile.js
+  - LICENSE
+  - package.json
+  - Rakefile
+  - README.md
+  - script.py
+  - changelog.md
+  - "*.Rmd"
+  - .git*
