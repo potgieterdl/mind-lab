@@ -18,4 +18,11 @@ home-assistant:
   name: home-assistant
   description: Everything related to Home Assistant (hass.io)
   cover: assets/images/ha.jpg
-  
+home-networking:
+  name: home networking
+  description: Trying to fix the continues time loop of home networking
+  cover: assets/images/ha.jpg
+agile:
+  name: Agile
+  description: Agile, the what and definition of purpose
+  cover: assets/images/scrum  .jpg
