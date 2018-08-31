@@ -20,7 +20,6 @@ https://www.scrum.org/forum/scrum-forum/5681/how-measure-productivity-my-scrum-t
 https://holub.com/kpis-velocity-and-other-destructive-metrics/
 https://34slpa7u66f159hfp1fhl9aur1-wpengine.netdna-ssl.com/wp-content/uploads/2014/05/Hyper-Productive-Metircs.pdf
 
-
 ## Backstory
 Let me warn the agilist that you should read this article twice before you judge....
 
@@ -43,6 +42,10 @@ The problem addressed in this paper is that over 90% of Scrum Teams never delive
 </small>
 
 Using the above, i believe you should set a goal for the team to hit using a baseline, i dont care if its wrong, but data tels us that we should see an substantial improvement from S1 to S10, measure it and understand it. My suggestion is to start with 200% - 400% based on sprint 2 and 3's avg completed points. Create this as a goal and see if you can break through it. This removes rating teams against each other on points which means nothing and creates a baseline customized too this team. 
+
+<small class="recap">
+A discussion is raging at LinkedIn about the Iron Triangle because Jeff Sutherland, co-author of Scrum, often says that “Scrum breaks the Iron Triangle”. This, you can imagine, causes ripples through the Project Management community. Mr. Sutherland also speaks of “Velocity” and sometimes as a way to explain the breaking of the Iron Triangle, he’s known to say that a Scrum team can increase their velocity by employing various patterns of behaviour which reduce hand-offs, increase quality, et cetera — and this “breaks” the Iron Triangle. <mark> - [agileadvice](http://www.agileadvice.com/2017/10/19/agilemanagement/mind-bender-scrum-team-increases-velocity-less-work/)</mark>
+</small>
 
 Velocity by definision talks about the growth (or decline) of each sprint over time and curving this too create data. Yes, data means something....either bad or good and we need to somehow address this so we can talk about it.
 
@@ -74,7 +77,17 @@ Story points are for helping teams forecast how much work can be taken on in a s
 
 This one is possible the main reason for having this discussion. An huge point missing in the agile implementations is the factor of measuring individuals and teams at a behavioural and productivity level. We have to start getting comfortable with this, its not a negative but a responsibility for each person working in projects to measure value.
 
-I listened too a podcast recently covering the book (Bored and Brilliant)[https://www.amazon.com/Bored-Brilliant-Spacing-Productive-Creative/dp/1250124956] on (LifeHacker)[https://lifehacker.com/how-to-be-bored-and-brilliant-with-manoush-zomorodi-1820014883] and they spoke about the use of Slack and how we get our fix from the little answers we give to people asking for instant responses. This stuck with me, the thought that we no longer have deep work and that alot of team members cant force them selves to escape these costant interuptions (either work or personal). Somehow we need to be able to measure it and discuss it and resolve it.....if we cant, its doesnt matter that the product owner is seeing value, it means they could have seen more value and even be more impressed that we are constantly showing delivery.
+I listened too a podcast recently covering the book (Bored and Brilliant)[https://www.amazon.com/Bored-Brilliant-Spacing-Productive-Creative/dp/1250124956] on [LifeHacker](https://lifehacker.com/how-to-be-bored-and-brilliant-with-manoush-zomorodi-1820014883) and they spoke about the use of Slack and how we get our fix from the little answers we give to people asking for instant responses. This stuck with me, the thought that we no longer have deep work and that alot of team members cant force them selves to escape these costant interuptions (either work or personal). Somehow we need to be able to measure it and discuss it and resolve it.....if we cant, its doesnt matter that the product owner is seeing value, it means they could have seen more value and even be more impressed that we are constantly showing delivery.
+
+## Deep Work
+<mark>Team Contribution : 0% - Management contribution - 100%</mark>
+
+WTF! O yes, lets go all deep on this topic.
+[Becky Kane](https://blog.doist.com/focused-teamwork-8ed325d34e62) wrote a beautiful article on the mertits of why deep work is a missing component that gets over rules by distractions like instant messaging and the culture of open plan office work. I belive 
+
+#### links
+https://blog.doist.com/focused-teamwork-8ed325d34e62
+https://medium.com/taking-note/why-deep-work-matters-in-a-distracted-world-ee4a675375f0
 
 ## What are we going todo about this?
 Well, let me start with, we are running an experiment within a team to see comfort, value and complexity of introducing closer understanding of performance withing a scrum team. This is not 
@@ -105,8 +118,17 @@ We plan for 4 hours on a monday morning and would have completed by then startin
     Jimmy got 3 stories alocated all 5 pointers
     Jane has only 2, an 8 pointer and a 3 pointer. 
 2. Break for 3 hours (lunch and discussion) in which you break down your story with a partner (has his own stories) and break the story down on a piece of paper (we humans arent great at group estimation, unless we responsible for owning the task) 
-    Jimmy walks through his 3 tasks, breaks them down with Jane's help and they both are happy they are 5 
+    Jimmy walks through his 3 tasks, breaks them down with Jane's help and they both are happy they are 5 pointers
+    Jane start breaking it down, her 8 pointer is an 8 but realised that the 3 pointer is actually an 8 as well. The technical detail they unpacked brings too light actual concerns that will take more time to compelete. They mark this Story for team review
+3. Team gets back together, we ask each person to chat through there stories and if they have picked up concerns
+    Iets an easy skip on most members as there stories have come back confirmed
+    Jane gets up and raised #131 "Swapping to new AD Domain" as being an issue due to the following concerns.
+    The team can now grill Jane on understanding the details and helping to confirm the reasoning.
+    If you dont agree, you call "Bullshit" and discuss further, if you still dont agree, you call "Bullshit" again and the story passes to you to own and complete.
 
+The process is designed to get the team to think deeper around each story and learn technically from each other by debating the items that changes. Creating a <mark>learning loop</mark>
+
+4. 
 #### Feedback loop
 C
 
