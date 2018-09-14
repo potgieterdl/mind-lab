@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/images/scrum.jpg
+cover:  assets/images/firebase.jpeg
 navigation: True
 title: Ionic 4, Angular 6 and Firebase
 date: 2018-09-07 14:31:53
@@ -46,7 +46,7 @@ Lets get started with installing the latest version of ionic, adding in cordova 
 Create an firebase config file (this helps with productionising your app later) under `src/app/_config/firebase.ts` and place the config details above in this file.
 
 {% highlight shell %}
-// `src/app/_config/firebase.ts` 
+// src/app/_config/firebase.ts
 export const firebaseConfig = {
   // FireBase config details
   apiKey: '<your-key>',
@@ -172,7 +172,7 @@ export class HomePage {
 </ion-header>
 
 <ion-content padding>
-  <h3><ion-badge slot="end">{{ (todos | async)?.length }}</ion-badge> List of todo's:</h3>
+  <h3><ion-badge slot="end">{{ (todos | async)?.length }}</ion-badge> List of todos:</h3>
   <ion-list>
     <ion-item *ngFor="let todo of todos | async">
       <ion-avatar slot="start" color="primary">
