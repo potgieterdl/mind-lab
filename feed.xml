@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-09-14T10:44:20+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Ionic 4, Angular 6 and Firebase</title><link href="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase" rel="alternate" type="text/html" title="Ionic 4, Angular 6 and Firebase" /><published>2018-09-07T14:31:53+00:00</published><updated>2018-09-07T14:31:53+00:00</updated><id>http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase</id><content type="html" xml:base="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase">&lt;h1 id=&quot;intro&quot;&gt;Intro&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-09-14T11:07:36+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Ionic 4, Angular 6 and Firebase</title><link href="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase" rel="alternate" type="text/html" title="Ionic 4, Angular 6 and Firebase" /><published>2018-09-07T14:31:53+00:00</published><updated>2018-09-07T14:31:53+00:00</updated><id>http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase</id><content type="html" xml:base="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase">&lt;h1 id=&quot;intro&quot;&gt;Intro&lt;/h1&gt;
 &lt;p&gt;In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.&lt;/p&gt;
 
 &lt;p&gt;Below is a guide to getting a Ionic 4 project up and running using Angular 6 as base and integrating to Firebase for both Auth and DB. Project is availible on &lt;a href=&quot;https://github.com/potgieterdl/ionic4-angular6-firebase&quot;&gt;github for full working example&lt;/a&gt;&lt;/p&gt;
@@ -37,21 +37,22 @@
 &lt;h4 id=&quot;create-firebase-config-file&quot;&gt;Create firebase config file&lt;/h4&gt;
 &lt;p&gt;Create an firebase config file (this helps with productionising your app later) under &lt;code class=&quot;highlighter-rouge&quot;&gt;src/app/_config/firebase.ts&lt;/code&gt; and place the config details above in this file.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;// src/app/_config/firebase.ts
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;const firebaseConfig &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  // FireBase config details
-  apiKey: &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-key&amp;gt;'&lt;/span&gt;,
-  authDomain: &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-project-authdomain&amp;gt;'&lt;/span&gt;,
-  databaseURL: &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-database-URL&amp;gt;'&lt;/span&gt;,
-  projectId: &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-project-id&amp;gt;'&lt;/span&gt;,
-  storageBucket: &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-storage-bucket&amp;gt;'&lt;/span&gt;,
-  messagingSenderId: &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-messaging-sender-id&amp;gt;'&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// src/app/_config/firebase.ts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;firebaseConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// FireBase config details&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;apiKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-key&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;authDomain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-project-authdomain&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;databaseURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-database-URL&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;projectId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-project-id&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;storageBucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-storage-bucket&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;messagingSenderId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;your-messaging-sender-id&amp;gt;'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h4 id=&quot;import-the-modules-for-firebase&quot;&gt;Import the modules for firebase&lt;/h4&gt;
 &lt;p&gt;Open /src/app/app.module.ts and inject the firebase providers and load your environment config created above&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// `/src/app/app.module.ts` &lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// /src/app/app.module.ts&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;NgModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BrowserModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/platform-browser'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RouterModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RouteReuseStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Routes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/router'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -102,71 +103,71 @@
 &lt;p&gt;First up, lets create a model that defines our task class.
 &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic generate interface _models/todo&lt;/code&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;// src/app/_models/todo.ts
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;interface Todo &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    id: string&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;: string&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    desc: string&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// src/app/_models/todo.ts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Todo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Next, lets use &lt;a href=&quot;https://github.com/angular/angularfire2&quot;&gt;firebase 2&lt;/a&gt; to pull this from firebase it selfe by adding the following code to our home page.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;// src/app/home/home.page.ts
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; Component &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; Todo, TodoType &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'../_models/todo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AngularFirestore, AngularFirestoreCollection &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/fire/firestore'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; Observable &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'rxjs'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// src/app/home/home.page.ts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoType&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'../_models/todo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFirestore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFirestoreCollection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/fire/firestore'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Observable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rxjs'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 
-@Component&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
-  selector: &lt;span class=&quot;s1&quot;&gt;'app-home'&lt;/span&gt;,
-  templateUrl: &lt;span class=&quot;s1&quot;&gt;'home.page.html'&lt;/span&gt;,
-  styleUrls: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'home.page.scss'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
-&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;class HomePage &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  private todosCollection: AngularFirestoreCollection&amp;lt;Todo&amp;gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  todos: Observable&amp;lt;Todo[]&amp;gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'app-home'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;templateUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'home.page.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;styleUrls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'home.page.scss'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HomePage&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todosCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFirestoreCollection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Observable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-  constructor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;private afs: AngularFirestore&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    this.todosCollection &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; afs.collection&amp;lt;Todo&amp;gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'todos'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    this.todos &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.todosCollection.valueChanges&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;afs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFirestore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todosCollection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;afs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Todo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'todos'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todosCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;valueChanges&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-  addItem&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;: string, desc: string&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    const id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.afs.createId&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    const todo: Todo &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; id, &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;, desc&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    this.todosCollection.doc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.set&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;todo&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+  &lt;span class=&quot;nx&quot;&gt;addItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;afs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Todo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;desc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todosCollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;// src/app/home/home.page.html
-&amp;lt;ion-header&amp;gt;
-  &amp;lt;ion-toolbar&amp;gt;
-    &amp;lt;ion-buttons &lt;span class=&quot;nv&quot;&gt;slot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-      &amp;lt;ion-menu-button&amp;gt;&amp;lt;/ion-menu-button&amp;gt;
-    &amp;lt;/ion-buttons&amp;gt;
-    &amp;lt;ion-title&amp;gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;// src/app/home/home.page.html
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-header&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-toolbar&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-buttons&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;slot=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-menu-button&amp;gt;&amp;lt;/ion-menu-button&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-buttons&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-title&amp;gt;&lt;/span&gt;
       Home
-    &amp;lt;/ion-title&amp;gt;
-  &amp;lt;/ion-toolbar&amp;gt;
-&amp;lt;/ion-header&amp;gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-title&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-toolbar&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-header&amp;gt;&lt;/span&gt;
 
-&amp;lt;ion-content padding&amp;gt;
-  &amp;lt;h3&amp;gt;&amp;lt;ion-badge &lt;span class=&quot;nv&quot;&gt;slot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;end&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;lt;/ion-badge&amp;gt; List of todos:&amp;lt;/h3&amp;gt;
-  &amp;lt;ion-list&amp;gt;
-    &amp;lt;ion-item &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ngFor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;let todo of todos | async&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-      &amp;lt;ion-avatar &lt;span class=&quot;nv&quot;&gt;slot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;primary&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-          &amp;lt;ion-icon &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;large&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stopwatch&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;success&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ngIf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;todo.type == 'LOW'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;lt;/ion-icon&amp;gt;
-          &amp;lt;ion-icon &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;large&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;alert&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;warning&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ngIf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;todo.type == 'MEDIUM'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;lt;/ion-icon&amp;gt;
-          &amp;lt;ion-icon &lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;large&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;warning&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;danger&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ngIf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;todo.type == 'HIGH'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;lt;/ion-icon&amp;gt;
-      &amp;lt;/ion-avatar&amp;gt;
-      &amp;lt;ion-label&amp;gt;
-        &amp;lt;h2&amp;gt;&amp;lt;/h2&amp;gt;
-        &amp;lt;h3&amp;gt;&amp;lt;/h3&amp;gt;
-      &amp;lt;/ion-label&amp;gt;
-    &amp;lt;/ion-item&amp;gt;
-  &amp;lt;/ion-list&amp;gt;
-&amp;lt;/ion-content&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-content&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&amp;lt;ion-badge&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;slot=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;end&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/ion-badge&amp;gt;&lt;/span&gt; List of todos:&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-list&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-item&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ngFor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;let todo of todos | async&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-avatar&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;slot=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;start&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;primary&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-icon&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;size=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;large&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stopwatch&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;success&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ngIf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;todo.type == 'LOW'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/ion-icon&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-icon&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;size=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;large&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alert&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;warning&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ngIf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;todo.type == 'MEDIUM'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/ion-icon&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-icon&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;size=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;large&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;warning&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;danger&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ngIf=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;todo.type == 'HIGH'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/ion-icon&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-avatar&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;ion-label&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-item&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-list&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ion-content&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h4 id=&quot;now-test-and-see-what-works&quot;&gt;Now test and see what works&lt;/h4&gt;
 &lt;p&gt;At this point, if you used the &lt;code class=&quot;highlighter-rouge&quot;&gt;ionic serve -l&lt;/code&gt; from installations step, you should see a working app. If not, restart the app and make sure that all your pages are saved (if using &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;vscode&lt;/a&gt;)…i tend to forget to save all sometimes.
@@ -179,7 +180,152 @@ import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; Observable &lt;span class=
 &lt;img src=&quot;assets/images/post-2018-09-07/final.png&quot; alt=&quot;Running App&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;whats-next&quot;&gt;Whats next&lt;/h4&gt;
-&lt;p&gt;In our next segment we will include Firebase authentication with Google Plus as the provider. We will also theme the app a bit and finish off with an add to-do as part of the over all app.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="code" /><summary type="html">Intro In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.</summary></entry><entry><title type="html">Installing Ghost on Ubuntu 16.04</title><link href="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Ghost on Ubuntu 16.04" /><published>2018-04-02T20:05:11+00:00</published><updated>2018-04-02T20:05:11+00:00</updated><id>http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04</id><content type="html" xml:base="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04">&lt;h1 id=&quot;installing-ghost-on-ubuntu-1604&quot;&gt;Installing Ghost on Ubuntu 16.04&lt;/h1&gt;
+&lt;p&gt;In our next segment we will include Firebase authentication with Google Plus as the provider. We will also theme the app a bit and finish off with an add to-do as part of the over all app.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="code" /><summary type="html">Intro In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.</summary></entry><entry><title type="html">Measuring agile teams through increased value</title><link href="http://blog.myhq.co.za/Measuring-agile-teams-through-increased-value" rel="alternate" type="text/html" title="Measuring agile teams through increased value" /><published>2018-08-13T12:09:15+00:00</published><updated>2018-08-13T12:09:15+00:00</updated><id>http://blog.myhq.co.za/Measuring-agile-teams-through-increased-value</id><content type="html" xml:base="http://blog.myhq.co.za/Measuring-agile-teams-through-increased-value">&lt;h1 id=&quot;remote-access-to-your-home-network-via-usg&quot;&gt;Remote access to your home network via USG&lt;/h1&gt;
+
+&lt;h2 id=&quot;research&quot;&gt;Research&lt;/h2&gt;
+&lt;p&gt;I like too point out the below as only some of the reference points i used, all of these mostly say that we should not put our focus on ratings but use other means to monitor success. 
+https://arstechnica.com/information-technology/2014/05/help-my-manager-wants-to-measure-my-teams-productivity-by-velocity/
+https://www.scrum.org/forum/scrum-forum/5681/how-measure-productivity-my-scrum-team
+https://holub.com/kpis-velocity-and-other-destructive-metrics/
+https://34slpa7u66f159hfp1fhl9aur1-wpengine.netdna-ssl.com/wp-content/uploads/2014/05/Hyper-Productive-Metircs.pdf&lt;/p&gt;
+
+&lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
+&lt;p&gt;Let me warn the agilist that you should read this article twice before you judge….&lt;/p&gt;
+
+&lt;p&gt;There is a subtle difference in the idea of using velocity too measure a team and using points to measure a teams and i’m not focusing on making points estimation tied too (real hours as warned with here.)[https://www.scrum.org/resources/deadly-disease-focus-factor].&lt;/p&gt;
+
+&lt;p&gt;In the blog entery (“”)[] the statement is made 
+&lt;small class=&quot;recap&quot;&gt;
+“Wasting time collecting measurements that don’t lead to improvement is not only costly, it’s actively destructive.”
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;and i could not agree more with this statement. If you can not improve it, ie, once again measure the improvement then why do it. The construct below tries to create a self supporting model of using measurement to improve our value to our product owners while having a measurable impact on projected velocity.&lt;/p&gt;
+
+&lt;p&gt;Measure, experiment, evaluate, iterate&lt;/p&gt;
+
+&lt;p&gt;In the doc “Scrum Metrics for Hyperproductive Teams: How They Fly like Fighter Aircraft”, the authors speak about about improvements in measuring teams velocity between sprint 1 and spring 10, and team dependant, having an increase of 300-400%. If common sense prevails, we will all agree that a team starting in sprint 1 or 2 will&lt;/p&gt;
+
+&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
+The problem addressed in this paper is that over 90% of Scrum Teams never deliver the capability seen in most of our teams &lt;mark&gt; - [Scrum Metrics for Hyperproductive Teams](https://34slpa7u66f159hfp1fhl9aur1-wpengine.netdna-ssl.com/wp-content/uploads/2014/05/Hyper-Productive-Metircs.pdf
+)&lt;/mark&gt;
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the above, i believe you should set a goal for the team to hit using a baseline, i dont care if its wrong, but data tels us that we should see an substantial improvement from S1 to S10, measure it and understand it. My suggestion is to start with 200% - 400% based on sprint 2 and 3’s avg completed points. Create this as a goal and see if you can break through it. This removes rating teams against each other on points which means nothing and creates a baseline customized too this team.&lt;/p&gt;
+
+&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
+A discussion is raging at LinkedIn about the Iron Triangle because Jeff Sutherland, co-author of Scrum, often says that “Scrum breaks the Iron Triangle”. This, you can imagine, causes ripples through the Project Management community. Mr. Sutherland also speaks of “Velocity” and sometimes as a way to explain the breaking of the Iron Triangle, he’s known to say that a Scrum team can increase their velocity by employing various patterns of behaviour which reduce hand-offs, increase quality, et cetera — and this “breaks” the Iron Triangle. &lt;mark&gt; - [agileadvice](http://www.agileadvice.com/2017/10/19/agilemanagement/mind-bender-scrum-team-increases-velocity-less-work/)&lt;/mark&gt;
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Velocity by definision talks about the growth (or decline) of each sprint over time and curving this too create data. Yes, data means something….either bad or good and we need to somehow address this so we can talk about it.&lt;/p&gt;
+
+&lt;p&gt;point - velocity - and the merits of measurement&lt;/p&gt;
+
+&lt;p&gt;Let me state my case. 
+I need to understand if we as a team are improving over time, standard theory applies like complexity reduces (beginning unknows vs end unknows)&lt;/p&gt;
+
+&lt;p&gt;I need to understand what each persons velocity is within that team. Yes i said it, we need to understand produces vs projects vs team averages. 
+Why you ask, you cant rate people. Yes you can, in fact if the team properly dealt this and called bullshit where bullshit needs to be called, this wouldnt be an issue too begin with, but we do have draggers (people that hide in the scrum) that affect what other team member have todo.&lt;/p&gt;
+
+&lt;p&gt;When we measure, we should measure with respect. 
+What do i mean here, well. As&lt;/p&gt;
+
+&lt;p&gt;** Though value is very difficult to determine in foresight, it could be projected using MoSCoW, or just working closely with your product owner in understanding if your journey is yielding the needed value they want too see. I’m not fixsated on this, thats optemising and prioritising but nothing todo with understanding if the value we providing could be kicked in to the next gear and help reign in that projected velocity completion date.&lt;/p&gt;
+
+&lt;p&gt;Lets asume all people in the team are of equal technical capability, then why should we be scared or fearfull of standing up in front of the team too explain why my task took me longer than expected too complete. There should never be fear in this action, in fact it should be a standard part of our retro too talk about items that took longer than expected too solve as this will help alot of increasing our accuracy of extimating stories and pin pointing velocity problems, we that knowledge and training, team disconnect, inexperience or just plain lazyness. These are metrics that hold phenomincal weight and should be used to guide the focus of team members and there leaders.&lt;/p&gt;
+
+&lt;p&gt;(Ian Mitchell wrote this statement on the scrum.org blog.)[https://www.scrum.org/forum/scrum-forum/5681/how-measure-productivity-my-scrum-team]
+“In Scrum productivity is measured in terms of actual delivery, not story points. If an increment if value is produced in accordance with a Sprint Goal which satisfies the Product Owner, then success is being achieved.”&lt;/p&gt;
+
+&lt;p&gt;And i agree fully with this, so here is the point. I’m not disputing that value should be measured in delivery or that velocity helps manage the dark art of estimation and forecasting. But what that sentence doesnt describe is how we measure commitment, contribution and collaboration of the individuals and the team as a whole. This is not something that should be hidden, it should be used for good and create valuable insight into the team. Yes, it should also be used too have the tough discussion with Jimmy on why he has struggled for the last 3 sprints on small tshirts with the number 3 on them.&lt;/p&gt;
+
+&lt;p&gt;Story points are for helping teams forecast how much work can be taken on in a sprint. The tracking of story point burndown is not to measure productivity, but rather to show how much work remains in a backlog.”&lt;/p&gt;
+
+&lt;h2 id=&quot;you-are-busy-but-are-you-productive&quot;&gt;You are busy, but are you productive&lt;/h2&gt;
+
+&lt;p&gt;This one is possible the main reason for having this discussion. An huge point missing in the agile implementations is the factor of measuring individuals and teams at a behavioural and productivity level. We have to start getting comfortable with this, its not a negative but a responsibility for each person working in projects to measure value.&lt;/p&gt;
+
+&lt;p&gt;I listened too a podcast recently covering the book (Bored and Brilliant)[https://www.amazon.com/Bored-Brilliant-Spacing-Productive-Creative/dp/1250124956] on &lt;a href=&quot;https://lifehacker.com/how-to-be-bored-and-brilliant-with-manoush-zomorodi-1820014883&quot;&gt;LifeHacker&lt;/a&gt; and they spoke about the use of Slack and how we get our fix from the little answers we give to people asking for instant responses. This stuck with me, the thought that we no longer have deep work and that alot of team members cant force them selves to escape these costant interuptions (either work or personal). Somehow we need to be able to measure it and discuss it and resolve it…..if we cant, its doesnt matter that the product owner is seeing value, it means they could have seen more value and even be more impressed that we are constantly showing delivery.&lt;/p&gt;
+
+&lt;h2 id=&quot;deep-work&quot;&gt;Deep Work&lt;/h2&gt;
+&lt;p&gt;&lt;mark&gt;Team Contribution : 0% - Management contribution - 100%&lt;/mark&gt;&lt;/p&gt;
+
+&lt;p&gt;WTF! O yes, lets go all deep on this topic.
+&lt;a href=&quot;https://blog.doist.com/focused-teamwork-8ed325d34e62&quot;&gt;Becky Kane&lt;/a&gt; wrote a beautiful article on the mertits of why deep work is a missing component that gets over rules by distractions like instant messaging and the culture of open plan office work. I belive&lt;/p&gt;
+
+&lt;h4 id=&quot;links&quot;&gt;links&lt;/h4&gt;
+&lt;p&gt;https://blog.doist.com/focused-teamwork-8ed325d34e62
+https://medium.com/taking-note/why-deep-work-matters-in-a-distracted-world-ee4a675375f0&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-we-going-todo-about-this&quot;&gt;What are we going todo about this?&lt;/h2&gt;
+&lt;p&gt;Well, let me start with, we are running an experiment within a team to see comfort, value and complexity of introducing closer understanding of performance withing a scrum team. This is not&lt;/p&gt;
+
+&lt;p&gt;Things we will be tracking&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Team Happiness Index&lt;/li&gt;
+  &lt;li&gt;Time from to-do to done&lt;/li&gt;
+  &lt;li&gt;Defects&lt;/li&gt;
+  &lt;li&gt;Team velocity&lt;/li&gt;
+  &lt;li&gt;Individual velocity&lt;/li&gt;
+  &lt;li&gt;Retro Retrobution&lt;/li&gt;
+  &lt;li&gt;calling it Bullshit&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;game-plan&quot;&gt;Game Plan&lt;/h2&gt;
+
+&lt;h4 id=&quot;baseline&quot;&gt;Baseline&lt;/h4&gt;
+&lt;p&gt;Sprint 1: 45 Points
+Sprint 2: 60 Points
+Sprint 3: 55 Points&lt;/p&gt;
+
+&lt;p&gt;60 (S2) + 55 (S3) = 115/2 = 57.5 (Avg) * 300% (Improvement Projection)
+= 172.5 Points Target Goal&lt;/p&gt;
+
+&lt;h4 id=&quot;changes-to-ceremonies&quot;&gt;Changes to Ceremonies&lt;/h4&gt;
+&lt;p&gt;Planning - insert a story point review
+We plan for 4 hours on a monday morning and would have completed by then starting the sprint. Now we follow the below&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;4 Hours planning, assign stories too team members post playing story poker. And pair two together to do story review
+ Jimmy got 3 stories alocated all 5 pointers
+ Jane has only 2, an 8 pointer and a 3 pointer.&lt;/li&gt;
+  &lt;li&gt;Break for 3 hours (lunch and discussion) in which you break down your story with a partner (has his own stories) and break the story down on a piece of paper (we humans arent great at group estimation, unless we responsible for owning the task) 
+ Jimmy walks through his 3 tasks, breaks them down with Jane’s help and they both are happy they are 5 pointers
+ Jane start breaking it down, her 8 pointer is an 8 but realised that the 3 pointer is actually an 8 as well. The technical detail they unpacked brings too light actual concerns that will take more time to compelete. They mark this Story for team review&lt;/li&gt;
+  &lt;li&gt;Team gets back together, we ask each person to chat through there stories and if they have picked up concerns
+ Iets an easy skip on most members as there stories have come back confirmed
+ Jane gets up and raised #131 “Swapping to new AD Domain” as being an issue due to the following concerns.
+ The team can now grill Jane on understanding the details and helping to confirm the reasoning.
+ If you dont agree, you call “Bullshit” and discuss further, if you still dont agree, you call “Bullshit” again and the story passes to you to own and complete.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The process is designed to get the team to think deeper around each story and learn technically from each other by debating the items that changes. Creating a &lt;mark&gt;learning loop&lt;/mark&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;h4 id=&quot;feedback-loop&quot;&gt;Feedback loop&lt;/h4&gt;
+    &lt;p&gt;C&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h4&gt;
+&lt;p&gt;This does not apply too all teams, there are teams where you can see the collaborative synergy summon captain planet and produce value like no ones business. I’m not talking about these, i’m talking about the projects that have a regulatory date (set by a regulated goverment entity) and you have teams that just cant seem too find there groove in getting there. Yes, multiple ways too adress this, but we should stop being scared of understanding and using valueble metrics that can help us focus and improve the delivery we represent.&lt;/p&gt;
+
+&lt;p&gt;&lt;small class=&quot;recap&quot;&gt;
+MacOS - Remember to check the “Send all traffic over VPN connection” if you having issues within not getting too your internal servers
+&lt;/small&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;samples-need-better-name&quot;&gt;Samples (need better name)&lt;/h4&gt;
+&lt;p&gt;I had a discussion with couple team members and here is the rough tread that inspired this discussion.&lt;/p&gt;
+
+&lt;p&gt;Are you working at 100%, Ie, do you believe you are running full steam. A: Yes (sometimes even slightly offended that i asked)
+How much value to you beieve we are providing. A: We making good progress and our PO is starting too see the value each sprint
+Do you believe you are working optimally, Ie, if you sat at home and worked on your tasks that was assigned too you, would you be able to complete them faster? A: mmm, yea maybe….mmm, yea actually i think so, i have alot of disruptions
+So, if you have too give me a percentage of how efficient we are working in a day and what you produce, where would it truly be. A: around 30-40%
+So…that means you can produce more in a day….in the same hours you are working currently correct. A: Yea, should be. But i’m really busy, not sure how.&lt;/p&gt;
+
+&lt;p&gt;Summary
+Our teams are acknowleding that they can produce more in the same timeframe, but they need help achieving this. We need to help them provide this. If they dont realise where they sitting (self rating = self realisition) then how can we improve.&lt;/p&gt;
+
+&lt;p&gt;If you cant measure it, you cant improve it.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="agile" /><summary type="html">Remote access to your home network via USG</summary></entry><entry><title type="html">Installing Ghost on Ubuntu 16.04</title><link href="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Ghost on Ubuntu 16.04" /><published>2018-04-02T20:05:11+00:00</published><updated>2018-04-02T20:05:11+00:00</updated><id>http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04</id><content type="html" xml:base="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04">&lt;h1 id=&quot;installing-ghost-on-ubuntu-1604&quot;&gt;Installing Ghost on Ubuntu 16.04&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I’ve been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt;, i’ve run it before for another projects and really enjoyed it. This was a couple years back so keen to see where its all at now&lt;/p&gt;

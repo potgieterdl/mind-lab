@@ -24,6 +24,10 @@
             max-width: 840px;
         }
 
+        code{
+            max-width: 840px;
+        }
+
         blockquote, dl, ol, p, ul {
             margin: 0 0 0.5em;
         }
@@ -89,7 +93,7 @@
         .highlight .cm { color: #99AA8A } /* Comment.Multiline */
         .highlight .cp { color: #99AA8A } /* Comment.Preproc */
         .highlight .cpf { color: #99AA8A } /* Comment.PreprocFile */
-        .highlight .c1 { color: #99AA8A } /* Comment.Single */
+        .highlight .c1 { color: #96a08d } /* Comment.Single */
         .highlight .cs { color: #99AA8A } /* Comment.Special */
         .highlight .gd { color: #E8E2B7 } /* Generic.Deleted */
         .highlight .ge { font-style: italic } /* Generic.Emph */
@@ -109,13 +113,13 @@
         .highlight .nb { color: #8fe9ff } /* Name.Builtin */
         .highlight .nc { color: #678CB1 } /* Name.Class */
         .highlight .no { color: #93C763 } /* Name.Constant */
-        .highlight .nd { color: #678CB1 } /* Name.Decorator */
+        .highlight .nd { color: #E8E2B7 } /* Name.Decorator */
         .highlight .ni { color: #F1F2F3 } /* Name.Entity */
         .highlight .ne { color: #678CB1 } /* Name.Exception */
         .highlight .nf { color: #678CB1 } /* Name.Function */
         .highlight .nl { color: #F1F2F3 } /* Name.Label */
         .highlight .nn { color: #F1F2F3 } /* Name.Namespace */
-        .highlight .nx { color: #678CB1 } /* Name.Other */
+        .highlight .nx { color: #F1F2F3 } /* Name.Other */
         .highlight .py { color: #F1F2F3 } /* Name.Property */
         .highlight .nt { color: #ff9be8 } /* Name.Tag */
         .highlight .nv { color: #54d4d6 } /* Name.Variable */
@@ -336,21 +340,22 @@ into the {body} of the default.hbs template -->
 <h4 id="create-firebase-config-file">Create firebase config file</h4>
 <p>Create an firebase config file (this helps with productionising your app later) under <code class="highlighter-rouge">src/app/_config/firebase.ts</code> and place the config details above in this file.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">// src/app/_config/firebase.ts
-<span class="nb">export </span>const firebaseConfig <span class="o">=</span> <span class="o">{</span>
-  // FireBase config details
-  apiKey: <span class="s1">'&lt;your-key&gt;'</span>,
-  authDomain: <span class="s1">'&lt;your-project-authdomain&gt;'</span>,
-  databaseURL: <span class="s1">'&lt;your-database-URL&gt;'</span>,
-  projectId: <span class="s1">'&lt;your-project-id&gt;'</span>,
-  storageBucket: <span class="s1">'&lt;your-storage-bucket&gt;'</span>,
-  messagingSenderId: <span class="s1">'&lt;your-messaging-sender-id&gt;'</span>
-<span class="o">}</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="c1">// src/app/_config/firebase.ts</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">firebaseConfig</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// FireBase config details</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="s1">'&lt;your-key&gt;'</span><span class="p">,</span>
+  <span class="na">authDomain</span><span class="p">:</span> <span class="s1">'&lt;your-project-authdomain&gt;'</span><span class="p">,</span>
+  <span class="na">databaseURL</span><span class="p">:</span> <span class="s1">'&lt;your-database-URL&gt;'</span><span class="p">,</span>
+  <span class="na">projectId</span><span class="p">:</span> <span class="s1">'&lt;your-project-id&gt;'</span><span class="p">,</span>
+  <span class="na">storageBucket</span><span class="p">:</span> <span class="s1">'&lt;your-storage-bucket&gt;'</span><span class="p">,</span>
+  <span class="na">messagingSenderId</span><span class="p">:</span> <span class="s1">'&lt;your-messaging-sender-id&gt;'</span>
+<span class="p">};</span>
+    </code></pre></figure>
 
 <h4 id="import-the-modules-for-firebase">Import the modules for firebase</h4>
 <p>Open /src/app/app.module.ts and inject the firebase providers and load your environment config created above</p>
 
-<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="c1">// `/src/app/app.module.ts` </span>
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="c1">// /src/app/app.module.ts</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">RouterModule</span><span class="p">,</span> <span class="nx">RouteReuseStrategy</span><span class="p">,</span> <span class="nx">Routes</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
@@ -401,71 +406,71 @@ into the {body} of the default.hbs template -->
 <p>First up, lets create a model that defines our task class.
 <code class="highlighter-rouge">ionic generate interface _models/todo</code></p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">// src/app/_models/todo.ts
-<span class="nb">export </span>interface Todo <span class="o">{</span>
-    id: string<span class="p">;</span>
-    <span class="nb">type</span>: string<span class="p">;</span>
-    desc: string<span class="p">;</span>
-<span class="o">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="c1">// src/app/_models/todo.ts</span>
+<span class="k">export</span> <span class="kr">interface</span> <span class="nx">Todo</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">type</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">desc</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>Next, lets use <a href="https://github.com/angular/angularfire2">firebase 2</a> to pull this from firebase it selfe by adding the following code to our home page.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">// src/app/home/home.page.ts
-import <span class="o">{</span> Component <span class="o">}</span> from <span class="s1">'@angular/core'</span><span class="p">;</span>
-import <span class="o">{</span> Todo, TodoType <span class="o">}</span> from <span class="s1">'../_models/todo'</span><span class="p">;</span>
-import <span class="o">{</span> AngularFirestore, AngularFirestoreCollection <span class="o">}</span> from <span class="s1">'@angular/fire/firestore'</span><span class="p">;</span>
-import <span class="o">{</span> Observable <span class="o">}</span> from <span class="s1">'rxjs'</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="c1">// src/app/home/home.page.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Todo</span><span class="p">,</span> <span class="nx">TodoType</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../_models/todo'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AngularFirestore</span><span class="p">,</span> <span class="nx">AngularFirestoreCollection</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/fire/firestore'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'rxjs'</span><span class="p">;</span>
 
 
-@Component<span class="o">({</span>
-  selector: <span class="s1">'app-home'</span>,
-  templateUrl: <span class="s1">'home.page.html'</span>,
-  styleUrls: <span class="o">[</span><span class="s1">'home.page.scss'</span><span class="o">]</span>,
-<span class="o">})</span>
-<span class="nb">export </span>class HomePage <span class="o">{</span>
-  private todosCollection: AngularFirestoreCollection&lt;Todo&gt;<span class="p">;</span>
-  todos: Observable&lt;Todo[]&gt;<span class="p">;</span>
+<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="s1">'app-home'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'home.page.html'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'home.page.scss'</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">HomePage</span> <span class="p">{</span>
+  <span class="kr">private</span> <span class="nx">todosCollection</span><span class="p">:</span> <span class="nx">AngularFirestoreCollection</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="nl">todos</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
 
-  constructor<span class="o">(</span>private afs: AngularFirestore<span class="o">)</span> <span class="o">{</span>
-    this.todosCollection <span class="o">=</span> afs.collection&lt;Todo&gt;<span class="o">(</span><span class="s1">'todos'</span><span class="o">)</span><span class="p">;</span>
-    this.todos <span class="o">=</span> this.todosCollection.valueChanges<span class="o">()</span><span class="p">;</span>
-  <span class="o">}</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">afs</span><span class="p">:</span> <span class="nx">AngularFirestore</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todosCollection</span> <span class="o">=</span> <span class="nx">afs</span><span class="p">.</span><span class="nx">collection</span><span class="o">&lt;</span><span class="nx">Todo</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">'todos'</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">todosCollection</span><span class="p">.</span><span class="nx">valueChanges</span><span class="p">();</span>
+  <span class="p">}</span>
 
-  addItem<span class="o">(</span><span class="nb">type</span>: string, desc: string<span class="o">)</span> <span class="o">{</span>
-    const id <span class="o">=</span> this.afs.createId<span class="o">()</span><span class="p">;</span>
-    const todo: Todo <span class="o">=</span> <span class="o">{</span> id, <span class="nb">type</span>, desc<span class="o">}</span><span class="p">;</span>
-    this.todosCollection.doc<span class="o">(</span>id<span class="o">)</span>.set<span class="o">(</span>todo<span class="o">)</span><span class="p">;</span>
-  <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+  <span class="nx">addItem</span><span class="p">(</span><span class="nx">type</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">desc</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">afs</span><span class="p">.</span><span class="nx">createId</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">todo</span><span class="p">:</span> <span class="nx">Todo</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">desc</span><span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">todosCollection</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="kd">set</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">// src/app/home/home.page.html
-&lt;ion-header&gt;
-  &lt;ion-toolbar&gt;
-    &lt;ion-buttons <span class="nv">slot</span><span class="o">=</span><span class="s2">"start"</span><span class="o">&gt;</span>
-      &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
-    &lt;/ion-buttons&gt;
-    &lt;ion-title&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html">// src/app/home/home.page.html
+<span class="nt">&lt;ion-header&gt;</span>
+  <span class="nt">&lt;ion-toolbar&gt;</span>
+    <span class="nt">&lt;ion-buttons</span> <span class="na">slot=</span><span class="s">"start"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;</span>
+    <span class="nt">&lt;/ion-buttons&gt;</span>
+    <span class="nt">&lt;ion-title&gt;</span>
       Home
-    &lt;/ion-title&gt;
-  &lt;/ion-toolbar&gt;
-&lt;/ion-header&gt;
+    <span class="nt">&lt;/ion-title&gt;</span>
+  <span class="nt">&lt;/ion-toolbar&gt;</span>
+<span class="nt">&lt;/ion-header&gt;</span>
 
-&lt;ion-content padding&gt;
-  &lt;h3&gt;&lt;ion-badge <span class="nv">slot</span><span class="o">=</span><span class="s2">"end"</span><span class="o">&gt;</span>&lt;/ion-badge&gt; List of todos:&lt;/h3&gt;
-  &lt;ion-list&gt;
-    &lt;ion-item <span class="k">*</span><span class="nv">ngFor</span><span class="o">=</span><span class="s2">"let todo of todos | async"</span><span class="o">&gt;</span>
-      &lt;ion-avatar <span class="nv">slot</span><span class="o">=</span><span class="s2">"start"</span> <span class="nv">color</span><span class="o">=</span><span class="s2">"primary"</span><span class="o">&gt;</span>
-          &lt;ion-icon <span class="nv">size</span><span class="o">=</span><span class="s2">"large"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"stopwatch"</span> <span class="nv">color</span><span class="o">=</span><span class="s2">"success"</span> <span class="k">*</span><span class="nv">ngIf</span><span class="o">=</span><span class="s2">"todo.type == 'LOW'"</span><span class="o">&gt;</span>&lt;/ion-icon&gt;
-          &lt;ion-icon <span class="nv">size</span><span class="o">=</span><span class="s2">"large"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"alert"</span> <span class="nv">color</span><span class="o">=</span><span class="s2">"warning"</span> <span class="k">*</span><span class="nv">ngIf</span><span class="o">=</span><span class="s2">"todo.type == 'MEDIUM'"</span><span class="o">&gt;</span>&lt;/ion-icon&gt;
-          &lt;ion-icon <span class="nv">size</span><span class="o">=</span><span class="s2">"large"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"warning"</span> <span class="nv">color</span><span class="o">=</span><span class="s2">"danger"</span> <span class="k">*</span><span class="nv">ngIf</span><span class="o">=</span><span class="s2">"todo.type == 'HIGH'"</span><span class="o">&gt;</span>&lt;/ion-icon&gt;
-      &lt;/ion-avatar&gt;
-      &lt;ion-label&gt;
-        &lt;h2&gt;&lt;/h2&gt;
-        &lt;h3&gt;&lt;/h3&gt;
-      &lt;/ion-label&gt;
-    &lt;/ion-item&gt;
-  &lt;/ion-list&gt;
-&lt;/ion-content&gt;</code></pre></figure>
+<span class="nt">&lt;ion-content</span> <span class="na">padding</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3&gt;&lt;ion-badge</span> <span class="na">slot=</span><span class="s">"end"</span><span class="nt">&gt;&lt;/ion-badge&gt;</span> List of todos:<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;ion-list&gt;</span>
+    <span class="nt">&lt;ion-item</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let todo of todos | async"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ion-avatar</span> <span class="na">slot=</span><span class="s">"start"</span> <span class="na">color=</span><span class="s">"primary"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;ion-icon</span> <span class="na">size=</span><span class="s">"large"</span> <span class="na">name=</span><span class="s">"stopwatch"</span> <span class="na">color=</span><span class="s">"success"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"todo.type == 'LOW'"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+          <span class="nt">&lt;ion-icon</span> <span class="na">size=</span><span class="s">"large"</span> <span class="na">name=</span><span class="s">"alert"</span> <span class="na">color=</span><span class="s">"warning"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"todo.type == 'MEDIUM'"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+          <span class="nt">&lt;ion-icon</span> <span class="na">size=</span><span class="s">"large"</span> <span class="na">name=</span><span class="s">"warning"</span> <span class="na">color=</span><span class="s">"danger"</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"todo.type == 'HIGH'"</span><span class="nt">&gt;&lt;/ion-icon&gt;</span>
+      <span class="nt">&lt;/ion-avatar&gt;</span>
+      <span class="nt">&lt;ion-label&gt;</span>
+        <span class="nt">&lt;h2&gt;&lt;/h2&gt;</span>
+        <span class="nt">&lt;h3&gt;&lt;/h3&gt;</span>
+      <span class="nt">&lt;/ion-label&gt;</span>
+    <span class="nt">&lt;/ion-item&gt;</span>
+  <span class="nt">&lt;/ion-list&gt;</span>
+<span class="nt">&lt;/ion-content&gt;</span></code></pre></figure>
 
 <h4 id="now-test-and-see-what-works">Now test and see what works</h4>
 <p>At this point, if you used the <code class="highlighter-rouge">ionic serve -l</code> from installations step, you should see a working app. If not, restart the app and make sure that all your pages are saved (if using <a href="https://code.visualstudio.com/">vscode</a>)…i tend to forget to save all sometimes.
@@ -551,6 +556,8 @@ import <span class="o">{</span> Observable <span class="o">}</span> from <span c
                                   
                                 
                                   
+                                
+                                  
                                     
                                         
                                         
@@ -586,29 +593,25 @@ import <span class="o">{</span> Observable <span class="o">}</span> from <span c
                 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/installing-ghost-on-ubuntu-16.04">
-                <div class="post-card-image" style="background-image: url(/assets/images/writing.jpg)"></div>
+            <a class="post-card-image-link" href="/Measuring-agile-teams-through-increased-value">
+                <div class="post-card-image" style="background-image: url(/assets/images/scrum.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/installing-ghost-on-ubuntu-16.04">
+            <a class="post-card-content-link" href="/Measuring-agile-teams-through-increased-value">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Code</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Getting-started</span>
+                                <span class="post-card-tags">Agile</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">Installing Ghost on Ubuntu 16.04</h2>
+                    <h2 class="post-card-title">Measuring agile teams through increased value</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>Installing Ghost on Ubuntu 16.04 Backstory I’ve been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try Ghost, i’ve run it</p>
+                    <p>Remote access to your home network via USG Research I like too point out the below as only some of the reference points i used, all of these mostly say that we should</p>
                 </section>
             </a>
             <footer class="post-card-meta">
