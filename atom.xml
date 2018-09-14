@@ -8,6 +8,22 @@
     
       
       <item>
+        <title>Ionic 4, Angular 6 and Firebase</title>
+        
+          <description>&lt;h1 id=&quot;intro&quot;&gt;Intro&lt;/h1&gt;
+&lt;p&gt;In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 07 Sep 2018 14:31:53 +0000</pubDate>
+        <link>
+        http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase-Auth</link>
+        <guid isPermaLink="true">http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase-Auth</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Installing Ghost on Ubuntu 16.04</title>
         
           <description>&lt;h1 id=&quot;installing-ghost-on-ubuntu-1604&quot;&gt;Installing Ghost on Ubuntu 16.04&lt;/h1&gt;
