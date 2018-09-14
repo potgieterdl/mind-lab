@@ -45,7 +45,7 @@ Lets get started with installing the latest version of ionic, adding in cordova 
 #### Create firebase config file
 Create an firebase config file (this helps with productionising your app later) under `src/app/_config/firebase.ts` and place the config details above in this file.
 
-{% highlight shell %}
+{% highlight typescript %}
 // src/app/_config/firebase.ts
 export const firebaseConfig = {
   // FireBase config details
@@ -56,14 +56,14 @@ export const firebaseConfig = {
   storageBucket: '<your-storage-bucket>',
   messagingSenderId: '<your-messaging-sender-id>'
 };
-
+    
 {% endhighlight %}
 
 #### Import the modules for firebase
 Open /src/app/app.module.ts and inject the firebase providers and load your environment config created above
 
 {% highlight typescript %}
-// `/src/app/app.module.ts` 
+// /src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
@@ -116,7 +116,7 @@ Go back to the firebase console ([helper link, if you kept the project name the 
 First up, lets create a model that defines our task class.
 ``` ionic generate interface _models/todo ```
 
-{% highlight shell %}
+{% highlight typescript %}
 // src/app/_models/todo.ts
 export interface Todo {
     id: string;
@@ -127,7 +127,7 @@ export interface Todo {
 
 Next, lets use [firebase 2](https://github.com/angular/angularfire2) to pull this from firebase it selfe by adding the following code to our home page.
 
-{% highlight shell %}
+{% highlight typescript %}
 // src/app/home/home.page.ts
 import { Component } from '@angular/core';
 import { Todo, TodoType } from '../_models/todo';
@@ -158,7 +158,7 @@ export class HomePage {
 
 {% endhighlight %}
 
-{% highlight shell %}
+{% highlight html %}
 // src/app/home/home.page.html
 <ion-header>
   <ion-toolbar>
