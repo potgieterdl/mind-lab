@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-09-14T10:38:27+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Ionic 4, Angular 6 and Firebase</title><link href="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase" rel="alternate" type="text/html" title="Ionic 4, Angular 6 and Firebase" /><published>2018-09-07T14:31:53+00:00</published><updated>2018-09-07T14:31:53+00:00</updated><id>http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase</id><content type="html" xml:base="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase">&lt;h1 id=&quot;intro&quot;&gt;Intro&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.myhq.co.za/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.myhq.co.za/" rel="alternate" type="text/html" /><updated>2018-09-14T10:44:20+00:00</updated><id>http://blog.myhq.co.za/</id><title type="html">Mind Lab</title><subtitle>The science of thinking, written down</subtitle><entry><title type="html">Ionic 4, Angular 6 and Firebase</title><link href="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase" rel="alternate" type="text/html" title="Ionic 4, Angular 6 and Firebase" /><published>2018-09-07T14:31:53+00:00</published><updated>2018-09-07T14:31:53+00:00</updated><id>http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase</id><content type="html" xml:base="http://blog.myhq.co.za/Ionic-4,-Angular-6-and-Firebase">&lt;h1 id=&quot;intro&quot;&gt;Intro&lt;/h1&gt;
 &lt;p&gt;In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.&lt;/p&gt;
 
 &lt;p&gt;Below is a guide to getting a Ionic 4 project up and running using Angular 6 as base and integrating to Firebase for both Auth and DB. Project is availible on &lt;a href=&quot;https://github.com/potgieterdl/ionic4-angular6-firebase&quot;&gt;github for full working example&lt;/a&gt;&lt;/p&gt;
@@ -8,9 +8,9 @@
 
 &lt;ul&gt;
   &lt;li&gt;sudo npm install -g ionic&lt;/li&gt;
-  &lt;li&gt;ionic start ionic4-angular6-firebase sidemenu –type=angular
-** Integrate your new app with Cordova to target native iOS and Android? (y/N) y
-** Install the free Ionic Pro SDK and connect your app? (Y/n) n&lt;/li&gt;
+  &lt;li&gt;ionic start ionic4-angular6-firebase sidemenu –type=angular&lt;/li&gt;
+  &lt;li&gt;Integrate your new app with Cordova to target native iOS and Android? (y/N) y&lt;/li&gt;
+  &lt;li&gt;Install the free Ionic Pro SDK and connect your app? (Y/n) n&lt;/li&gt;
   &lt;li&gt;cd ./ionic4-angular6-firebase&lt;/li&gt;
   &lt;li&gt;npm install –save-dev @ionic/lab&lt;/li&gt;
   &lt;li&gt;npm install cordova-plugin-ionic –save&lt;/li&gt;
@@ -21,7 +21,7 @@
 
 &lt;h3 id=&quot;create-the-project-on-firebases-portal&quot;&gt;Create the project on firebase’s portal&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;login to firebase - https://console.firebase.google.com/&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://console.firebase.google.com/&quot;&gt;login to firebase&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Create a new project - &lt;img src=&quot;assets/images/post-2018-09-07/create-firebase-project.png&quot; alt=&quot;Create Firebase Project&quot; class=&quot;img-responsive&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Setup WPA app by clicking the 3rd icon &lt;img src=&quot;assets/images/post-2018-09-07/create-pwa-key.png&quot; alt=&quot;Setup Progressive Web App&quot; class=&quot;img-responsive&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Your config details - &lt;img src=&quot;assets/images/post-2018-09-07/firebase-config-details.png&quot; alt=&quot;Get Config details for your app&quot; class=&quot;img-responsive&quot; /&gt;&lt;/li&gt;
@@ -51,48 +51,48 @@
 &lt;h4 id=&quot;import-the-modules-for-firebase&quot;&gt;Import the modules for firebase&lt;/h4&gt;
 &lt;p&gt;Open /src/app/app.module.ts and inject the firebase providers and load your environment config created above&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;// &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/src/app/app.module.ts&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; 
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; NgModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; BrowserModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/platform-browser'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; RouterModule, RouteReuseStrategy, Routes &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/router'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// `/src/app/app.module.ts` &lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;NgModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BrowserModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/platform-browser'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RouterModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RouteReuseStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Routes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/router'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; IonicModule, IonicRouteStrategy &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@ionic/angular'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; SplashScreen &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@ionic-native/splash-screen/ngx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; StatusBar &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@ionic-native/status-bar/ngx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IonicModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IonicRouteStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@ionic/angular'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SplashScreen&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@ionic-native/splash-screen/ngx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StatusBar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@ionic-native/status-bar/ngx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AppComponent &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'./app.component'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AppRoutingModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'./app-routing.module'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppComponent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./app.component'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppRoutingModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./app-routing.module'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AngularFireModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/fire'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; firebaseConfig &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'./_config/firebase'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AngularFirestoreModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/fire/firestore'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AngularFireDatabaseModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/fire/database'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFireModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/fire'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;firebaseConfig&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./_config/firebase'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFirestoreModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/fire/firestore'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AngularFireDatabaseModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@angular/fire/database'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-// TODO add firebaes auth later
-// import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; AngularFireAuthModule &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@angular/fire/auth'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-// import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; GooglePlus &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s1&quot;&gt;'@ionic-native/google-plus/ngx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// TODO add firebaes auth later&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// import { AngularFireAuthModule } from '@angular/fire/auth';&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// import { GooglePlus } from '@ionic-native/google-plus/ngx';&lt;/span&gt;
 
-@NgModule&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
-  declarations: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;AppComponent],
-  entryComponents: &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;,
-  imports: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-    BrowserModule,
-    IonicModule.forRoot&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;,
-    AppRoutingModule,
-    AngularFireModule.initializeApp&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;firebaseConfig, &lt;span class=&quot;s1&quot;&gt;'ionic4-angular6-firebase'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, // imports firebase/app needed &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;everything
-    AngularFirestoreModule, // imports firebase/database, only needed &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;database features
-    AngularFireDatabaseModule, // imports firebase/database, only needed &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;database features
-    // TODO - AngularFireAuthModule // imports firebase/auth, only needed &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;auth features
-  &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
-  providers: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-    // TODO - GooglePlus,
-    StatusBar,
-    SplashScreen,
-    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; provide: RouteReuseStrategy, useClass: IonicRouteStrategy &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
-  bootstrap: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;AppComponent]
-&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;class AppModule &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;NgModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;declarations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;AppComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;entryComponents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;imports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;BrowserModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;IonicModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forRoot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;AppRoutingModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;AngularFireModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initializeApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;firebaseConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ionic4-angular6-firebase'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// imports firebase/app needed for everything&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;AngularFirestoreModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// imports firebase/database, only needed for database features&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;AngularFireDatabaseModule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// imports firebase/database, only needed for database features&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// TODO - AngularFireAuthModule // imports firebase/auth, only needed for auth features&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;providers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// TODO - GooglePlus,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;StatusBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;SplashScreen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;provide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RouteReuseStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;useClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IonicRouteStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;bootstrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;AppComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AppModule&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h4 id=&quot;create-a-cloud-firestore-db&quot;&gt;Create a Cloud Firestore DB&lt;/h4&gt;
 &lt;p&gt;Go back to the firebase console (&lt;a href=&quot;https://console.firebase.google.com/project/ionic4-angular6-firebase/database&quot;&gt;helper link, if you kept the project name the same&lt;/a&gt;) and create a Firestore DB in test mode (no security, test and add rules later), creating your first collection (click on “+ add collection”)
@@ -176,10 +176,10 @@ import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; Observable &lt;span class=
 &lt;img src=&quot;assets/images/post-2018-09-07/create-todo.gif&quot; alt=&quot;Running App&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Your ionic lab should look like this
-&lt;img src=&quot;assets/images/post-2018-09-07/final.gif&quot; alt=&quot;Running App&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;assets/images/post-2018-09-07/final.png&quot; alt=&quot;Running App&quot; class=&quot;img-responsive&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;whats-next&quot;&gt;Whats next&lt;/h4&gt;
-&lt;p&gt;In our next segment we will include Firebase authentication with Google Plus as the provider. We will also theme the app a bit and finish off with an add to-do as part of the over all app.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="agile" /><summary type="html">Intro In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.</summary></entry><entry><title type="html">Installing Ghost on Ubuntu 16.04</title><link href="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Ghost on Ubuntu 16.04" /><published>2018-04-02T20:05:11+00:00</published><updated>2018-04-02T20:05:11+00:00</updated><id>http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04</id><content type="html" xml:base="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04">&lt;h1 id=&quot;installing-ghost-on-ubuntu-1604&quot;&gt;Installing Ghost on Ubuntu 16.04&lt;/h1&gt;
+&lt;p&gt;In our next segment we will include Firebase authentication with Google Plus as the provider. We will also theme the app a bit and finish off with an add to-do as part of the over all app.&lt;/p&gt;</content><author><name>Derick Potgieter</name></author><category term="code" /><summary type="html">Intro In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS.</summary></entry><entry><title type="html">Installing Ghost on Ubuntu 16.04</title><link href="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Ghost on Ubuntu 16.04" /><published>2018-04-02T20:05:11+00:00</published><updated>2018-04-02T20:05:11+00:00</updated><id>http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04</id><content type="html" xml:base="http://blog.myhq.co.za/installing-ghost-on-ubuntu-16.04">&lt;h1 id=&quot;installing-ghost-on-ubuntu-1604&quot;&gt;Installing Ghost on Ubuntu 16.04&lt;/h1&gt;
 
 &lt;h2 id=&quot;backstory&quot;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I’ve been running Jekyll for a bit, but the theming support has gotten me down. With that low point i decided to try &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt;, i’ve run it before for another projects and really enjoyed it. This was a couple years back so keen to see where its all at now&lt;/p&gt;

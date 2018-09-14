@@ -160,7 +160,7 @@
 <meta property="article:author" content="https://www.facebook.com/" />
 <meta property="article:published_time" content="2018-09-07T14:31:53+00:00" />
 <meta property="article:modified_time" content="2018-09-07T14:31:53+00:00" />
-<meta property="article:tag" content="Agile" />
+<meta property="article:tag" content="Code" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Ionic 4, Angular 6 and Firebase" />
 <meta name="twitter:description" content="Intro In this post we will focus on getting firebase working with Ionic 4 using Angular 6. We will focus on a progressive web app as our sample app, making it fully testable on your local machine, but include the instructions and code for working on both Android and IOS." />
@@ -169,7 +169,7 @@
 <meta name="twitter:label1" content="Written by" />
 <meta name="twitter:data1" content="Mind Lab" />
 <meta name="twitter:label2" content="Filed under" />
-<meta name="twitter:data2" content="Agile" />
+<meta name="twitter:data2" content="Code" />
 <meta name="twitter:site" content="@derickpotgieter" />
 <meta name="twitter:creator" content="@derickpotgieter" />
 <meta property="og:image:width" content="1400" />
@@ -282,7 +282,7 @@ into the {body} of the default.hbs template -->
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/agile/'>AGILE</a>
+                               <a href='/tag/code/'>CODE</a>
                             
                         
                     
@@ -307,9 +307,9 @@ into the {body} of the default.hbs template -->
 
 <ul>
   <li>sudo npm install -g ionic</li>
-  <li>ionic start ionic4-angular6-firebase sidemenu –type=angular
-** Integrate your new app with Cordova to target native iOS and Android? (y/N) y
-** Install the free Ionic Pro SDK and connect your app? (Y/n) n</li>
+  <li>ionic start ionic4-angular6-firebase sidemenu –type=angular</li>
+  <li>Integrate your new app with Cordova to target native iOS and Android? (y/N) y</li>
+  <li>Install the free Ionic Pro SDK and connect your app? (Y/n) n</li>
   <li>cd ./ionic4-angular6-firebase</li>
   <li>npm install –save-dev @ionic/lab</li>
   <li>npm install cordova-plugin-ionic –save</li>
@@ -320,7 +320,7 @@ into the {body} of the default.hbs template -->
 
 <h3 id="create-the-project-on-firebases-portal">Create the project on firebase’s portal</h3>
 <ul>
-  <li>login to firebase - https://console.firebase.google.com/</li>
+  <li><a href="https://console.firebase.google.com/">login to firebase</a></li>
   <li>Create a new project - <img src="assets/images/post-2018-09-07/create-firebase-project.png" alt="Create Firebase Project" class="img-responsive" /></li>
   <li>Setup WPA app by clicking the 3rd icon <img src="assets/images/post-2018-09-07/create-pwa-key.png" alt="Setup Progressive Web App" class="img-responsive" /></li>
   <li>Your config details - <img src="assets/images/post-2018-09-07/firebase-config-details.png" alt="Get Config details for your app" class="img-responsive" /></li>
@@ -350,48 +350,48 @@ into the {body} of the default.hbs template -->
 <h4 id="import-the-modules-for-firebase">Import the modules for firebase</h4>
 <p>Open /src/app/app.module.ts and inject the firebase providers and load your environment config created above</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">// <span class="sb">`</span>/src/app/app.module.ts<span class="sb">`</span> 
-import <span class="o">{</span> NgModule <span class="o">}</span> from <span class="s1">'@angular/core'</span><span class="p">;</span>
-import <span class="o">{</span> BrowserModule <span class="o">}</span> from <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
-import <span class="o">{</span> RouterModule, RouteReuseStrategy, Routes <span class="o">}</span> from <span class="s1">'@angular/router'</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="c1">// `/src/app/app.module.ts` </span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">RouterModule</span><span class="p">,</span> <span class="nx">RouteReuseStrategy</span><span class="p">,</span> <span class="nx">Routes</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router'</span><span class="p">;</span>
 
-import <span class="o">{</span> IonicModule, IonicRouteStrategy <span class="o">}</span> from <span class="s1">'@ionic/angular'</span><span class="p">;</span>
-import <span class="o">{</span> SplashScreen <span class="o">}</span> from <span class="s1">'@ionic-native/splash-screen/ngx'</span><span class="p">;</span>
-import <span class="o">{</span> StatusBar <span class="o">}</span> from <span class="s1">'@ionic-native/status-bar/ngx'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">IonicModule</span><span class="p">,</span> <span class="nx">IonicRouteStrategy</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@ionic/angular'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SplashScreen</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@ionic-native/splash-screen/ngx'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StatusBar</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@ionic-native/status-bar/ngx'</span><span class="p">;</span>
 
-import <span class="o">{</span> AppComponent <span class="o">}</span> from <span class="s1">'./app.component'</span><span class="p">;</span>
-import <span class="o">{</span> AppRoutingModule <span class="o">}</span> from <span class="s1">'./app-routing.module'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AppComponent</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./app.component'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AppRoutingModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./app-routing.module'</span><span class="p">;</span>
 
-import <span class="o">{</span> AngularFireModule <span class="o">}</span> from <span class="s1">'@angular/fire'</span><span class="p">;</span>
-import <span class="o">{</span> firebaseConfig <span class="o">}</span> from <span class="s1">'./_config/firebase'</span><span class="p">;</span>
-import <span class="o">{</span> AngularFirestoreModule <span class="o">}</span> from <span class="s1">'@angular/fire/firestore'</span><span class="p">;</span>
-import <span class="o">{</span> AngularFireDatabaseModule <span class="o">}</span> from <span class="s1">'@angular/fire/database'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AngularFireModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/fire'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">firebaseConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./_config/firebase'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AngularFirestoreModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/fire/firestore'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AngularFireDatabaseModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/fire/database'</span><span class="p">;</span>
 
-// TODO add firebaes auth later
-// import <span class="o">{</span> AngularFireAuthModule <span class="o">}</span> from <span class="s1">'@angular/fire/auth'</span><span class="p">;</span>
-// import <span class="o">{</span> GooglePlus <span class="o">}</span> from <span class="s1">'@ionic-native/google-plus/ngx'</span><span class="p">;</span>
+<span class="c1">// TODO add firebaes auth later</span>
+<span class="c1">// import { AngularFireAuthModule } from '@angular/fire/auth';</span>
+<span class="c1">// import { GooglePlus } from '@ionic-native/google-plus/ngx';</span>
 
-@NgModule<span class="o">({</span>
-  declarations: <span class="o">[</span>AppComponent],
-  entryComponents: <span class="o">[]</span>,
-  imports: <span class="o">[</span>
-    BrowserModule,
-    IonicModule.forRoot<span class="o">()</span>,
-    AppRoutingModule,
-    AngularFireModule.initializeApp<span class="o">(</span>firebaseConfig, <span class="s1">'ionic4-angular6-firebase'</span><span class="o">)</span>, // imports firebase/app needed <span class="k">for </span>everything
-    AngularFirestoreModule, // imports firebase/database, only needed <span class="k">for </span>database features
-    AngularFireDatabaseModule, // imports firebase/database, only needed <span class="k">for </span>database features
-    // TODO - AngularFireAuthModule // imports firebase/auth, only needed <span class="k">for </span>auth features
-  <span class="o">]</span>,
-  providers: <span class="o">[</span>
-    // TODO - GooglePlus,
-    StatusBar,
-    SplashScreen,
-    <span class="o">{</span> provide: RouteReuseStrategy, useClass: IonicRouteStrategy <span class="o">}</span>
-  <span class="o">]</span>,
-  bootstrap: <span class="o">[</span>AppComponent]
-<span class="o">})</span>
-<span class="nb">export </span>class AppModule <span class="o">{}</span></code></pre></figure>
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">],</span>
+  <span class="na">entryComponents</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">BrowserModule</span><span class="p">,</span>
+    <span class="nx">IonicModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(),</span>
+    <span class="nx">AppRoutingModule</span><span class="p">,</span>
+    <span class="nx">AngularFireModule</span><span class="p">.</span><span class="nx">initializeApp</span><span class="p">(</span><span class="nx">firebaseConfig</span><span class="p">,</span> <span class="s1">'ionic4-angular6-firebase'</span><span class="p">),</span> <span class="c1">// imports firebase/app needed for everything</span>
+    <span class="nx">AngularFirestoreModule</span><span class="p">,</span> <span class="c1">// imports firebase/database, only needed for database features</span>
+    <span class="nx">AngularFireDatabaseModule</span><span class="p">,</span> <span class="c1">// imports firebase/database, only needed for database features</span>
+    <span class="c1">// TODO - AngularFireAuthModule // imports firebase/auth, only needed for auth features</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="c1">// TODO - GooglePlus,</span>
+    <span class="nx">StatusBar</span><span class="p">,</span>
+    <span class="nx">SplashScreen</span><span class="p">,</span>
+    <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">RouteReuseStrategy</span><span class="p">,</span> <span class="na">useClass</span><span class="p">:</span> <span class="nx">IonicRouteStrategy</span> <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{}</span></code></pre></figure>
 
 <h4 id="create-a-cloud-firestore-db">Create a Cloud Firestore DB</h4>
 <p>Go back to the firebase console (<a href="https://console.firebase.google.com/project/ionic4-angular6-firebase/database">helper link, if you kept the project name the same</a>) and create a Firestore DB in test mode (no security, test and add rules later), creating your first collection (click on “+ add collection”)
@@ -475,7 +475,7 @@ import <span class="o">{</span> Observable <span class="o">}</span> from <span c
 <img src="assets/images/post-2018-09-07/create-todo.gif" alt="Running App" class="img-responsive" /></p>
 
 <p>Your ionic lab should look like this
-<img src="assets/images/post-2018-09-07/final.gif" alt="Running App" class="img-responsive" /></p>
+<img src="assets/images/post-2018-09-07/final.png" alt="Running App" class="img-responsive" /></p>
 
 <h4 id="whats-next">Whats next</h4>
 <p>In our next segment we will include Firebase authentication with Google Plus as the provider. We will also theme the app a bit and finish off with an add to-do as part of the over all app.</p>
@@ -528,6 +528,53 @@ import <span class="o">{</span> Observable <span class="o">}</span> from <span c
                 
                 
                 
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/blog-cover.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Mind Lab &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/code/">Code</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/installing-ghost-on-ubuntu-16.04">Installing Ghost on Ubuntu 16.04</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/code/">
+                                
+                                    See all 1 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
                 
             
 
