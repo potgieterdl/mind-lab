@@ -32,13 +32,13 @@ pre.highlight,
 .highlight .nb { color: #F1F2F3 } /* Name.Builtin */
 .highlight .nc { color: #678CB1 } /* Name.Class */
 .highlight .no { color: #93C763 } /* Name.Constant */
-.highlight .nd { color: #678CB1 } /* Name.Decorator */
+.highlight .nd { color: #E8E2B7 } /* Name.Decorator */
 .highlight .ni { color: #F1F2F3 } /* Name.Entity */
 .highlight .ne { color: #678CB1 } /* Name.Exception */
 .highlight .nf { color: #678CB1 } /* Name.Function */
 .highlight .nl { color: #F1F2F3 } /* Name.Label */
 .highlight .nn { color: #F1F2F3 } /* Name.Namespace */
-.highlight .nx { color: #678CB1 } /* Name.Other */
+.highlight .nx { color: #F1F2F3 } /* Name.Other */
 .highlight .py { color: #F1F2F3 } /* Name.Property */
 .highlight .nt { color: #E8E2B7 } /* Name.Tag */
 .highlight .nv { color: #F1F2F3 } /* Name.Variable */

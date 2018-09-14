@@ -73,7 +73,7 @@ $ cat Intermediate.cer >> mydomain.com.pem
 
 You should have 3 keys in this file now, double check with `$ cat mydomain.com.pem`
 
-#### Step 5 - Add to HAProxy and restart
+#### Step 5 - Add to HAProxy and restart        
 Next step is too add this .pem file to HAProxy. I normally put this .pem file in `/etc/ssl/private/mydomain.com.pem` and then add the below into HAProxy config (`/etc/haproxy/haproxy.cfg`)
 
 {% highlight shell %}
