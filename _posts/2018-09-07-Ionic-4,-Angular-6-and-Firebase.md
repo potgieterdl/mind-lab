@@ -5,7 +5,7 @@ cover:  assets/images/firebase.jpeg
 navigation: True
 title: Ionic 4, Angular 6 and Firebase
 date: 2018-09-07 14:31:53
-tags: [agile]
+tags: [code]
 class: post-template
 subclass: 'post tag-getting-started'
 author: derick 
@@ -22,8 +22,8 @@ Lets get started with installing the latest version of ionic, adding in cordova 
 
 * sudo npm install -g ionic
 * ionic start ionic4-angular6-firebase sidemenu --type=angular
-** Integrate your new app with Cordova to target native iOS and Android? (y/N) y
-** Install the free Ionic Pro SDK and connect your app? (Y/n) n
+* Integrate your new app with Cordova to target native iOS and Android? (y/N) y
+* Install the free Ionic Pro SDK and connect your app? (Y/n) n
 * cd ./ionic4-angular6-firebase
 * npm install --save-dev @ionic/lab
 * npm install cordova-plugin-ionic --save
@@ -32,7 +32,7 @@ Lets get started with installing the latest version of ionic, adding in cordova 
 ## Lets add firebase to our app
 
 ### Create the project on firebase's portal
-* login to firebase - https://console.firebase.google.com/
+* [login to firebase](https://console.firebase.google.com/)
 * Create a new project - ![Create Firebase Project](assets/images/post-2018-09-07/create-firebase-project.png){:class="img-responsive"}
 * Setup WPA app by clicking the 3rd icon ![Setup Progressive Web App](assets/images/post-2018-09-07/create-pwa-key.png){:class="img-responsive"}
 * Your config details - ![Get Config details for your app](assets/images/post-2018-09-07/firebase-config-details.png){:class="img-responsive"}
@@ -62,7 +62,7 @@ export const firebaseConfig = {
 #### Import the modules for firebase
 Open /src/app/app.module.ts and inject the firebase providers and load your environment config created above
 
-{% highlight shell %}
+{% highlight typescript %}
 // `/src/app/app.module.ts` 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
