@@ -199,7 +199,7 @@ You should now also be able to add data within the Firestore console which will 
 ![Running App](assets/images/post-2018-09-07/create-todo.gif){:class="img-responsive"}
 
 Your ionic lab should look like this
-![Running App](assets/images/post-2018-09-07/final.gif){:class="img-responsive"}
+![Running App](assets/images/post-2018-09-07/final.png){:class="img-responsive"}
 
 #### Whats next
 In our next segment we will include Firebase authentication with Google Plus as the provider. We will also theme the app a bit and finish off with an add to-do as part of the over all app. 
