@@ -734,13 +734,12 @@ The first (most recent) post in the list is styled to be bigger than the others 
     max-width: 840px;
     padding-left: 50px;
 }
-@media (max-width: 1040px) {
+@media (max-width: 840px) {
     .post-full-content img,
     .post-full-content video {
         width: 100%;
     }
 }
-
 
 /* Full bleed images (#full)
 Super neat trick courtesy of @JoelDrapper
