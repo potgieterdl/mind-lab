@@ -10,6 +10,7 @@ class: post-template
 subclass: 'post tag-getting-started'
 author: derick 
 disqus: false
+visible: 1
 ---
 # Remote access to your home network via USG
 
