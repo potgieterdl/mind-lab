@@ -1,18 +1,17 @@
 ---
 layout: post
 current: post
-cover:  assets/images/scrum.jpg
+cover:  assets/images/bus.jpg
 navigation: True
-title: Measuring agile teams through increased value
+title: Measuring agile teams and the value exercise
 date: 2018-08-13 12:09:15
 tags: [agile]
 class: post-template
 subclass: 'post tag-getting-started'
 author: derick 
 disqus: false
-visible: 1
 ---
-# Remote access to your home network via USG
+# Measuring agile teams and the value exercise
 
 ## Research
 I like too point out the below as only some of the reference points i used, all of these mostly say that we should not put our focus on ratings but use other means to monitor success. 
